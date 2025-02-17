@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Video Duration</title>
+
+</head>
+<body>
+  <label for="videoInput">Select Video</label>
+  <div id="videoInfo">Duration: -</div>
+  <input type="file" name="video" id="videoInput">
+  
+  <script>
+    function handleVideoInputChange(files, callback=(err, duration)=>{}) {
+
+      if (files && files.length && files[0].type === 'video/mp4') { // for accepting only MP4 video
+        // create video element
+        const videoElmnt = document.createElement('video');
+
+        // add file as video element source using object URL
+        videoElmnt.src = URL.createObjectURL(files[0]);
+        videoElmnt.load();
+
+        // on error
+        videoElmnt.addEventListener('error', () => {
+          callback('Error loading video', null);
+        });
+
+        // on metadata loaded
+        videoElmnt.addEventListener('loadedmetadata', () => {
+          const duration = videoElmnt.duration;
+
+          // clear all
+          URL.revokeObjectURL(videoElmnt.src);
+          videoElmnt.remove();
+
+          // callback
+          callback(null, duration);
+        });
+      } else {
+        callback('No MP4 video is selected', null);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // file input change
+      const videoInput = document.getElementById('videoInput');
+      videoInput.addEventListener('change', function(e) { // use function() not ()=>{}
+        handleVideoInputChange(this.files, (err, duration) => {
+          if (!err) {
+            console.log('Video Duration:', duration);
+            const infoElmnt = document.getElementById('videoInfo');
+            infoElmnt.innerHTML = `Duration: ${duration} seconds`;
+          }
+        });
+      });
+    })
+  </script>
+</body>
+</html>
