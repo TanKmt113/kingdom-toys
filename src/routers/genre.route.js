@@ -96,7 +96,7 @@ router.post("/genre", AsyncHandle(genreController.Create));
  *      security:
  *          - bearerAuth: []
  *      parameters:
- *          - $ref: '#/components/parameters/SlugParam'
+ *          - $ref: '#/components/parameters/Id'
  *      requestBody:
  *          required: true
  *          content:
@@ -118,7 +118,7 @@ router.patch("/genre/:slug", AsyncHandle(genreController.Update));
  *      security:
  *          - bearerAuth: []
  *      parameters:
- *          - $ref: '#/components/parameters/SlugParam'
+ *          - $ref: '#/components/parameters/Id'
  *      responses:
  *          200:
  *              description: success

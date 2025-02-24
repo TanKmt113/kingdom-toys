@@ -42,6 +42,14 @@ const swaggerOptions = {
             type: "string",
           },
         },
+        Id: {
+          in: "path",
+          name: "id",
+          required: true,
+          schema: {
+            type: "string",
+          },
+        },
         Skip: {
           in: "query",
           name: "skip",
