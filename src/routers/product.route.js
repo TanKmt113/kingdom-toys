@@ -6,7 +6,7 @@ const { AsyncHandle } = require("../helpers/AsyncHandle");
  * @swagger
  *  tags:
  *      name: Product
- *      desscription: Product management
+ *      description: Product management
  */
 
 /**
@@ -16,17 +16,16 @@ const { AsyncHandle } = require("../helpers/AsyncHandle");
  *          Product:
  *              type: object
  *              properties:
+ *                  items:
+ *                      type: string
+ *                      description: Name of the product
+ *                      default: ""
  *                  images:
- *                      type: Array
+ *                      type: array
  *                      items:
  *                          type: string
  *                          format: binary
- *                  items:
- *                      type: string
- *                      description:
- *                          data of product
- *                          default:
- *
+ *                      description: List of product images
  */
 
 /**
@@ -40,7 +39,13 @@ const { AsyncHandle } = require("../helpers/AsyncHandle");
  *              - $ref: '#/components/parameters/Search'
  *          responses:
  *              200:
- *                  description: success
+ *                  description: List of all products
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *                              items:
+ *                                  $ref: '#/components/schemas/Product'
  */
 router.get("/products", AsyncHandle(productController.GetAll));
 
@@ -53,7 +58,11 @@ router.get("/products", AsyncHandle(productController.GetAll));
  *              - $ref: '#/components/parameters/Id'
  *          responses:
  *              200:
- *                  description: success
+ *                  description: Get a single product by ID
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              $ref: '#/components/schemas/Product'
  */
 router.get("/product/:id", AsyncHandle(productController.GetById));
 
@@ -67,10 +76,10 @@ router.get("/product/:id", AsyncHandle(productController.GetById));
  *              content:
  *                  multipart/form-data:
  *                      schema:
- *                          $ref: '#/components/schema/Product'
+ *                          $ref: '#/components/schemas/Product'
  *          responses:
- *              200:
- *                  description: success
+ *              201:
+ *                  description: Product created successfully
  */
 router.post("/product", AsyncHandle(productController.Create));
 
@@ -83,13 +92,13 @@ router.post("/product", AsyncHandle(productController.Create));
  *              - $ref: '#/components/parameters/Id'
  *          requestBody:
  *              required: true
+ *              content:
  *                  multipart/form-data:
  *                      schema:
- *                          $ref: '#/components/schema/Product'
+ *                          $ref: '#/components/schemas/Product'
  *          responses:
  *              200:
- *                  description: success
- *
+ *                  description: Product updated successfully
  */
 router.patch("/product/:id", AsyncHandle(productController.Update));
 
@@ -102,6 +111,8 @@ router.patch("/product/:id", AsyncHandle(productController.Update));
  *              - $ref: '#/components/parameters/Id'
  *          responses:
  *              200:
- *                  description: success
+ *                  description: Product deleted successfully
  */
 router.delete("/product/:id", AsyncHandle(productController.Delete));
+
+module.exports = router;
