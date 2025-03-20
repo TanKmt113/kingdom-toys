@@ -13,6 +13,10 @@ const ProductSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "Genre",
     },
+    descriptions: {
+      type: String,
+      default: ""
+    },
     images: {
       type: Array,
       default: [],
