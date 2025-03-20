@@ -53,7 +53,14 @@ class CartService {
       (item) => item.product.toString() == productId
     );
 
+    
+
     if (existingItem) {
+
+      const newQuantity = existingItem.quantity + quantity 
+      if(newQuantity > product.quantity) throw new BadRequestError(`Số lượng sản phẩm trong kho không đủ.`)
+
+
       existingItem.quantity += quantity;
       existingItem.discount = product.discount;
     } else {
