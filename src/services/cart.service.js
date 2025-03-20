@@ -1,5 +1,4 @@
-const cartModel = require("../models/cart.model");
-const couponModel = require("../models/coupon.model");
+const cartModel = require("../models/cart.model")const couponModel = require("../models/coupon.model");
 const productModel = require("../models/product.model");
 const { BadRequestError } = require("../response/error.response");
 
