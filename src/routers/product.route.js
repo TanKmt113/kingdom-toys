@@ -37,7 +37,6 @@ const { AsyncHandle } = require("../helpers/AsyncHandle");
  *          parameters:
  *              - $ref: '#/components/parameters/Skip'
  *              - $ref: '#/components/parameters/Limit'
- *              - $ref: '#/components/parameters/Search'
  *              - $ref: '#/components/parameters/filter'
  *          responses:
  *              200:

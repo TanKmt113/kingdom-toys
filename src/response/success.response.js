@@ -1,5 +1,15 @@
 const { ReasonPhrases, StatusCodes } = require("./httpStatusCode");
 
+class Pagination {
+  constructor({ result = [], page = 1, limit = 30, total = 0 }) {
+    this.result = result;
+    this.page = page;
+    this.limit = limit;
+    this.total = total;
+    this.totalPages = Math.ceil(total / limit);
+  }
+}
+
 class SuccessResponse {
   constructor({
     message = "success",
@@ -17,4 +27,4 @@ class SuccessResponse {
   }
 }
 
-module.exports = { SuccessResponse };
+module.exports = { SuccessResponse, Pagination };

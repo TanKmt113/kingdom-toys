@@ -4,11 +4,10 @@ const { convertURL } = require("../utils");
 
 class ProductController {
   GetAll = async (req, res) => {
-    const limit = req.query.limit;
-    const skip = req.query.skip;
+    const { skip, limit, filter, search } = req.query;
     new SuccessResponse({
       message: "Get all success",
-      metadata: await productService.GetAll(skip, limit),
+      metadata: await productService.GetAll(skip, limit, filter, search),
     }).send(res);
   };
   GetById = async (req, res) => {

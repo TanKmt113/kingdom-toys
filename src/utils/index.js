@@ -40,7 +40,25 @@ const cleanObject = (obj) => {
 
   return obj;
 };
+
+const parseFilterString = (filterString) => {
+  if (!filterString || typeof filterString !== "string") return {};
+
+  // Tách nhiều cặp key=value bằng dấu "&"
+  const pairs = filterString.split("&").map(pair => pair.split("="));
+
+  // Dùng lodash để chuyển thành object
+  const filterObj = _.fromPairs(pairs);
+
+  // Chuyển đổi thành điều kiện tìm kiếm Mongoose ($regex)
+  return _.mapValues(filterObj, value => ({ $regex: new RegExp(value, "i") }));
+};
+
+
+
+
 module.exports = {
+  parseFilterString,
   getInfoData,
   getSelectData,
   getUnSelectData,

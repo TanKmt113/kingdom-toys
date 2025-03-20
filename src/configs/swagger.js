@@ -57,7 +57,7 @@ const swaggerOptions = {
           required: false,
           schema: {
             type: "integer",
-            default: 0,
+            default: 1,
           },
         },
         Limit: {
@@ -66,7 +66,7 @@ const swaggerOptions = {
           description: "Number of items to return (for pagination)",
           required: false,
           schema: {
-            type: "interger",
+            type: "integer",
             default: 30,
           },
         },

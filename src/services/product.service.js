@@ -1,19 +1,31 @@
 const productModel = require("../models/product.model");
+const { parseFilterString } = require("../utils");
+const { Pagination } = require("../response/success.response");
 
 class ProductService {
-  GetAll = async (skip = 0, limit = 30) => {
+  GetAll = async (skip = 1, limit = 30, filter = null, search = null) => {
+    filter = parseFilterString(filter);
+
+    const total = await productModel.countDocuments(filter);
     const products = await productModel
-      .find()
+      .find(filter)
       .populate("genre")
       .populate("brand")
       .skip(skip)
       .limit(limit);
-    return products;
+    console.log(filter);
+
+    return new Pagination({
+      limit: limit,
+      skip: skip,
+      result: products,
+      total: total,
+    });
   };
 
   GetById = async (id) => {
     const product = await productModel.findOne({ _id: id });
-    return products;
+    return product;
   };
 
   Update = async (id, data) => {
