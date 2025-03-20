@@ -21,6 +21,10 @@ const ProductSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "Brand",
     },
+    price: {
+      type: Number,
+      default: 0,
+    },
     quantity: { type: Number, default: 0 },
     discount: {
       type: Number,
