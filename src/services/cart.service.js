@@ -23,6 +23,7 @@ class CartService {
         quantity: item.quantity,
         price: item.price,
         discount: item.discount,
+        images: item.product.images,
       })),
     };
     return formatJson ?? [];
