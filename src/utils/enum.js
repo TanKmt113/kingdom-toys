@@ -4,4 +4,9 @@ const ModelStatus = {
   DELETED: "deleted",
 };
 
-module.exports = { ModelStatus };
+const DISCOUNTTYPE = {
+  PERCENT: "percent",
+  FIXED: "fixed",
+};
+
+module.exports = { ModelStatus, DISCOUNTTYPE };

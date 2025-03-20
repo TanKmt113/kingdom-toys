@@ -1,13 +1,31 @@
 const cartModel = require("../models/cart.model");
+const couponModel = require("../models/coupon.model");
 const productModel = require("../models/product.model");
 const { BadRequestError } = require("../response/error.response");
 
 class CartService {
   GetMe = async (userId) => {
-    const holderCart = await cartModel
-      .findOne({ user: userId })
-      .populate("items.product");
-    return holderCart ?? [];
+    const holderCart = await cartModel.findOne({ user: userId }).populate({
+      path: "items.product",
+    });
+    // .populate("user");
+    const formatJson = {
+      user: holderCart.user,
+      totalPrice: holderCart.totalPrice,
+      discountCode: holderCart.discountCode,
+      discountValue: holderCart.discountValue,
+      finalPrice: holderCart.finalPrice,
+      createdAt: holderCart.createdAt,
+      updatedAt: holderCart.updatedAt,
+      items: holderCart.items.map((item) => ({
+        productId: item.product._id,
+        productName: item.product.productName,
+        quantity: item.quantity,
+        price: item.price,
+        discount: item.discount,
+      })),
+    };
+    return formatJson ?? [];
   };
 
   AddToCart = async (productId, quantity, userId) => {
@@ -27,11 +45,21 @@ class CartService {
 
     if (existingItem) existingItem.quantity += quantity;
     else {
-      cart.items.push({ product: productId, quantity, price: product.price });
+      cart.items.push({
+        product: productId,
+        quantity,
+        price: product.price,
+        discount: product.discount,
+      });
     }
 
     cart.totalPrice = cart.items.reduce(
       (sum, item) => (sum += item.quantity * item.price),
+      0
+    );
+    cart.finalPrice = cart.items.reduce(
+      (sum, item) =>
+        sum + item.quantity * item.price * (1 - item.discount / 100),
       0
     );
 
@@ -58,6 +86,18 @@ class CartService {
       (sum, item) => (sum += item.quantity * item.price),
       0
     );
+
+    if (cart.discountCode) {
+      const coupon = await couponModel.findOne({
+        CouponName: cart.discountCode,
+      });
+
+      if (!coupon || cart.totalPrice < coupon.minOrderValue) {
+        cart.discountCode = null;
+        cart.discountValue = 0;
+        cart.finalPrice = cart.totalPrice;
+      }
+    }
 
     await cart.save();
     return cart;
@@ -87,7 +127,7 @@ class CartService {
     if (!cart) throw new BadRequestError("Giỏ hàng không tồn tại");
 
     await cartModel.findOneAndDelete({ user: userId });
-    return "Xóa thành công"
+    return "Xóa thành công";
   };
 }
 

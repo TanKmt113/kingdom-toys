@@ -41,17 +41,23 @@ const cleanObject = (obj) => {
   return obj;
 };
 
-const parseFilterString = (filterString) => {
+const parseFilterString = (filterString, search = null, searchFields = []) => {
   if (!filterString || typeof filterString !== "string") return {};
 
-  // Tách nhiều cặp key=value bằng dấu "&"
-  const pairs = filterString.split("&").map(pair => pair.split("="));
+  // Chuyển đổi filter thành object
+  const filterObj = _.chain(filterString.split("&"))
+    .map(pair => pair.split("="))
+    .fromPairs()
+    .mapValues(value => ({ $regex: new RegExp(value, "i") }))
+    .value();
 
-  // Dùng lodash để chuyển thành object
-  const filterObj = _.fromPairs(pairs);
+  // Nếu có search và danh sách trường cần tìm kiếm
+  if (search && searchFields.length > 0) {
+    const searchRegex = new RegExp(search, "i");
+    filterObj.$or = searchFields.map(field => ({ [field]: searchRegex }));
+  }
 
-  // Chuyển đổi thành điều kiện tìm kiếm Mongoose ($regex)
-  return _.mapValues(filterObj, value => ({ $regex: new RegExp(value, "i") }));
+  return filterObj;
 };
 
 

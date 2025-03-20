@@ -3,8 +3,8 @@ const { parseFilterString } = require("../utils");
 const { Pagination } = require("../response/success.response");
 
 class ProductService {
-  GetAll = async (skip = 1, limit = 30, filter = null, search = null) => {
-    filter = parseFilterString(filter);
+  GetAll = async (skip = 0, limit = 30, filter = null, search = null) => {
+    filter = parseFilterString(filter, search, ["productName"]);
 
     const total = await productModel.countDocuments(filter);
     const products = await productModel

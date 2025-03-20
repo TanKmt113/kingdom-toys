@@ -57,7 +57,7 @@ const swaggerOptions = {
           required: false,
           schema: {
             type: "integer",
-            default: 1,
+            default: 0,
           },
         },
         Limit: {

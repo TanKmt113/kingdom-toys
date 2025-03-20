@@ -38,6 +38,7 @@ const { AsyncHandle } = require("../helpers/AsyncHandle");
  *              - $ref: '#/components/parameters/Skip'
  *              - $ref: '#/components/parameters/Limit'
  *              - $ref: '#/components/parameters/filter'
+ *              - $ref: '#/components/parameters/Search'
  *          responses:
  *              200:
  *                  description: List of all products
