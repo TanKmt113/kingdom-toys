@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { uploadDisk } = require("../configs/multer.config");
 const productController = require("../controllers/product.controller");
 const { AsyncHandle } = require("../helpers/AsyncHandle");
 
@@ -37,6 +38,7 @@ const { AsyncHandle } = require("../helpers/AsyncHandle");
  *              - $ref: '#/components/parameters/Skip'
  *              - $ref: '#/components/parameters/Limit'
  *              - $ref: '#/components/parameters/Search'
+ *              - $ref: '#/components/parameters/filter'
  *          responses:
  *              200:
  *                  description: List of all products
@@ -81,7 +83,11 @@ router.get("/product/:id", AsyncHandle(productController.GetById));
  *              201:
  *                  description: Product created successfully
  */
-router.post("/product", AsyncHandle(productController.Create));
+router.post(
+  "/product",
+  uploadDisk.fields([{ name: "images", maxCount: 10 }]),
+  AsyncHandle(productController.Create)
+);
 
 /**
  * @swagger

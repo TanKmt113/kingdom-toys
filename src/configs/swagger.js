@@ -79,6 +79,15 @@ const swaggerOptions = {
             type: "string",
           },
         },
+        filter: {
+          in: "query",
+          name: "filter",
+          description: "This is filter",
+          required: false,
+          schema: {
+            type: "string",
+          },
+        },
       },
     },
   },

@@ -22,9 +22,8 @@ class ProductController {
   Create = async (req, res) => {
     const { images } = req.files;
     const items = JSON.parse(req.body.items);
-    if (images) {
-      items.images = images.map((image) => convertURL(image));
-    }
+    if (images) items.images = convertURL(images);
+
     new SuccessResponse({
       message: "create success",
       metadata: await productService.Create(items),
@@ -33,7 +32,6 @@ class ProductController {
 
   Update = async (req, res) => {
     const id = req.params.id;
-
     const { images } = req.files;
     const items = JSON.parse(req.body.items);
     if (images) {
