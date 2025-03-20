@@ -5,12 +5,18 @@ const { BadRequestError } = require("../response/error.response");
 
 class CartService {
   GetMe = async (userId) => {
-    const holderCart = await cartModel.findOne({ user: userId }).populate({
-      path: "items.product",
-    });
+    const holderCart = await cartModel
+      .findOne({ user: userId })
+      .populate({
+        path: "items.product",
+      })
+      .populate("coupon");
     // .populate("user");
+    if (!holderCart) return [];
+    console.log(holderCart);
     const formatJson = {
       user: holderCart.user,
+      couponName: holderCart.coupon.CouponName,
       totalPrice: holderCart.totalPrice,
       discountCode: holderCart.discountCode,
       discountValue: holderCart.discountValue,
@@ -26,7 +32,7 @@ class CartService {
         images: item.product.images,
       })),
     };
-    return formatJson ?? [];
+    return formatJson;
   };
 
   AddToCart = async (productId, quantity, userId) => {
@@ -47,8 +53,10 @@ class CartService {
       (item) => item.product.toString() == productId
     );
 
-    if (existingItem) existingItem.quantity += quantity;
-    else {
+    if (existingItem) {
+      existingItem.quantity += quantity;
+      existingItem.discount = product.discount;
+    } else {
       cart.items.push({
         product: productId,
         quantity,
@@ -95,19 +103,6 @@ class CartService {
       (sum, item) => (sum += item.quantity * item.price),
       0
     );
-
-    if (cart.discountCode) {
-      const coupon = await couponModel.findOne({
-        CouponName: cart.discountCode,
-      });
-
-      if (!coupon || cart.totalPrice < coupon.minOrderValue) {
-        cart.discountCode = null;
-        cart.discountValue = 0;
-        cart.finalPrice = cart.totalPrice;
-      }
-    }
-
     await cart.save();
     return cart;
   };

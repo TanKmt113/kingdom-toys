@@ -23,6 +23,7 @@ class ExpiryDateHandler extends BasehandleDiscount {
     if (!coupon || !coupon.expiryDate)
       throw new BadRequestError("Coupon không hợp lệ hoặc không tồn tại!");
 
+    console.log("expiryDatahandler");
     const currentDate = new Date();
     if (coupon.expiryDate < currentDate)
       throw new BadRequestError(

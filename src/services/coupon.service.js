@@ -4,46 +4,61 @@ const { Pagination } = require("../response/success.response");
 const cartModel = require("../models/cart.model");
 const { parseFilterString } = require("../utils");
 const { DISCOUNTTYPE } = require("../utils/enum");
+const {
+  ExpiryDateHandler,
+  MinOrderValueHandler,
+  UsageLimitHandler,
+} = require("./discountHandler/discount.handler");
 
 class CouponService {
-  ApplyConpoen = async (couponCode, userId) => {
+  CheckingCoupon = async (userId) => {
+    const cart = await cartModel.findOne({ user: userId });
+    if (!cart) throw new BadRequestError("Không tìm thấy giỏ hàng");
+
+    const allCoupons = await couponModel.find();
+
+    const validCoupons = allCoupons.filter((coupon) => {
+      if (coupon.expiryDate < new Date()) return false;
+
+      if (coupon.usageLimit <= 0) return false;
+
+      if (cart.finalPrice < coupon.minOrderValue) return false;
+
+      return true;
+    });
+
+    if (validCoupons.length == 0)
+      throw new BadRequestError("Không có mã giảm giá hợp lệ");
+
+    return validCoupons;
+  };
+
+  ApplyCoupon = async (couponCode, userId) => {
     let cart = await cartModel.findOne({ user: userId });
     if (!cart) throw new BadRequestError("Giỏ hàng không tồn tại");
 
-    const coupon = await couponModel.findOne({ CouponName: couponCode });
+    const coupon = await couponModel.findOne({ _id: couponCode });
     if (!coupon) throw new BadRequestError("Mã giảm giá không hợp lệ");
 
-    if (coupon.expiryDate < new Date())
-      throw new BadRequestError("Mã giảm giá đã hết hạn");
+    const expiryHandler = new ExpiryDateHandler();
+    const minOrderHandler = new MinOrderValueHandler();
+    const usageHandler = new UsageLimitHandler();
 
-    if (cart.finalPrice < coupon.minOrderValue)
-      throw new BadRequestError(
-        `Đơn hàng phải từ ${coupon.minOrderValue} mới áp dụng được khuyến mĩa`
-      );
+    expiryHandler.setNext(minOrderHandler).setNext(usageHandler);
+    expiryHandler.handle(cart, coupon);
 
-    let discountAmount = 0;
-    if (coupon.CouponType == DISCOUNTTYPE.PERCENT) {
-      discountAmount = cart.totalPrice * (coupon.CouponValue / 100);
-    } else if (coupon.CouponType == DISCOUNTTYPE.FIXED) {
-      discountAmount = coupon.CouponValue;
-    }
+    cart.coupon = coupon._id;
 
-    cart.discountCode = couponCode;
-    cart.discountValue = discountAmount;
-    cart.finalPrice = cart.totalPrice - discountAmount;
     await cart.save();
 
     return cart;
   };
 
-  AddCoupon = async ({ CouponName, CouponValue }) => {
-    const coupon = await couponModel.findOne({ CouponName: CouponName });
+  AddCoupon = async (data) => {
+    const coupon = await couponModel.findOne({ CouponName: data.CouponName });
     if (coupon) throw new BadRequestError("Đã có coupon này rồi!");
 
-    const couponSave = new couponModel({
-      CouponName: CouponName,
-      CouponValue: CouponValue,
-    });
+    const couponSave = new couponModel(data);
 
     await couponSave.save();
     return couponSave;
@@ -70,7 +85,6 @@ class CouponService {
 
   GetCoupon = async (skip = 0, limit = 30, filter = null, search = null) => {
     filter = parseFilterString(filter, search, ["CouponName", "CouponValue"]);
-    console.log(filter);
     const total = await couponModel.countDocuments(filter);
     const coupon = await couponModel.find(filter).skip(skip).limit(limit);
     if (!coupon) throw new BadRequestError("Không tìm thấy coupon");

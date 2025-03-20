@@ -26,10 +26,27 @@ class CouponController {
   };
 
   GetCoupon = async (req, res) => {
-    
     new SuccessResponse({
       message: "Get all success",
       metadata: await couponService.GetCoupon(),
+    }).send(res);
+  };
+
+  ApplyCoupon = async (req, res) => {
+    const id = req.params.id;
+    const user = req.user;
+    new SuccessResponse({
+      message: "Apply success",
+      metadata: await couponService.ApplyCoupon(id, user.userId),
+    }).send(res);
+  };
+
+  CheckingCoupon = async (req, res) => {
+    const user = req.user;
+
+    new SuccessResponse({
+      message: "Checking coupon",
+      metadata: await couponService.CheckingCoupon(user.userId),
     }).send(res);
   };
 }
