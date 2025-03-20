@@ -36,6 +36,7 @@ class UserService {
     });
     if (!keyStore) throw new AuthFailureError("can not create keytoken");
 
+    console.log(tokens);
     return {
       user: getInfoData({
         fields: ["_id", "name", "email"],
