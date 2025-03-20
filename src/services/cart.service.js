@@ -16,7 +16,7 @@ class CartService {
     console.log(holderCart);
     const formatJson = {
       user: holderCart.user,
-      couponName: holderCart.coupon.CouponName,
+      couponName: holderCart?.coupon?.CouponName,
       totalPrice: holderCart.totalPrice,
       discountCode: holderCart.discountCode,
       discountValue: holderCart.discountValue,
