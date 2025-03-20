@@ -33,6 +33,9 @@ class CartService {
     if (!product)
       throw new BadRequestError("Không tìm thấy sản phẩm: ", productId);
 
+    if (product.quantity < quantity)
+      throw new BadRequestError("Sản phẩm không đủ");
+
     let cart = await cartModel.findOne({ user: userId });
 
     if (!cart) {
@@ -70,8 +73,13 @@ class CartService {
 
   UpdateCartItem = async (productId, quantity, userId) => {
     const cart = await cartModel.findOne({ user: userId });
-
     if (!cart) throw new BadRequestError("Giỏ hàng không tồn tại");
+
+    const product = await productModel.findOne({ _id: productId });
+    if (!product) throw new BadRequestError("Sản phẩm không tồn tại");
+
+    if (product.quantity < quantity)
+      throw new BadRequestError("Sản phẩm không đủ");
 
     const item = cart.items.find((item) => item.product == productId);
     if (!item) throw new BadRequestError("Sản phẩm không có trong giỏ hàng");
