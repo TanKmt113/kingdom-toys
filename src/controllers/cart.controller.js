@@ -18,6 +18,38 @@ class CartController {
       metadata: await cartService.AddToCart(productId, quantity, user.userId),
     }).send(res);
   };
+
+  UpdateQuantity = async (req, res) => {
+    const user = req.user;
+    const { productId, quantity } = req.body;
+    new SuccessResponse({
+      message: "Update quantity success",
+      metadata: await cartService.UpdateCartItem(
+        productId,
+        quantity,
+        user.userId
+      ),
+    }).send(res);
+  };
+
+  RemoveItem = async (req, res) => {
+    const user = req.user;
+    const { productId } = req.body;
+
+    new SuccessResponse({
+      message: "Remove item success",
+      metadata: await cartService.Remove(productId, user.userId),
+    }).send(res);
+  };
+
+  ClearAll = async (req, res) => {
+    const user = req.user;
+
+    new SuccessResponse({
+      message: "Clear cart success",
+      metadata: await cartService.ClearCart(user.userId),
+    }).send(res);
+  };
 }
 
 module.exports = new CartController();

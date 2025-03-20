@@ -27,6 +27,17 @@ const { authentication } = require("../helpers/auth");
 
 /**
  * @swagger
+ *  components:
+ *      schemas:
+ *          RemoveItemDTO:
+ *              type: object
+ *              properties:
+ *                  productId:
+ *                      type: string
+ */
+
+/**
+ * @swagger
  *  /cart:
  *      get:
  *          summary: "Get me"
@@ -67,4 +78,76 @@ router.post(
   authentication,
   AsyncHandle(cartController.AddToCart)
 );
+
+/**
+ * @swagger
+ * /cart/UpdateItem:
+ *   post:
+ *     summary: "Cập nhật số lượng giỏ hàng"
+ *     tags: [Cart]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/AddToCart'
+ *     responses:
+ *       200:
+ *         description: Thành công
+ *       400:
+ *         description: Lỗi yêu cầu không hợp lệ
+ *       401:
+ *         description: Chưa đăng nhập hoặc token không hợp lệ
+ */
+router.post(
+  "/cart/UpdateItem",
+  authentication,
+  AsyncHandle(cartController.UpdateQuantity)
+);
+
+/**
+ * @swagger
+ * /cart/RemoveItem:
+ *   delete:
+ *     summary: "Xóa Item khỏi giỏ hàng"
+ *     tags: [Cart]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/RemoveItemDTO'
+ *     responses:
+ *       200:
+ *         description: Thành công
+ *       400:
+ *         description: Lỗi yêu cầu không hợp lệ
+ *       401:
+ *         description: Chưa đăng nhập hoặc token không hợp lệ
+ */
+router.delete(
+  "/cart/RemoveItem",
+  authentication,
+  AsyncHandle(cartController.RemoveItem)
+);
+
+/**
+ * @swagger
+ *  /cart:
+ *      delete:
+ *          summary: "Delete cart "
+ *          tags: [Cart]
+ *          security:
+ *              - bearerAuth: []
+ *          responses:
+ *              200:
+ *                  description: succeess
+ *
+ */
+router.delete("/cart", authentication, AsyncHandle(cartController.ClearAll));
+
 module.exports = router;

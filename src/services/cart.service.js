@@ -39,6 +39,56 @@ class CartService {
 
     return cart;
   };
+
+  UpdateCartItem = async (productId, quantity, userId) => {
+    const cart = await cartModel.findOne({ user: userId });
+
+    if (!cart) throw new BadRequestError("Giỏ hàng không tồn tại");
+
+    const item = cart.items.find((item) => item.product == productId);
+    if (!item) throw new BadRequestError("Sản phẩm không có trong giỏ hàng");
+
+    if (quantity > 0) item.quantity = quantity;
+    else
+      cart.items = cart.items.filter(
+        (item) => item.product.toString() !== productId
+      );
+
+    cart.totalPrice = cart.items.reduce(
+      (sum, item) => (sum += item.quantity * item.price),
+      0
+    );
+
+    await cart.save();
+    return cart;
+  };
+
+  Remove = async (productId, userId) => {
+    const cart = await cartModel.findOne({ user: userId });
+    if (!cart) throw new BadRequestError("Giỏ hàng không tồn tại");
+
+    const item = cart.items.find((item) => item.product == productId);
+    if (!item) throw new BadRequestError("Sản phẩm không có trong giỏ hàng");
+
+    cart.items = cart.items.filter(
+      (item) => item.product.toString() !== productId
+    );
+    cart.totalPrice = cart.items.reduce(
+      (sum, item) => (sum += item.quantity * item.price),
+      0
+    );
+
+    await cart.save();
+    return cart;
+  };
+
+  ClearCart = async (userId) => {
+    const cart = await cartModel.findOne({ user: userId });
+    if (!cart) throw new BadRequestError("Giỏ hàng không tồn tại");
+
+    await cartModel.findOneAndDelete({ user: userId });
+    return "Xóa thành công"
+  };
 }
 
 module.exports = new CartService();
