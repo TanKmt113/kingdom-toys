@@ -1,4 +1,5 @@
-const cartModel = require("../models/cart.model")const couponModel = require("../models/coupon.model");
+const cartModel = require("../models/cart.model");
+const couponModel = require("../models/coupon.model");
 const productModel = require("../models/product.model");
 const { BadRequestError } = require("../response/error.response");
 
@@ -52,13 +53,10 @@ class CartService {
       (item) => item.product.toString() == productId
     );
 
-    
-
     if (existingItem) {
-
-      const newQuantity = existingItem.quantity + quantity 
-      if(newQuantity > product.quantity) throw new BadRequestError(`Số lượng sản phẩm trong kho không đủ.`)
-
+      const newQuantity = existingItem.quantity + quantity;
+      if (newQuantity > product.quantity)
+        throw new BadRequestError(`Số lượng sản phẩm trong kho không đủ.`);
 
       existingItem.quantity += quantity;
       existingItem.discount = product.discount;
