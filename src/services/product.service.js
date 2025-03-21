@@ -13,7 +13,6 @@ class ProductService {
       .populate("brand")
       .skip(skip)
       .limit(limit);
-    console.log(filter);
 
     return new Pagination({
       limit: limit,
@@ -39,7 +38,6 @@ class ProductService {
   };
 
   Create = async (data) => {
-    console.log(data);
     const newProduct = await productModel.create(data);
     return newProduct;
   };

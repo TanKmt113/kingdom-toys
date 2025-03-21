@@ -9,4 +9,17 @@ const DISCOUNTTYPE = {
   FIXED: "fixed",
 };
 
-module.exports = { ModelStatus, DISCOUNTTYPE };
+const ORDERSTATUS = {
+  PENDING: "pending",
+  PAID: "paid",
+  CANCELLED: "cancelled",
+  SHIPPED: "shipped",
+  DELIVERED: "delivered",
+  DRAFT: "draft",
+};
+
+// const PAYMENT_METHOD = {
+//   e
+// }
+
+module.exports = { ModelStatus, DISCOUNTTYPE, ORDERSTATUS };

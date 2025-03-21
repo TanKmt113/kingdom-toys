@@ -39,9 +39,12 @@ router.post("/async", async (req, res, next) => {
       });
     });
 
-    await provinceModel.insertMany(provinces);
-    await districtModel.insertMany(districts);
-    await wardModel.insertMany(wards);
+    const provinceCount = await provinceModel.countDocuments();
+    const districtCount = await districtModel.countDocuments();
+    const wardCount = await wardModel.countDocuments();
+    if (provinceCount == 0) await provinceModel.insertMany(provinces);
+    if (districtCount == 0) await districtModel.insertMany(districts);
+    if (wardCount == 0) await wardModel.insertMany(wards);
 
     res.json({
       message: "✅ Tách dữ liệu thành công!",

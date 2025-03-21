@@ -40,15 +40,25 @@ class CouponService {
     const coupon = await couponModel.findOne({ _id: couponCode });
     if (!coupon) throw new BadRequestError("Mã giảm giá không hợp lệ");
 
+    let totalPrice = 0;
+    for (const item of cart.items) {
+      totalPrice += item.quantity * item.price;
+    }
+
+    const context = {
+      userId,
+      totalPrice,
+      coupon,
+    };
+
     const expiryHandler = new ExpiryDateHandler();
     const minOrderHandler = new MinOrderValueHandler();
     const usageHandler = new UsageLimitHandler();
 
     expiryHandler.setNext(minOrderHandler).setNext(usageHandler);
-    expiryHandler.handle(cart, coupon);
+    expiryHandler.handle(context);
 
-    await cart.save();
-
+    // await cart.save();
     return cart;
   };
 
@@ -86,9 +96,7 @@ class CouponService {
     const total = await couponModel.countDocuments(filter);
     let coupon = await couponModel.find(filter).skip(skip).limit(limit);
     if (!coupon) throw new BadRequestError("Không tìm thấy coupon");
-    // coupon = coupon.map((item) => {
-    //   console.log(item);
-    // });
+
     return new Pagination({
       limit,
       skip,

@@ -10,20 +10,21 @@ class BasehandleDiscount {
     return handler;
   }
 
-  handle(cart, coupon) {
+  handle(context) {
     if (this.nextHandler) {
-      return this.nextHandler.handle(cart, coupon);
+      return this.nextHandler.handle(context);
     }
     return true;
   }
 }
 
 class ExpiryDateHandler extends BasehandleDiscount {
-  handle(cart, coupon) {
+  handle(context) {
+    const { coupon } = context;
+    console.log(coupon);
     if (!coupon || !coupon.expiryDate)
       throw new BadRequestError("Coupon không hợp lệ hoặc không tồn tại!");
 
-    console.log("expiryDatahandler");
     const currentDate = new Date();
     if (coupon.expiryDate < currentDate)
       throw new BadRequestError(
@@ -32,26 +33,28 @@ class ExpiryDateHandler extends BasehandleDiscount {
         } đã hết hạn vào ngày ${coupon.expiryDate.toLocaleDateString()} `
       );
 
-    return super.handle(cart, coupon);
+    return super.handle(context);
   }
 }
 
 class MinOrderValueHandler extends BasehandleDiscount {
-  handle(cart, coupon) {
-    if (cart.totalPrice < coupon.minOrderValue)
+  handle(context) {
+    const { totalPrice, coupon } = context;
+    if (totalPrice < coupon.minOrderValue)
       throw new BadRequestError(
         `Đơn hàng phải từ ${coupon.minOrderValue} mới áp dụng mã giảm giá`
       );
 
-    return super.handle(cart, coupon);
+    return super.handle(context);
   }
 }
 
 class UsageLimitHandler extends BasehandleDiscount {
-  handle(cart, coupon) {
+  handle(context) {
+    const { coupon } = context;
     if (coupon.usageLimit <= 0)
       throw new BadRequestError("Đã hết mã giảm giá này ");
-    return super.handle(cart, coupon);
+    return super.handle(context);
   }
 }
 module.exports = {
