@@ -47,8 +47,6 @@ class CouponService {
     expiryHandler.setNext(minOrderHandler).setNext(usageHandler);
     expiryHandler.handle(cart, coupon);
 
-    cart.coupon = coupon._id;
-
     await cart.save();
 
     return cart;
@@ -86,8 +84,11 @@ class CouponService {
   GetCoupon = async (skip = 0, limit = 30, filter = null, search = null) => {
     filter = parseFilterString(filter, search, ["CouponName", "CouponValue"]);
     const total = await couponModel.countDocuments(filter);
-    const coupon = await couponModel.find(filter).skip(skip).limit(limit);
+    let coupon = await couponModel.find(filter).skip(skip).limit(limit);
     if (!coupon) throw new BadRequestError("Không tìm thấy coupon");
+    // coupon = coupon.map((item) => {
+    //   console.log(item);
+    // });
     return new Pagination({
       limit,
       skip,
