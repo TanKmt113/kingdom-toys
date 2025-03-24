@@ -1,5 +1,5 @@
 const { SuccessResponse } = require("../response/success.response");
-
+const BrannerService = require("../services/branner.service");
 class BrannerController {
   GetAll = async (req, res) => {
     new SuccessResponse({

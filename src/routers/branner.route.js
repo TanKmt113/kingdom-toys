@@ -52,7 +52,7 @@ router.get("/branners", AsyncHandle(brannerController.GetAll));
 
 /**
  * @swagger
- *  /branner/{id}:
+ *  /branner:
  *    post:
  *      summary: create new branner
  *      tags: [Branner]
@@ -102,3 +102,5 @@ router.patch("/branner/:id", AsyncHandle(brannerController.Update));
  *
  */
 router.delete("/branner/:id", AsyncHandle(brannerController.Delete));
+
+module.exports = router;

@@ -9,7 +9,9 @@ router.use("/", require("./cart.route"));
 router.use("/", require("./brand.route.js"));
 router.use("/", require("./coupon.route.js"));
 router.use("/", require("./address.route.js"));
-router.use('/', require('./order.route.js'))
+router.use("/", require("./order.route.js"));
+router.use("/", require("./branner.route.js"));
+``;
 
 router.use("/", require("./async.route.js"));
 module.exports = router;
