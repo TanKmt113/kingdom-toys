@@ -3,12 +3,7 @@ const orderModel = require("../models/order.model");
 const { BadRequestError } = require("../response/error.response");
 const { syncCartPrices } = require("./cartHandler/syncCartPrice");
 const { ORDERSTATUS } = require("../utils/enum");
-const {
-  ExpiryDateHandler,
-  MinOrderValueHandler,
-  UsageLimitHandler,
-} = require("./discountHandler/discount.handler");
-const couponModel = require("../models/coupon.model");
+
 const { parseFilterString } = require("../utils");
 const { Pagination } = require("../response/success.response");
 const {
@@ -117,7 +112,6 @@ class OrderService {
           price: item.price,
           quantity: item.quantity,
           discount: item.discount,
-          // bạn có thể thêm thuộc tính khác từ product nếu muốn
         };
       });
 
@@ -139,6 +133,7 @@ class OrderService {
     const order = await orderModel
       .find({ user: userId })
       .populate("coupon")
+
       .sort({ createdAt: -1 });
     return order;
   };

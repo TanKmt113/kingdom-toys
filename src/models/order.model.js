@@ -1,5 +1,5 @@
 const { Schema, model, Types, mongo, default: mongoose } = require("mongoose");
-const { ORDERSTATUS } = require("../utils/enum");
+const { ORDERSTATUS, PAYMENT_METHOD } = require("../utils/enum");
 
 const DOCUMENT_NAME = "Order";
 const COLLECTION_NAME = "Orders";
@@ -57,7 +57,7 @@ const OrderSchema = new Schema(
     shippingAddress: ShippingAddressSchema,
     paymentMethod: {
       type: String,
-      enum: ["cod", "zalo"],
+      enum: [PAYMENT_METHOD.COD, PAYMENT_METHOD.ZALO],
     },
     notes: String,
   },

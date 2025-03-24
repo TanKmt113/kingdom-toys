@@ -18,8 +18,8 @@ const ORDERSTATUS = {
   DRAFT: "draft",
 };
 
-// const PAYMENT_METHOD = {
-//   e
-// }
-
-module.exports = { ModelStatus, DISCOUNTTYPE, ORDERSTATUS };
+const PAYMENT_METHOD = {
+  COD: "cod",
+  ZALO: "zalo",
+};
+module.exports = { ModelStatus, DISCOUNTTYPE, ORDERSTATUS, PAYMENT_METHOD };
