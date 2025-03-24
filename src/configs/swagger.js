@@ -15,6 +15,9 @@ const swaggerOptions = {
       {
         url: "http://localhost:3001", // Địa chỉ server của API
       },
+      {
+        url: "http://localhost:3005",
+      },
     ],
     components: {
       securitySchemes: {

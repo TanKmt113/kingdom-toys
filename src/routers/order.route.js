@@ -71,6 +71,11 @@ router.post(
  *  get:
  *    summary: Get order
  *    tags: [Order]
+ *    parameters:
+ *      - $ref: '#/components/parameters/Skip'
+ *      - $ref: '#/components/parameters/Limit'
+ *      - $ref: '#/components/parameters/filter'
+ *      - $ref: '#/components/parameters/Search'
  *    security:
  *      - bearerAuth: []
  *    responses:
@@ -78,5 +83,23 @@ router.post(
  *        description: success
  */
 router.get("/order", authentication, AsyncHandle(orderController.GetOrder));
+
+/**
+ * @swagger
+ *  /order/me:
+ *    get:
+ *      summary: Get order by me
+ *      tags: [Order]
+ *      security:
+ *        - bearerAuth: []
+ *      responses:
+ *        200:
+ *         description: success
+ */
+router.get(
+  "/order/me",
+  authentication,
+  AsyncHandle(orderController.GetOrderDetail)
+);
 
 module.exports = router;
