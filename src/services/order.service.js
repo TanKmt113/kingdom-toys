@@ -9,9 +9,17 @@ const {
   UsageLimitHandler,
 } = require("./discountHandler/discount.handler");
 const couponModel = require("../models/coupon.model");
+const { parseFilterString } = require("../utils");
+const { Pagination } = require("../response/success.response");
+const {
+  validateAndApplyCoupon,
+} = require("./ValidateOrder/validateAndApplyCoupon");
+const { default: mongoose } = require("mongoose");
 
 class OrderService {
   Checkout = async (payload, userId) => {
+    const session = await mongoose.startSession();
+    session.startTransaction();
     const cart = await cartModel.findOne({ user: userId });
     if (!cart) throw new BadRequestError("Giỏ hàng trống");
 
@@ -24,6 +32,7 @@ class OrderService {
 
     for (const item of cart.items) {
       if (!item.product) continue;
+      console.log(item);
 
       const quantity = item.quantity;
       const discount = item.discount || 0;
@@ -33,7 +42,7 @@ class OrderService {
       finalPrice += quantity * price * (1 - discount / 100);
 
       orderItem.push({
-        product: item._id,
+        product: item.product,
         quantity: quantity,
         discount: discount,
         price: price,
@@ -44,28 +53,15 @@ class OrderService {
     let couponId = null;
 
     if (payload.coupon) {
-      const coupon = await couponModel.findById(payload.coupon);
-      if (!coupon) throw new BadRequestError("Mã giảm giá không tồn tại");
+      const result = await validateAndApplyCoupon(
+        payload.coupon,
+        userId,
+        finalPrice
+      );
 
-      const expiryHandler = new ExpiryDateHandler();
-      const minOrderHandler = new MinOrderValueHandler();
-      const usageHandler = new UsageLimitHandler();
-
-      expiryHandler.setNext(minOrderHandler).setNext(usageHandler);
-
-      const context = {
-        userId: userId,
-        totalPrice: finalPrice,
-        coupon: coupon,
-      };
-      expiryHandler.handle(context);
-
-      discountvalue = coupon.CouponValue || 0;
-      couponId = coupon._id;
-
-      finalPrice -= discountvalue;
-
-      if (finalPrice < 0) finalPrice = 0;
+      discountvalue = result.discountValue;
+      couponId = result.couponId;
+      finalPrice = result.finalPrice;
     }
 
     const order = new orderModel({
@@ -90,16 +86,62 @@ class OrderService {
 
     //Xóa giỏ hàng
     await cart.deleteOne();
-
     await order.save();
-
+    await session.commitTransaction();
+    session.endSession();
     return order;
   };
 
-  GetOrder = async(userId) => {
-    const orders = await orderModel.find({user: userId})
-    return orders
-  }
+  GetOrder = async (skip = 0, limit = 30, filter = null, search = null) => {
+    filter = parseFilterString(filter, search, ["status"]);
+
+    const total = await orderModel.countDocuments(filter);
+    const rawOrders = await orderModel
+      .find(filter)
+      .populate("coupon")
+      .populate("items.product")
+      .populate({
+        path: "user",
+        select: "name email status thumbnail phone address",
+      })
+      .sort({ createdAt: -1 });
+
+    const orders = rawOrders.map((order) => {
+      const flatItems = order.items.map((item) => {
+        const product = item.product || {}; // fallback nếu null
+        return {
+          _id: item._id,
+          productId: product._id,
+          productName: product.productName,
+          images: product.images,
+          price: item.price,
+          quantity: item.quantity,
+          discount: item.discount,
+          // bạn có thể thêm thuộc tính khác từ product nếu muốn
+        };
+      });
+
+      return {
+        ...order.toObject(), // convert từ mongoose document về plain object
+        items: flatItems,
+      };
+    });
+
+    return new Pagination({
+      limit: limit,
+      skip: skip,
+      result: orders,
+      total: total,
+    });
+  };
+
+  GetOrderByMe = async () => {
+    const order = await orderModel
+      .find({ user: userId })
+      .populate("coupon")
+      .sort({ createdAt: -1 });
+    return order;
+  };
 }
 
 module.exports = new OrderService();
