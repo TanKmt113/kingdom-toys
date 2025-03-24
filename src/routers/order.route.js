@@ -65,4 +65,18 @@ router.post(
   AsyncHandle(orderController.Checkout)
 );
 
+/**
+ * @swagger
+ * /order:
+ *  get:
+ *    summary: Get order
+ *    tags: [Order]
+ *    security:
+ *      - bearerAuth: []
+ *    responses:
+ *      200:
+ *        description: success
+ */
+router.get("/order", authentication, AsyncHandle(orderController.GetOrder));
+
 module.exports = router;

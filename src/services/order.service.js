@@ -95,6 +95,11 @@ class OrderService {
 
     return order;
   };
+
+  GetOrder = async(userId) => {
+    const orders = await orderModel.find({user: userId})
+    return orders
+  }
 }
 
 module.exports = new OrderService();
