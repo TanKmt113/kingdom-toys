@@ -13,7 +13,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: "http://localhost:3000", // Địa chỉ server của API
+        url: "http://localhost:3001", // Địa chỉ server của API
       },
     ],
     components: {
