@@ -9,8 +9,9 @@ const BrannerSchema = new Schema(
     description: String,
     images: [String],
     button: String,
-    text: String,
+    discountText: String,
     link: String,
+    type: String
   },
   { timestamps: true, collection: COLLECTION_NAME }
 );
