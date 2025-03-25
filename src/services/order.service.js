@@ -28,11 +28,8 @@ class OrderService {
     if (!payload.paymentMethod)
       throw new BadRequestError("Không có phương thức thanh toán");
 
-    const session = await mongoose.startSession();
-    session.startTransaction();
-
     const type = payload.type;
-    if(!type) throw new BadRequestError("Vui lòng kiểu thanh toán")
+    if (!type) throw new BadRequestError("Vui lòng kiểu thanh toán");
     const strategy = ORDER_ITEM_GENERATORS[type];
 
     if (!strategy)
@@ -80,16 +77,14 @@ class OrderService {
       isDeleted: false,
     });
 
-    await order.save({ session });
+    await order.save();
 
     const paymentHandler = PaymentHandler.getHandler(payload.paymentMethod);
     await paymentHandler.handler(order, payload);
 
     //Xóa giỏ hàng
-    if (cart) await cart.deleteOne({ session });
+    if (cart) await cart.deleteOne();
 
-    await session.commitTransaction();
-    session.endSession();
     return order;
   };
 
