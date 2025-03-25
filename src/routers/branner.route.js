@@ -30,12 +30,14 @@ const { AsyncHandle } = require("../helpers/AsyncHandle");
  *         button:
  *           type: string
  *           example: "Mua ngay"
- *         text:
+ *         discountText:
  *           type: string
  *           example: "Chi tiết khuyến mãi"
  *         link:
  *           type: string
  *           example: "https://example.com/khuyen-mai"
+ *         type: 
+ *           type: string
  */
 
 /**
