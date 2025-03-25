@@ -37,6 +37,14 @@ const { authentication } = require("../helpers/auth");
  *                      default: "cod"
  *                  notes:
  *                      type: string
+ *                  type: 
+ *                      type: string 
+ *                      description: CART || NOW
+ *                      default: CART
+ *                  productId: 
+ *                      type: string 
+ *                  quantity: 
+ *                      type: string
  *
  */
 

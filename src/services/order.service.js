@@ -12,41 +12,41 @@ const {
 } = require("./ValidateOrder/validateAndApplyCoupon");
 const { default: mongoose } = require("mongoose");
 
+const {
+  generateOrderItemFromCart,
+  generateOrderItemsFromProduct,
+} = require("./Order/orderItem.helper");
+
+const ORDER_ITEM_GENERATORS = {
+  CART: async (payload, userId) => await generateOrderItemFromCart(userId),
+  NOW: async (payload, userId) =>
+    await generateOrderItemsFromProduct(payload.productId, payload.quantity),
+};
+
 class OrderService {
   Checkout = async (payload, userId) => {
-    const session = await mongoose.startSession();
-    session.startTransaction();
-    const cart = await cartModel.findOne({ user: userId });
-    if (!cart) throw new BadRequestError("Giỏ hàng trống");
     if (!payload.paymentMethod)
       throw new BadRequestError("Không có phương thức thanh toán");
-    await syncCartPrices(cart);
-    await cart.save();
 
-    let totalPrice = 0;
-    let finalPrice = 0;
-    const orderItem = [];
+    const session = await mongoose.startSession();
+    session.startTransaction();
 
-    for (const item of cart.items) {
-      if (!item.product) continue;
+    const type = payload.type;
+    if(!type) throw new BadRequestError("Vui lòng kiểu thanh toán")
+    const strategy = ORDER_ITEM_GENERATORS[type];
 
-      const quantity = item.quantity;
-      const discount = item.discount || 0;
-      const price = item.price;
+    if (!strategy)
+      throw new BadRequestError(` Loại giỏ hàng không hợp lệ: ${type}`);
 
-      totalPrice += quantity * price;
-      finalPrice += quantity * price * (1 - discount / 100);
-
-      orderItem.push({
-        product: item.product,
-        quantity: quantity,
-        discount: discount,
-        price: price,
-      });
-    }
+    const { items, totalPrice, finalPrice, cart } = await strategy(
+      payload,
+      userId
+    );
 
     let discountvalue = 0;
     let couponId = null;
+
+    let finalPriceAfterCoupon = finalPrice;
 
     if (payload.coupon) {
       const result = await validateAndApplyCoupon(
@@ -57,13 +57,13 @@ class OrderService {
 
       discountvalue = result.discountValue;
       couponId = result.couponId;
-      finalPrice = result.finalPrice;
+      finalPriceAfterCoupon = result.finalPrice;
     }
 
     const order = new orderModel({
-      items: orderItem,
-      finalPrice: finalPrice,
-      totalPrice: totalPrice,
+      items,
+      totalPrice,
+      finalPrice: finalPriceAfterCoupon,
       status: ORDERSTATUS.PENDING,
       shippingAddress: {
         addressLine: payload.addressLine,
@@ -80,13 +80,14 @@ class OrderService {
       isDeleted: false,
     });
 
-    await order.save();
+    await order.save({ session });
 
     const paymentHandler = PaymentHandler.getHandler(payload.paymentMethod);
     await paymentHandler.handler(order, payload);
 
     //Xóa giỏ hàng
-    await cart.deleteOne();
+    if (cart) await cart.deleteOne({ session });
+
     await session.commitTransaction();
     session.endSession();
     return order;
