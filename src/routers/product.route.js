@@ -106,7 +106,13 @@ router.post(
  *              200:
  *                  description: Product updated successfully
  */
-router.patch("/product/:id", AsyncHandle(productController.Update));
+router.patch(
+  "/product/:id",
+
+  uploadDisk.fields([{ name: "images", maxCount: 10 }]),
+
+  AsyncHandle(productController.Update)
+);
 
 /**
  * @swagger
