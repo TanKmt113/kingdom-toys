@@ -32,9 +32,12 @@ const accountSchema = new Schema(
       type: String,
       trim: true,
     },
-    address: {
+    addressLine: {
       type: String,
     },
+    ward: String,
+    district: String,
+    province: String,
   },
   {
     timestamps: true,

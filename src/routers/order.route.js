@@ -45,6 +45,9 @@ const { authentication } = require("../helpers/auth");
  *                      type: string
  *                  quantity:
  *                      type: string
+ *                  notes:
+ *                      type: string
+ *
  *
  */
 
