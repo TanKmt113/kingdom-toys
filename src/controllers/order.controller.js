@@ -12,6 +12,7 @@ class OrderController {
 
   GetOrderById = async (req, res) => {
     const { id } = req.params;
+
     new SuccessResponse({
       message: "Get by id",
       metadata: await orderService.GetOrderById(id),
