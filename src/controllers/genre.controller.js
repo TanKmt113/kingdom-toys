@@ -10,7 +10,9 @@ class GenreController {
   };
 
   GetById = async (req, res, next) => {
+
     const { slug } = req.params;
+    
     new SuccessResponse({
       message: "Get by id",
       metadata: await genreService.GetById(slug),
@@ -18,6 +20,7 @@ class GenreController {
   };
 
   Create = async (req, res, next) => {
+
     new SuccessResponse({
       message: "create by id",
       metadata: await genreService.Create(req.body),

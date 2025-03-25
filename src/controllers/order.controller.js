@@ -20,6 +20,7 @@ class OrderController {
   };
 
   GetOrder = async (req, res) => {
+
     new SuccessResponse({
       message: "Get order success",
       metadata: await orderService.GetOrder(),
