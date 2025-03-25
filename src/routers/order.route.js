@@ -37,13 +37,13 @@ const { authentication } = require("../helpers/auth");
  *                      default: "cod"
  *                  notes:
  *                      type: string
- *                  type: 
- *                      type: string 
+ *                  type:
+ *                      type: string
  *                      description: CART || NOW
  *                      default: CART
- *                  productId: 
- *                      type: string 
- *                  quantity: 
+ *                  productId:
+ *                      type: string
+ *                  quantity:
  *                      type: string
  *
  */
@@ -108,6 +108,26 @@ router.get(
   "/order/me",
   authentication,
   AsyncHandle(orderController.GetOrderDetail)
+);
+
+/**
+ * @swagger
+ *  /order/{id}:
+ *    get:
+ *      summary: Get order by id
+ *      tags: [Order]
+ *      parameters:
+ *        - $ref: '#/components/parameters/Id'
+ *      security:
+ *        - bearerAuth: []
+ *      responses:
+ *        200:
+ *          description: success
+ */
+router.get(
+  "/order/:id",
+  authentication,
+  AsyncHandle(orderController.GetOrderById)
 );
 
 module.exports = router;

@@ -130,6 +130,12 @@ class OrderService {
     });
   };
 
+  GetOrderById = async (id) => {
+    const order = await orderModel.findOne({ _id: id });
+    if (!order) throw new BadRequestError("Not found order");
+    return order;
+  };
+
   GetOrderByMe = async () => {
     const order = await orderModel
       .find({ user: userId })
