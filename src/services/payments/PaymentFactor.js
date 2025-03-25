@@ -1,4 +1,5 @@
 const { PAYMENT_METHOD } = require("../../utils/enum");
+const { CODPayment, ZaloPayment } = require("./PaymentHandler");
 
 class PaymentFactory {
   static getHandler(method) {

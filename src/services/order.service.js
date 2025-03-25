@@ -6,6 +6,7 @@ const { ORDERSTATUS } = require("../utils/enum");
 
 const { parseFilterString } = require("../utils");
 const { Pagination } = require("../response/success.response");
+const PaymentHandler = require("./payments/PaymentFactor");
 const {
   validateAndApplyCoupon,
 } = require("./ValidateOrder/validateAndApplyCoupon");
@@ -17,7 +18,8 @@ class OrderService {
     session.startTransaction();
     const cart = await cartModel.findOne({ user: userId });
     if (!cart) throw new BadRequestError("Giỏ hàng trống");
-
+    if (!payload.paymentMethod)
+      throw new BadRequestError("Không có phương thức thanh toán");
     await syncCartPrices(cart);
     await cart.save();
 
@@ -27,7 +29,6 @@ class OrderService {
 
     for (const item of cart.items) {
       if (!item.product) continue;
-      console.log(item);
 
       const quantity = item.quantity;
       const discount = item.discount || 0;
@@ -79,9 +80,13 @@ class OrderService {
       isDeleted: false,
     });
 
+    await order.save();
+
+    const paymentHandler = PaymentHandler.getHandler(payload.paymentMethod);
+    await paymentHandler.handler(order, payload);
+
     //Xóa giỏ hàng
     await cart.deleteOne();
-    await order.save();
     await session.commitTransaction();
     session.endSession();
     return order;
