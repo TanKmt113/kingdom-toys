@@ -1,9 +1,16 @@
 const brannerModel = require("../models/branner.model");
+const { BadRequestError } = require("../response/error.response");
 
 class BrannerService {
   GetAll = async () => {
     const branners = await brannerModel.find();
     return branners;
+  };
+
+  GetById = async (id) => {
+    const branner = await brannerModel.findOne({ _id: id });
+    if (!branner) throw new BadRequestError("Branner not found");
+    return branner;
   };
 
   Create = async (data) => {

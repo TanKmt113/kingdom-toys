@@ -110,4 +110,7 @@ router.patch("/brand/:id", AsyncHandle(brandController.Update));
  */
 router.delete("/brand/:id", AsyncHandle(brandController.Delete));
 
+
+
+
 module.exports = router;

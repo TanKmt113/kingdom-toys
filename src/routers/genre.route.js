@@ -23,6 +23,9 @@ const genreController = require("../controllers/genre.controller");
  *                  genreDescription:
  *                      type: string
  *                      default: genre description
+ *                  link: 
+ *                      type: string 
+ *                      default: https://images.com.vn
  *
  */
 

@@ -103,4 +103,18 @@ router.patch("/branner/:id", AsyncHandle(brannerController.Update));
  */
 router.delete("/branner/:id", AsyncHandle(brannerController.Delete));
 
+/**
+ * @swagger
+ *  /branner/{id}:
+ *      get:
+ *          summary: Get by id
+ *          tags: [Branner]
+ *          parameters:
+ *              - $ref: '#/components/parameters/Id'
+ *          responses:
+ *              200:
+ *                  description: success
+ */
+router.get("/branner/:id", AsyncHandle(brannerController.GetById));
+
 module.exports = router;
