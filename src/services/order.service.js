@@ -252,9 +252,9 @@ class OrderService {
     await order.save();
 
     const paymentHandler = PaymentHandler.getHandler(payload.paymentMethod);
-    const result = await paymentHandler.handler(order, payload);
+     await paymentHandler.handler(order, payload);
 
-    return result;
+    return "success";
   };
 
   GetOrderByMe = async (
