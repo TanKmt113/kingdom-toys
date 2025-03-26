@@ -66,8 +66,8 @@ class UsageLimitHandler extends BasehandleDiscount {
     if (coupon.usageLimit <= 0)
       throw new BadRequestError("Đã hết mã giảm giá này ");
 
-    coupon.usageLimit--;
-    await coupon.save();
+    // coupon.usageLimit--;
+    // await coupon.save();
 
     return super.handle(context);
 

@@ -206,6 +206,9 @@ class OrderService {
       couponId = result.couponId;
       discountValue = result.discountValue;
       finalPrice = result.finalPrice;
+      const couponM = await couponModel.findById(couponId);
+      if (!couponM) throw new BadRequestError("Mã giảm giá không tồn tại");
+      couponM.usageLimit--;
     }
 
     // Tạo map sản phẩm để dễ dàng truy cập thông tin
@@ -252,7 +255,7 @@ class OrderService {
     await order.save();
 
     const paymentHandler = PaymentHandler.getHandler(payload.paymentMethod);
-     await paymentHandler.handler(order, payload);
+    await paymentHandler.handler(order, payload);
 
     return "success";
   };
