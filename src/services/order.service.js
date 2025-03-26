@@ -87,6 +87,37 @@ class OrderService {
 
     return order;
   };
+  GetOrderById = async (id) => {
+    let order = await orderModel
+      .findOne({ _id: id })
+      .populate("coupon")
+      .populate("items.product")
+      .populate({
+        path: "user",
+        select: "name email status thumbnail phone address",
+      });
+
+    if (!order) throw new BadRequestError("Not found order");
+
+    // Convert document Mongoose thành plain object
+    order = order.toObject();
+
+    // Chuẩn hoá items giống GetOrder
+    order.items = order.items.map((item) => {
+      const product = item.product || {};
+      return {
+        _id: item._id,
+        productId: product._id,
+        productName: product.productName,
+        images: product.images,
+        price: item.price,
+        quantity: item.quantity,
+        discount: item.discount,
+      };
+    });
+
+    return order;
+  };
 
   GetOrder = async (skip = 0, limit = 30, filter = null, search = null) => {
     filter = parseFilterString(filter, search, ["status"]);
@@ -128,12 +159,6 @@ class OrderService {
       result: orders,
       total: total,
     });
-  };
-
-  GetOrderById = async (id) => {
-    const order = await orderModel.findOne({ _id: id });
-    if (!order) throw new BadRequestError("Not found order");
-    return order;
   };
 
   GetOrderByMe = async () => {
