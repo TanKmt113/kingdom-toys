@@ -196,7 +196,6 @@ class OrderService {
       return acc + subtotal;
     }, 0);
 
-    // Kiểm tra nếu có coupon thì validate và áp dụng
     let couponId = null;
     let discountValue = 0;
     let finalPrice = totalPrice;
@@ -211,7 +210,6 @@ class OrderService {
       couponM.usageLimit--;
     }
 
-    // Tạo map sản phẩm để dễ dàng truy cập thông tin
     const productMap = Object.fromEntries(
       products.map((product) => [product._id.toString(), product])
     );
@@ -255,7 +253,10 @@ class OrderService {
     await order.save();
 
     const paymentHandler = PaymentHandler.getHandler(payload.paymentMethod);
-    await paymentHandler.handler(order, payload);
+    await paymentHandler.handler(order, userId);
+
+
+
 
     return "success";
   };

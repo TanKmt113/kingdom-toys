@@ -1,8 +1,11 @@
 const axios = require("axios").default; // npm install axios
+const cartModel = require("../../models/cart.model");
 const CryptoJS = require("crypto-js"); // npm install crypto-js
 const moment = require("moment"); // npm install moment
 const { BadRequestError } = require("../../response/error.response");
 const configs = require("../../configs/index").configs;
+const orderModel = require("../../models/order.model");
+const { ORDERSTATUS } = require("../../utils/enum");
 
 class PaymentHandler {
   async handler(order, payload) {
@@ -11,13 +14,18 @@ class PaymentHandler {
 }
 
 class CODPayment extends PaymentHandler {
-  async handler(order, payload) {
-    console.log("COD payment");
+  async handler(orderInput, userId) {
+    const order = await orderModel.findOne({ _id: orderInput._id });
+    if (!order) throw new BadRequestError("Order not found");
+    order.status = ORDERSTATUS.PENDING;
+    await cartModel.deleteOne({ _id: userId });
+    await order.save();
+    return order;
   }
 }
 
 class ZaloPayment extends PaymentHandler {
-  async handler(orderInput, payload) {
+  async handler(orderInput, userId) {
     const items = orderInput.items;
     const orderId = orderInput._id;
     const transID = Math.floor(Math.random() * 1000000);
@@ -63,6 +71,8 @@ class ZaloPayment extends PaymentHandler {
       const result = await axios.post(configs.ZALO_PAY.endpoint, null, {
         params: order,
       });
+
+      await cartModel.deleteOne({ _id: userId });
       return result.data;
     } catch (error) {
       throw new BadRequestError("Payment failed: ", error);
