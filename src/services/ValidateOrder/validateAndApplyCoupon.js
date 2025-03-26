@@ -7,6 +7,7 @@ const {
 } = require("../discountHandler/discount.handler");
 
 const validateAndApplyCoupon = async (couponId, userId, finalPrice) => {
+  if (!couponId) return { discountValue: 0, finalPrice, couponId: null };
   const coupon = await couponModel.findById(couponId);
 
   if (!coupon) throw new BadRequestError("Mã giảm giá không tồn tại");

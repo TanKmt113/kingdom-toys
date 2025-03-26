@@ -1,10 +1,7 @@
-const cartModel = require("../models/cart.model");
 const orderModel = require("../models/order.model");
 const productModel = require("../models/product.model");
 const { BadRequestError } = require("../response/error.response");
-const { syncCartPrices } = require("./cartHandler/syncCartPrice");
 const { ORDERSTATUS } = require("../utils/enum");
-const couponModel = require("../models/coupon.model");
 
 const { parseFilterString } = require("../utils");
 const { Pagination } = require("../response/success.response");
@@ -12,7 +9,6 @@ const PaymentHandler = require("./payments/PaymentFactor");
 const {
   validateAndApplyCoupon,
 } = require("./ValidateOrder/validateAndApplyCoupon");
-const { default: mongoose } = require("mongoose");
 
 const {
   generateOrderItemFromCart,
@@ -175,7 +171,7 @@ class OrderService {
     } = payload;
 
     if (!paymentMethod)
-      throw new BadRequestError("Không có phương thức thanh toán)");
+      throw new BadRequestError("Không có phương thức thanh toán");
 
     if (!items || items.length == 0)
       throw new BadRequestError("Đơn hàng không có sản phẩm nào.");
@@ -200,13 +196,24 @@ class OrderService {
       return acc + subtotal;
     }, 0);
 
-    const { couponId, discountValue, finalPrice } =
-      await validateAndApplyCoupon(coupon, null, totalPrice);
+    // Kiểm tra nếu có coupon thì validate và áp dụng
+    let couponId = null;
+    let discountValue = 0;
+    let finalPrice = totalPrice;
 
+    if (coupon) {
+      const result = await validateAndApplyCoupon(coupon, null, totalPrice);
+      couponId = result.couponId;
+      discountValue = result.discountValue;
+      finalPrice = result.finalPrice;
+    }
+
+    // Tạo map sản phẩm để dễ dàng truy cập thông tin
     const productMap = Object.fromEntries(
       products.map((product) => [product._id.toString(), product])
     );
 
+    // Cập nhật price và discount cho từng item
     items = items.map((item) => {
       const product = productMap[item.productId];
       if (!product) {
@@ -221,6 +228,7 @@ class OrderService {
       };
     });
 
+    // Tạo order và lưu vào database
     const order = new orderModel({
       items,
       totalPrice,
@@ -237,9 +245,10 @@ class OrderService {
       notes,
       paymentMethod,
       user: userId,
-      coupon: couponId,
+      coupon: couponId ?? null,
       isDeleted: false,
     });
+
     await order.save();
 
     const paymentHandler = PaymentHandler.getHandler(payload.paymentMethod);
