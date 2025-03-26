@@ -92,11 +92,6 @@ const { authentication } = require("../helpers/auth");
  *         notes:
  *           type: string
  *           description: Ghi chú thêm (nếu có)
- *         type:
- *           type: string
- *           enum: [CART, NOW]
- *           default: CART
- *           description: Kiểu đơn hàng (giỏ hàng hoặc đặt nhanh)
  */
 
 /**
