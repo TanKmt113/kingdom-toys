@@ -1,14 +1,32 @@
 const express = require("express");
 const router = express.Router();
-const { AsyncHandle } = require("../helpers/AsyncHandle");
 const userController = require("../controllers/user.controller");
+const { AsyncHandle } = require("../helpers/AsyncHandle");
 const { authentication } = require("../helpers/auth");
+const { uploadDisk } = require("../configs/multer.config");
 
 /**
  * @swagger
  *  tags:
  *      name: Account
  *      description: Account management
+ */
+
+/**
+ * @swagger
+ *  components:
+ *      schemas:
+ *          Account:
+ *              type: object
+ *              properties:
+ *                  items:
+ *                      type: string
+ *                      description: Name of the product
+ *                      default: ""
+ *                  images:
+ *                      type: string
+ *                      format: binary
+ *                      description: List of product images
  */
 
 /**
@@ -107,5 +125,31 @@ router.post("/handleRF", authentication, AsyncHandle(userController.HandleRF));
  *                  description: Can not get info
  */
 router.get("/get-me", authentication, AsyncHandle(userController.GetMe));
+
+/**
+ * @swagger
+ *  /update-me:
+ *      patch:
+ *          summary: Update me
+ *          tags: [Account]
+ *          security:
+ *              - bearerAuth: []
+ *          requestBody:
+ *              required: true
+ *              content:
+ *                  multipart/form-data:
+ *                      schema:
+ *                          $ref: '#/components/schemas/Account'
+ *          responses:
+ *              200:
+ *                  description: success
+ *
+ */
+router.patch(
+  "/update-me",
+  //   authentication,
+  uploadDisk.fields([{ name: "images", maxCount: 1 }]),
+  AsyncHandle(userController.Update)
+);
 
 module.exports = router;

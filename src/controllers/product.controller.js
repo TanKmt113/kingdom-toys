@@ -33,7 +33,6 @@ class ProductController {
     const id = req.params.id;
     const { images } = req.files;
     const items = JSON.parse(req.body.items);
-    console.log(images);
     if (images) {
       items.images = convertURL(images);
     }
