@@ -12,7 +12,6 @@ class OrderController {
 
   GetOrderById = async (req, res) => {
     const { id } = req.params;
-
     new SuccessResponse({
       message: "Get by id",
       metadata: await orderService.GetOrderById(id),
@@ -20,7 +19,6 @@ class OrderController {
   };
 
   GetOrder = async (req, res) => {
-
     new SuccessResponse({
       message: "Get order success",
       metadata: await orderService.GetOrder(),
@@ -29,10 +27,9 @@ class OrderController {
 
   GetOrderDetail = async (req, res) => {
     const user = req.user;
-
     new SuccessResponse({
       message: "Get order detail success",
-      metadata: await orderService.GetOrderDetail(user.userId),
+      metadata: await orderService.GetOrderByMe(0, 0, null, null,user.userId),
     }).send(res);
   };
 }

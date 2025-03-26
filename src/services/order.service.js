@@ -161,13 +161,50 @@ class OrderService {
     });
   };
 
-  GetOrderByMe = async () => {
-    const order = await orderModel
+  GetOrderByMe = async (
+    skip = 0,
+    limit = 30,
+    filter = null,
+    search = null,
+    userId
+  ) => {
+    const total = await orderModel.countDocuments();
+    const rawOrders = await orderModel
       .find({ user: userId })
       .populate("coupon")
-
+      .populate("items.product")
+      .populate({
+        path: "user",
+        select: "name email status thumbnail phone address",
+      })
       .sort({ createdAt: -1 });
-    return order;
+
+    const orders = rawOrders.map((order) => {
+      const flatItems = order.items.map((item) => {
+        const product = item.product || {}; // fallback nếu null
+        return {
+          _id: item._id,
+          productId: product._id,
+          productName: product.productName,
+          images: product.images,
+          price: item.price,
+          quantity: item.quantity,
+          discount: item.discount,
+        };
+      });
+
+      return {
+        ...order.toObject(), // convert từ mongoose document về plain object
+        items: flatItems,
+      };
+    });
+
+    return new Pagination({
+      limit: limit,
+      skip: skip,
+      result: orders,
+      total: total,
+    });
   };
 }
 
