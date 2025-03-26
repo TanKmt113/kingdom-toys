@@ -80,12 +80,12 @@ class OrderService {
     await order.save();
 
     const paymentHandler = PaymentHandler.getHandler(payload.paymentMethod);
-    await paymentHandler.handler(order, payload);
+    const result = await paymentHandler.handler(order, payload);
 
     //Xóa giỏ hàng
     if (cart) await cart.deleteOne();
 
-    return order;
+    return result;
   };
   GetOrderById = async (id) => {
     let order = await orderModel
