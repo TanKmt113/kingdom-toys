@@ -4,6 +4,10 @@ const { Pagination } = require("../response/success.response");
 const cartModel = require("../models/cart.model");
 const { parseFilterString } = require("../utils");
 const { DISCOUNTTYPE } = require("../utils/enum");
+const productModel = require("../models/product.model");
+const {
+  validateAndApplyCoupon,
+} = require("./ValidateOrder/validateAndApplyCoupon");
 const {
   ExpiryDateHandler,
   MinOrderValueHandler,
@@ -33,33 +37,30 @@ class CouponService {
     return validCoupons;
   };
 
-  ApplyCoupon = async (couponCode, userId) => {
-    let cart = await cartModel.findOne({ user: userId });
-    if (!cart) throw new BadRequestError("Giỏ hàng không tồn tại");
-
-    const coupon = await couponModel.findOne({ _id: couponCode });
-    if (!coupon) throw new BadRequestError("Mã giảm giá không hợp lệ");
-
+  ApplyCoupon = async (payload, userId) => {
+    let { items } = payload;
     let totalPrice = 0;
-    for (const item of cart.items) {
-      totalPrice += item.quantity * item.price;
-    }
 
-    const context = {
-      userId,
-      totalPrice,
-      coupon,
-    };
+    const productIds = items.map((item) => item.productId);
+    const products = await productModel.find({ _id: { $in: productIds } });
 
-    const expiryHandler = new ExpiryDateHandler();
-    const minOrderHandler = new MinOrderValueHandler();
-    const usageHandler = new UsageLimitHandler();
+    if (products.length !== productIds.length)
+      throw new BadRequestError("Sản phẩm không tồn tại");
 
-    expiryHandler.setNext(minOrderHandler).setNext(usageHandler);
-    expiryHandler.handle(context);
+    totalPrice = products.reduce((acc, product) => {
+      const item = items.find((item) => item.productId == product._id);
+      if (!item) return acc;
 
-    // await cart.save();
-    return cart;
+      const quantity = item.quantity;
+      const discount = product.discount || 0;
+      const priceAfterDiscount = product.price * (1 - discount / 100);
+      const subtotal = priceAfterDiscount * quantity;
+
+      return acc + subtotal;
+    }, 0);
+    const { couponId, discountValue, finalPrice } =
+      await validateAndApplyCoupon(payload.coupon, null, totalPrice);
+    return { couponId, discountValue, finalPrice, totalPrice };
   };
 
   AddCoupon = async (data) => {

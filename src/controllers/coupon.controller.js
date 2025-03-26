@@ -33,11 +33,10 @@ class CouponController {
   };
 
   ApplyCoupon = async (req, res) => {
-    const id = req.params.id;
     const user = req.user;
     new SuccessResponse({
       message: "Apply success",
-      metadata: await couponService.ApplyCoupon(id, user.userId),
+      metadata: await couponService.ApplyCoupon(req.body, user.userId),
     }).send(res);
   };
 
