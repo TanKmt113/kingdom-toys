@@ -10,7 +10,7 @@ class BasehandleDiscount {
     return handler;
   }
 
-  handle(context) {
+  async handle(context) {
     if (this.nextHandler) {
       return this.nextHandler.handle(context);
     }
@@ -19,26 +19,37 @@ class BasehandleDiscount {
 }
 
 class ExpiryDateHandler extends BasehandleDiscount {
-  handle(context) {
-    const { coupon } = context;
-    console.log(coupon);
-    if (!coupon || !coupon.expiryDate)
-      throw new BadRequestError("Coupon không hợp lệ hoặc không tồn tại!");
+  async handle(context) {
+    if (!context || typeof context !== "object") {
+      throw new BadRequestError("Dữ liệu không hợp lệ!");
+    }
 
+    const { coupon } = context;
+
+    if (!coupon || !coupon.expiryDate) {
+      throw new BadRequestError("Coupon không hợp lệ hoặc không tồn tại!");
+    }
+
+    const expiryDate = new Date(coupon.expiryDate);
     const currentDate = new Date();
-    if (coupon.expiryDate < currentDate)
+
+    if (isNaN(expiryDate.getTime())) {
+      throw new BadRequestError("Ngày hết hạn coupon không hợp lệ!");
+    }
+
+    if (expiryDate < currentDate) {
+      const couponName = coupon?.CouponName || "Không xác định";
       throw new BadRequestError(
-        `Mã giảm giá ${
-          coupon.CouponName
-        } đã hết hạn vào ngày ${coupon.expiryDate.toLocaleDateString()} `
+        `Mã giảm giá ${couponName} đã hết hạn vào ngày ${expiryDate.toLocaleDateString()}`
       );
+    }
 
     return super.handle(context);
   }
 }
 
 class MinOrderValueHandler extends BasehandleDiscount {
-  handle(context) {
+  async handle(context) {
     const { totalPrice, coupon } = context;
     if (totalPrice < coupon.minOrderValue)
       throw new BadRequestError(
@@ -50,11 +61,16 @@ class MinOrderValueHandler extends BasehandleDiscount {
 }
 
 class UsageLimitHandler extends BasehandleDiscount {
-  handle(context) {
+  async handle(context) {
     const { coupon } = context;
     if (coupon.usageLimit <= 0)
       throw new BadRequestError("Đã hết mã giảm giá này ");
+
+    coupon.usageLimit--;
+    await coupon.save();
+
     return super.handle(context);
+
   }
 }
 module.exports = {

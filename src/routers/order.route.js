@@ -49,6 +49,58 @@ const { authentication } = require("../helpers/auth");
 
 /**
  * @swagger
+ * components:
+ *   schemas:
+ *     OrderItem:
+ *       type: object
+ *       properties:
+ *         productId:
+ *           type: string
+ *           description: ID của sản phẩm
+ *         quantity:
+ *           type: number
+ *           description: Số lượng đặt hàng
+ *
+ *     OrderWithPayload:
+ *       type: object
+ *       properties:
+ *         items:
+ *           type: array
+ *           description: Danh sách sản phẩm trong đơn hàng
+ *           items:
+ *             $ref: '#/components/schemas/OrderItem'
+ *         coupon:
+ *           type: string
+ *           description: ID mã giảm giá (nếu có)
+ *         fullName:
+ *           type: string
+ *         phone:
+ *           type: string
+ *         addressLine:
+ *           type: string
+ *         ward:
+ *           type: string
+ *         district:
+ *           type: string
+ *         province:
+ *           type: string
+ *         paymentMethod:
+ *           type: string
+ *           enum: [cod, zalo]
+ *           default: cod
+ *           description: Phương thức thanh toán
+ *         notes:
+ *           type: string
+ *           description: Ghi chú thêm (nếu có)
+ *         type:
+ *           type: string
+ *           enum: [CART, NOW]
+ *           default: CART
+ *           description: Kiểu đơn hàng (giỏ hàng hoặc đặt nhanh)
+ */
+
+/**
+ * @swagger
  *  /order/checkout:
  *      post:
  *          summary: Checkout
@@ -129,4 +181,28 @@ router.get(
   AsyncHandle(orderController.GetOrderById)
 );
 
+/**
+ * @swagger
+ *  /order/CheckoutWithPayload:
+ *      post:
+ *          summary: Checkout with payload
+ *          tags: [Order]
+ *          security:
+ *              - bearerAuth: []
+ *          requestBody:
+ *              required: true
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/OrderWithPayload'
+ *          responses:
+ *              200:
+ *                  description: success
+ *
+ */
+router.post(
+  "/order/CheckoutWithPayload",
+  authentication,
+  AsyncHandle(orderController.CheckOutOrderWithPayload)
+);
 module.exports = router;

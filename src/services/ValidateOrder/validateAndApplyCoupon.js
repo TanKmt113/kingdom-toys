@@ -18,7 +18,7 @@ const validateAndApplyCoupon = async (couponId, userId, finalPrice) => {
   expiryHandler.setNext(minOrderHandler).setNext(usageHandler);
 
   const context = { userId, totalPrice: finalPrice, coupon };
-  expiryHandler.handle(context);
+  await expiryHandler.handle(context);
 
   let discountValue = coupon.CouponValue || 0;
   finalPrice -= discountValue;

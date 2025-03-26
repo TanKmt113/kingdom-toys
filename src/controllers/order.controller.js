@@ -32,6 +32,15 @@ class OrderController {
       metadata: await orderService.GetOrderByMe(0, 0, null, null,user.userId),
     }).send(res);
   };
+
+
+  CheckOutOrderWithPayload = async(req, res) => {
+    const user = req.user; 
+    new SuccessResponse({
+      message: "Check out order", 
+      metadata: await orderService.CheckOutWithPayload(req.body, user.userId)
+    }).send(res)
+  }
 }
 
 module.exports = new OrderController();

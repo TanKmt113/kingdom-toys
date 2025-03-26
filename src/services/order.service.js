@@ -1,8 +1,10 @@
 const cartModel = require("../models/cart.model");
 const orderModel = require("../models/order.model");
+const productModel = require("../models/product.model");
 const { BadRequestError } = require("../response/error.response");
 const { syncCartPrices } = require("./cartHandler/syncCartPrice");
 const { ORDERSTATUS } = require("../utils/enum");
+const couponModel = require("../models/coupon.model");
 
 const { parseFilterString } = require("../utils");
 const { Pagination } = require("../response/success.response");
@@ -78,9 +80,6 @@ class OrderService {
     });
 
     await order.save();
-
-    const paymentHandler = PaymentHandler.getHandler(payload.paymentMethod);
-    const result = await paymentHandler.handler(order, payload);
 
     //Xóa giỏ hàng
     if (cart) await cart.deleteOne();
@@ -159,6 +158,94 @@ class OrderService {
       result: orders,
       total: total,
     });
+  };
+
+  CheckOutWithPayload = async (payload, userId) => {
+    let {
+      paymentMethod,
+      coupon,
+      items,
+      notes,
+      addressLine,
+      ward,
+      phone,
+      district,
+      province,
+      fullname,
+    } = payload;
+
+    if (!paymentMethod)
+      throw new BadRequestError("Không có phương thức thanh toán)");
+
+    if (!items || items.length == 0)
+      throw new BadRequestError("Đơn hàng không có sản phẩm nào.");
+
+    let totalPrice = 0;
+
+    const productIds = items.map((item) => item.productId);
+    const products = await productModel.find({ _id: { $in: productIds } });
+
+    if (products.length !== productIds.length)
+      throw new BadRequestError("Sản phẩm không tồn tại");
+
+    totalPrice = products.reduce((acc, product) => {
+      const item = items.find((item) => item.productId == product._id);
+      if (!item) return acc;
+
+      const quantity = item.quantity;
+      const discount = product.discount || 0;
+      const priceAfterDiscount = product.price * (1 - discount / 100);
+      const subtotal = priceAfterDiscount * quantity;
+
+      return acc + subtotal;
+    }, 0);
+
+    const { couponId, discountValue, finalPrice } =
+      await validateAndApplyCoupon(coupon, null, totalPrice);
+
+    const productMap = Object.fromEntries(
+      products.map((product) => [product._id.toString(), product])
+    );
+
+    items = items.map((item) => {
+      const product = productMap[item.productId];
+      if (!product) {
+        throw new Error(`Sản phẩm với ID ${item.productId} không tồn tại`);
+      }
+
+      return {
+        product: item.productId,
+        quantity: item.quantity,
+        price: product.price,
+        discount: product.discount,
+      };
+    });
+
+    const order = new orderModel({
+      items,
+      totalPrice,
+      finalPrice,
+      status: ORDERSTATUS.PENDING,
+      shippingAddress: {
+        addressLine,
+        district,
+        phone,
+        fullName: fullname,
+        province,
+        ward,
+      },
+      notes,
+      paymentMethod,
+      user: userId,
+      coupon: couponId,
+      isDeleted: false,
+    });
+    await order.save();
+
+    const paymentHandler = PaymentHandler.getHandler(payload.paymentMethod);
+    const result = await paymentHandler.handler(order, payload);
+
+    return result;
   };
 
   GetOrderByMe = async (
