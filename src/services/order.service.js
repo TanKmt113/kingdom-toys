@@ -255,9 +255,6 @@ class OrderService {
     const paymentHandler = PaymentHandler.getHandler(payload.paymentMethod);
     await paymentHandler.handler(order, userId);
 
-
-
-
     return "success";
   };
 
@@ -277,7 +274,9 @@ class OrderService {
         path: "user",
         select: "name email status thumbnail phone address",
       })
-      .sort({ createdAt: -1 });
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
 
     const orders = rawOrders.map((order) => {
       const flatItems = order.items.map((item) => {

@@ -144,6 +144,11 @@ router.get("/order", authentication, AsyncHandle(orderController.GetOrder));
  *    get:
  *      summary: Get order by me
  *      tags: [Order]
+ *      parameters:
+ *        - $ref: '#/components/parameters/Skip'
+ *        - $ref: '#/components/parameters/Limit'
+ *        - $ref: '#/components/parameters/filter'
+ *        - $ref: '#/components/parameters/Search'
  *      security:
  *        - bearerAuth: []
  *      responses:

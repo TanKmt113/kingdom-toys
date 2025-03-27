@@ -27,20 +27,26 @@ class OrderController {
 
   GetOrderDetail = async (req, res) => {
     const user = req.user;
+    const { skip, limit } = req.query;
     new SuccessResponse({
       message: "Get order detail success",
-      metadata: await orderService.GetOrderByMe(0, 0, null, null,user.userId),
+      metadata: await orderService.GetOrderByMe(
+        skip,
+        limit,
+        null,
+        null,
+        user.userId
+      ),
     }).send(res);
   };
 
-
-  CheckOutOrderWithPayload = async(req, res) => {
-    const user = req.user; 
+  CheckOutOrderWithPayload = async (req, res) => {
+    const user = req.user;
     new SuccessResponse({
-      message: "Check out order", 
-      metadata: await orderService.CheckOutWithPayload(req.body, user.userId)
-    }).send(res)
-  }
+      message: "Check out order",
+      metadata: await orderService.CheckOutWithPayload(req.body, user.userId),
+    }).send(res);
+  };
 }
 
 module.exports = new OrderController();
