@@ -17,7 +17,7 @@ class UserService {
   };
 
   Login = async ({ username, password }) => {
-    const foundAccount = await AccountModel.findOne({ email: username });
+    const foundAccount = await AccountModel.findOne({ email: username }).select("-password");
     if (!foundAccount) throw new AuthFailureError("account not found");
 
     const matchAccount = await bcrypt.compare(password, foundAccount.password);
@@ -38,10 +38,7 @@ class UserService {
 
     console.log(tokens);
     return {
-      user: getInfoData({
-        fields: ["_id", "name", "email"],
-        object: foundAccount,
-      }),
+      user: foundAccount,
       accessToken: tokens.accessToken,
       atokenExp: tokens.aTokenTime.exp,
       refreshToken: tokens.refreshToken,
@@ -72,7 +69,7 @@ class UserService {
   };
 
   GetUserById = async (id) => {
-    return await AccountModel.findOne({ _id: convertToObjectIdMongose(id) });
+    return await AccountModel.findOne({ _id: convertToObjectIdMongose(id) }).select("-password");
   };
 
   Update = async(id, data) => {
