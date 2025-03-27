@@ -11,7 +11,10 @@ const BrannerSchema = new Schema(
     button: String,
     discountText: String,
     link: String,
-    type: String
+    type: {
+        type: String,
+        default: 'A',
+    }
   },
   { timestamps: true, collection: COLLECTION_NAME }
 );
