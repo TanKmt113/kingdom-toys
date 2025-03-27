@@ -17,7 +17,7 @@ class UserService {
   };
 
   Login = async ({ username, password }) => {
-    const foundAccount = await AccountModel.findOne({ email: username }).select("-password");
+    const foundAccount = await AccountModel.findOne({ email: username });
     if (!foundAccount) throw new AuthFailureError("account not found");
 
     const matchAccount = await bcrypt.compare(password, foundAccount.password);
@@ -36,9 +36,11 @@ class UserService {
     });
     if (!keyStore) throw new AuthFailureError("can not create keytoken");
 
-    console.log(tokens);
     return {
-      user: foundAccount,
+      user: getInfoData({
+        fields: ["_id", "name", "email", "thumbnail", "role"],
+        object: foundAccount,
+      }),
       accessToken: tokens.accessToken,
       atokenExp: tokens.aTokenTime.exp,
       refreshToken: tokens.refreshToken,
@@ -69,19 +71,20 @@ class UserService {
   };
 
   GetUserById = async (id) => {
-    return await AccountModel.findOne({ _id: convertToObjectIdMongose(id) }).select("-password");
+    return await AccountModel.findOne({ _id: convertToObjectIdMongose(id) });
   };
 
-  Update = async(id, data) => {
-    const holderAccount = await AccountModel.findOne({ _id: convertToObjectIdMongose(id) });
+  Update = async (id, data) => {
+    const holderAccount = await AccountModel.findOne({
+      _id: convertToObjectIdMongose(id),
+    });
     if (!holderAccount) throw new AuthFailureError("can not find account");
-    
+
     Object.assign(holderAccount, data);
 
     await holderAccount.save();
-    return holderAccount
-
-  }
+    return holderAccount;
+  };
 
   HandleRefreshToken = async (user, refreshToken) => {
     const userId = user.userId;
