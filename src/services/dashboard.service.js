@@ -3,10 +3,17 @@ const orderModel = require("../models/order.model");
 
 class DashboardService {
   GetDashboasd = async () => {
-    const productCount =await productModel.countDocuments();
+    let totalPriceOfOrder = 0;
+    const productCount = await productModel.countDocuments();
     const orderCount = await orderModel.countDocuments();
 
-    return { productCount, orderCount };
+    const orderHolder = await orderModel.find();
+
+    totalPriceOfOrder = orderHolder.reduce((acc, item) => {
+      return acc + item.finalPrice;
+    }, 0);
+
+    return { productCount, orderCount, totalPriceOfOrder };
   };
 }
 

@@ -31,6 +31,8 @@ class ProductService {
       }
     }
 
+    console.log(baseFilter)
+
     const total = await productModel.countDocuments(baseFilter);
     const products = await productModel
       .find(baseFilter)
