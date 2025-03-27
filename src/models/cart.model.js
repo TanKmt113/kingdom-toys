@@ -33,6 +33,6 @@ const CartSchema = new Schema(
     },
   },
   { timestamps: true, collection: COLLECTION_NAME }
-);
+);  
 
 module.exports = model(DOCUMENT_NAME, CartSchema);
