@@ -35,18 +35,15 @@ class UserController {
   };
 
   Update = async (req, res) => {
-    const { images } = req.files;
+    let { images } = req.files;
     let items = JSON.parse(req.body.items);
-    console.log(images)
     if (images) {
-      items.images = convertURL(images);
+      items.thumbnail = convertURL(images)[0];
     }
 
-    console.log(items)
-    console.log(images);
     new SuccessResponse({
       message: "update success",
-      metadata: 1,
+      metadata: await userService.Update(req.user.userId, items),
     }).send(res);
   };
 }

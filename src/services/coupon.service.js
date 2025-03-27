@@ -83,6 +83,12 @@ class CouponService {
     return coupon;
   };
 
+  GetCouponById = async(couponId) => {
+    const coupon = await couponModel.findOne({_id: couponId});
+    if(!coupon) throw new BadRequestError("Không tìm thấy coupon!");
+    return coupon
+  }
+
   DeleteCoupon = async (couponId) => {
     const coupon = await couponModel.findOne({ _id: couponId });
 

@@ -75,6 +75,17 @@ class UserService {
     return await AccountModel.findOne({ _id: convertToObjectIdMongose(id) });
   };
 
+  Update = async(id, data) => {
+    const holderAccount = await AccountModel.findOne({ _id: convertToObjectIdMongose(id) });
+    if (!holderAccount) throw new AuthFailureError("can not find account");
+    
+    Object.assign(holderAccount, data);
+
+    await holderAccount.save();
+    return holderAccount
+
+  }
+
   HandleRefreshToken = async (user, refreshToken) => {
     const userId = user.userId;
     const email = user.email;

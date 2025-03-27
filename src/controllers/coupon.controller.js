@@ -48,6 +48,14 @@ class CouponController {
       metadata: await couponService.CheckingCoupon(user.userId),
     }).send(res);
   };
+
+  GetById = async(req, res) => {
+    const couponId = req.params.id
+    new SuccessResponse({
+      message: "Get by id success",
+      metadata: await couponService.GetCouponById(couponId),
+    }).send(res)
+  }
 }
 
 module.exports = new CouponController();

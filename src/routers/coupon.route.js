@@ -171,6 +171,21 @@ router.post(
   AsyncHandle(couponController.ApplyCoupon)
 );
 
+/**
+ * @swagger
+ *  /coupon/{id}:
+ *      get:
+ *          summary: Get by id
+ *          tags: [Coupon]
+ *          parameters:
+ *            - $ref: '#/components/parameters/Id'
+ *          responses:
+ *              200:
+ *                  description: success
+ *
+ */
+router.get("/coupon/:id", AsyncHandle(couponController.GetById));
+
 // /**
 //  * @swagger
 //  *  /coupon/checking:
