@@ -293,7 +293,7 @@ class OrderService {
       });
 
       return {
-        ...order.toObject(), // convert từ mongoose document về plain object
+        ...order.toObject(), 
         items: flatItems,
       };
     });

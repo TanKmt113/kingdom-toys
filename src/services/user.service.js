@@ -11,7 +11,7 @@ const bcrypt = require("bcrypt");
 class UserService {
   GetMe = async (user) => {
     const response = await AccountModel.findOne({ _id: user.userId }).select(
-      "_id name email thumbnail createdAt updatedAt"
+      "-password"
     );
     return response;
   };
