@@ -2,6 +2,7 @@ const orderModel = require("../models/order.model");
 const productModel = require("../models/product.model");
 const { BadRequestError } = require("../response/error.response");
 const { ORDERSTATUS } = require("../utils/enum");
+const couponModel = require("../models/coupon.model");
 
 const { parseFilterString } = require("../utils");
 const { Pagination } = require("../response/success.response");
@@ -293,7 +294,7 @@ class OrderService {
       });
 
       return {
-        ...order.toObject(), 
+        ...order.toObject(),
         items: flatItems,
       };
     });
