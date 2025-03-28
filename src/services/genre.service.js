@@ -2,8 +2,16 @@ const genreModel = require("../models/genre.model");
 const { convertToObjectIdMongose } = require("../utils");
 const { NotFoundError } = require("../response/error.response");
 class GenreService {
-  GetAll = async () => {
-    const response = await genreModel.find();
+  GetAll = async (search = null, skip = 0, limit = 30) => {
+    let filter = {};
+    console.log(search)
+    if (search) {
+      filter = {
+        $or: [{ genreName: { $regex: search, $options: "i" } }],
+      };
+    }
+    console.log(filter);
+    const response = await genreModel.find(filter).skip(skip).limit(limit);
     return response;
   };
 

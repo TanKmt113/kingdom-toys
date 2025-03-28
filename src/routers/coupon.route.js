@@ -15,6 +15,33 @@ const { authentication } = require("../helpers/auth");
  * @swagger
  * components:
  *   schemas:
+ *     CheckingProduct:
+ *       type: object
+ *       properties:
+ *         productId:
+ *           type: string
+ *           description: ID của sản phẩm
+ *         quantity:
+ *           type: number
+ *           description: Số lượng đặt hàng
+ *
+ *     CheckingCoupon:
+ *       type: object
+ *       properties:
+ *         items:
+ *           type: array
+ *           description: Danh sách sản phẩm trong đơn hàng
+ *           items:
+ *             $ref: '#/components/schemas/CheckingProduct'
+ *         coupon:
+ *           type: string
+ *           description: ID mã giảm giá (nếu có)
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
  *     CouponDTO:
  *       type: object
  *       properties:
@@ -59,6 +86,10 @@ const { authentication } = require("../helpers/auth");
  *      get:
  *          summary: get Coupon
  *          tags: [Coupon]
+ *          parameters: 
+ *            - $ref: '#/components/parameters/Search'
+ *            - $ref: '#/components/parameters/Skip'
+ *            - $ref: '#/components/parameters/Limit'
  *          responses:
  *              200:
  *                  description: success
@@ -121,40 +152,60 @@ router.delete("/coupon/:id", AsyncHandle(couponController.DeleteCoupon));
 
 /**
  * @swagger
- *  /coupon/apply/{id}:
+ *  /coupon/apply:
  *      post:
- *          summary: Apply coupon
+ *          summary: Checkout with payload
  *          tags: [Coupon]
  *          security:
  *              - bearerAuth: []
- *          parameters:
- *              - $ref: '#/components/parameters/Id'
+ *          requestBody:
+ *              required: true
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/CheckingCoupon'
  *          responses:
  *              200:
  *                  description: success
+ *
  */
 router.post(
-  "/coupon/apply/:id",
+  "/coupon/apply",
   authentication,
   AsyncHandle(couponController.ApplyCoupon)
 );
 
 /**
  * @swagger
- *  /coupon/checking:
+ *  /coupon/{id}:
  *      get:
- *          summary: Checking coupon
+ *          summary: Get by id
  *          tags: [Coupon]
- *          security:
- *              - bearerAuth: []
+ *          parameters:
+ *            - $ref: '#/components/parameters/Id'
  *          responses:
  *              200:
  *                  description: success
+ *
  */
-router.get(
-  "/coupon/checking",
-  authentication,
-  AsyncHandle(couponController.CheckingCoupon)
-);
+router.get("/coupon/:id", AsyncHandle(couponController.GetById));
+
+// /**
+//  * @swagger
+//  *  /coupon/checking:
+//  *      get:
+//  *          summary: Checking coupon
+//  *          tags: [Coupon]
+//  *          security:
+//  *              - bearerAuth: []
+//  *          responses:
+//  *              200:
+//  *                  description: success
+//  */
+// router.get(
+//   "/coupon/checking",
+//   authentication,
+//   AsyncHandle(couponController.CheckingCoupon)
+// );
 
 module.exports = router;

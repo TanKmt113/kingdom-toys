@@ -14,7 +14,7 @@ class CartController {
     const user = req.user;
     const { productId, quantity } = req.body;
     new SuccessResponse({
-      message: "Add to cart success",
+      message: "Thêm vào giỏ hàng thành công",
       metadata: await cartService.AddToCart(productId, quantity, user.userId),
     }).send(res);
   };

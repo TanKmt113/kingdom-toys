@@ -47,6 +47,10 @@ const genreController = require("../controllers/genre.controller");
  *  get:
  *      summary: Get all genres
  *      tags: [Genre]
+ *      parameters: 
+ *          - $ref: '#/components/parameters/Skip'
+ *          - $ref: '#/components/parameters/Limit'
+ *          - $ref: '#/components/parameters/Search'
  *      responses:
  *          200:
  *              description: success

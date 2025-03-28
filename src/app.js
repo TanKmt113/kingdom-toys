@@ -6,12 +6,15 @@ const cors = require("cors");
 require("dotenv").config();
 const app = express();
 const path = require("path");
+const bodyParser = require("body-parser");
+
 
 const setupSwagger = require("./configs/swagger");
 
 app.use(cors());
 app.use(morgan("dev"));
 // app.use(helmet());
+app.use(bodyParser.json());
 app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

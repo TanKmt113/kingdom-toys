@@ -11,7 +11,7 @@ const bcrypt = require("bcrypt");
 class UserService {
   GetMe = async (user) => {
     const response = await AccountModel.findOne({ _id: user.userId }).select(
-      "_id name email thumbnail createdAt updatedAt"
+      "-password"
     );
     return response;
   };
@@ -36,10 +36,9 @@ class UserService {
     });
     if (!keyStore) throw new AuthFailureError("can not create keytoken");
 
-    console.log(tokens);
     return {
       user: getInfoData({
-        fields: ["_id", "name", "email"],
+        fields: ["_id", "name", "email", "thumbnail", "role"],
         object: foundAccount,
       }),
       accessToken: tokens.accessToken,
@@ -73,6 +72,18 @@ class UserService {
 
   GetUserById = async (id) => {
     return await AccountModel.findOne({ _id: convertToObjectIdMongose(id) });
+  };
+
+  Update = async (id, data) => {
+    const holderAccount = await AccountModel.findOne({
+      _id: convertToObjectIdMongose(id),
+    });
+    if (!holderAccount) throw new AuthFailureError("can not find account");
+
+    Object.assign(holderAccount, data);
+
+    await holderAccount.save();
+    return holderAccount;
   };
 
   HandleRefreshToken = async (user, refreshToken) => {

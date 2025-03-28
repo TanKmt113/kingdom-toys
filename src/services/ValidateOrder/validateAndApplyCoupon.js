@@ -7,6 +7,7 @@ const {
 } = require("../discountHandler/discount.handler");
 
 const validateAndApplyCoupon = async (couponId, userId, finalPrice) => {
+  if (!couponId) return { discountValue: 0, finalPrice, couponId: null };
   const coupon = await couponModel.findById(couponId);
 
   if (!coupon) throw new BadRequestError("Mã giảm giá không tồn tại");
@@ -18,7 +19,7 @@ const validateAndApplyCoupon = async (couponId, userId, finalPrice) => {
   expiryHandler.setNext(minOrderHandler).setNext(usageHandler);
 
   const context = { userId, totalPrice: finalPrice, coupon };
-  expiryHandler.handle(context);
+  await expiryHandler.handle(context);
 
   let discountValue = coupon.CouponValue || 0;
   finalPrice -= discountValue;

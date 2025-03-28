@@ -2,29 +2,31 @@ const genreService = require("../services/genre.service");
 const { SuccessResponse } = require("../response/success.response");
 
 class GenreController {
-  GetAll = async (req, res, next) => {
+  GetAll = async (req, res) => {
+    let { search, skip, limit } = req.query;
     new SuccessResponse({
       message: "get all genre",
-      metadata: await genreService.GetAll(),
+      metadata: await genreService.GetAll(search, (skip = 0), (limit = 30)),
     }).send(res);
   };
 
-  GetById = async (req, res, next) => {
+  GetById = async (req, res) => {
     const { slug } = req.params;
+
     new SuccessResponse({
       message: "Get by id",
       metadata: await genreService.GetById(slug),
     }).send(res);
   };
 
-  Create = async (req, res, next) => {
+  Create = async (req, res) => {
     new SuccessResponse({
       message: "create by id",
       metadata: await genreService.Create(req.body),
     }).send(res);
   };
 
-  Update = async (req, res, next) => {
+  Update = async (req, res) => {
     const { slug } = req.params;
     new SuccessResponse({
       message: "update by id",
@@ -32,7 +34,7 @@ class GenreController {
     }).send(res);
   };
 
-  Delete = async (req, res, next) => {
+  Delete = async (req, res) => {
     const { slug } = req.params;
     new SuccessResponse({
       message: "delete by id",

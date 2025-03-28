@@ -22,4 +22,9 @@ const PAYMENT_METHOD = {
   COD: "cod",
   ZALO: "zalo",
 };
-module.exports = { ModelStatus, DISCOUNTTYPE, ORDERSTATUS, PAYMENT_METHOD };
+
+const ROLE = {
+  ADMIN: "A", 
+  CLIENT: "C"
+}
+module.exports = { ModelStatus, DISCOUNTTYPE, ORDERSTATUS, PAYMENT_METHOD, ROLE };

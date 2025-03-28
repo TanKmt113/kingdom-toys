@@ -1,5 +1,6 @@
 const { SuccessResponse } = require("../response/success.response");
 const userService = require("../services/user.service");
+const { convertURL } = require("../utils/index");
 
 class UserController {
   Login = async (req, res) => {
@@ -30,6 +31,19 @@ class UserController {
     new SuccessResponse({
       message: "get me success",
       metadata: await userService.GetMe(req.user),
+    }).send(res);
+  };
+
+  Update = async (req, res) => {
+    let { images } = req.files;
+    let items = JSON.parse(req.body.items);
+    if (images) {
+      items.thumbnail = convertURL(images)[0];
+    }
+
+    new SuccessResponse({
+      message: "update success",
+      metadata: await userService.Update(req.user.userId, items),
     }).send(res);
   };
 }

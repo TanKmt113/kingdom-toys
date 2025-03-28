@@ -1,0 +1,2392 @@
+[
+    {
+        "id": "1",
+        "name": "AFGHANISTAN",
+        "niceName": "Afghanistan",
+        "iso": "AF",
+        "iso3": "AFG",
+        "numCode": 4,
+        "phoneCode": 93,
+        "flag": "https://flagsapi.com/AF/flat/64.png"
+    },
+    {
+        "id": "2",
+        "name": "ALBANIA",
+        "niceName": "Albania",
+        "iso": "AL",
+        "iso3": "ALB",
+        "numCode": 8,
+        "phoneCode": 355,
+        "flag": "https://flagsapi.com/AL/flat/64.png"
+    },
+    {
+        "id": "3",
+        "name": "ALGERIA",
+        "niceName": "Algeria",
+        "iso": "DZ",
+        "iso3": "DZA",
+        "numCode": 12,
+        "phoneCode": 213,
+        "flag": "https://flagsapi.com/DZ/flat/64.png"
+    },
+    {
+        "id": "4",
+        "name": "AMERICAN SAMOA",
+        "niceName": "American Samoa",
+        "iso": "AS",
+        "iso3": "ASM",
+        "numCode": 16,
+        "phoneCode": 1684,
+        "flag": "https://flagsapi.com/AS/flat/64.png"
+    },
+    {
+        "id": "5",
+        "name": "ANDORRA",
+        "niceName": "Andorra",
+        "iso": "AD",
+        "iso3": "AND",
+        "numCode": 20,
+        "phoneCode": 376,
+        "flag": "https://flagsapi.com/AD/flat/64.png"
+    },
+    {
+        "id": "6",
+        "name": "ANGOLA",
+        "niceName": "Angola",
+        "iso": "AO",
+        "iso3": "AGO",
+        "numCode": 24,
+        "phoneCode": 244,
+        "flag": "https://flagsapi.com/AO/flat/64.png"
+    },
+    {
+        "id": "7",
+        "name": "ANGUILLA",
+        "niceName": "Anguilla",
+        "iso": "AI",
+        "iso3": "AIA",
+        "numCode": 660,
+        "phoneCode": 1264,
+        "flag": "https://flagsapi.com/AI/flat/64.png"
+    },
+    {
+        "id": "8",
+        "name": "ANTARCTICA",
+        "niceName": "Antarctica",
+        "iso": "AQ",
+        "iso3": null,
+        "numCode": null,
+        "phoneCode": 0,
+        "flag": "https://flagsapi.com/AQ/flat/64.png"
+    },
+    {
+        "id": "9",
+        "name": "ANTIGUA AND BARBUDA",
+        "niceName": "Antigua and Barbuda",
+        "iso": "AG",
+        "iso3": "ATG",
+        "numCode": 28,
+        "phoneCode": 1268,
+        "flag": "https://flagsapi.com/AG/flat/64.png"
+    },
+    {
+        "id": "10",
+        "name": "ARGENTINA",
+        "niceName": "Argentina",
+        "iso": "AR",
+        "iso3": "ARG",
+        "numCode": 32,
+        "phoneCode": 54,
+        "flag": "https://flagsapi.com/AR/flat/64.png"
+    },
+    {
+        "id": "11",
+        "name": "ARMENIA",
+        "niceName": "Armenia",
+        "iso": "AM",
+        "iso3": "ARM",
+        "numCode": 51,
+        "phoneCode": 374,
+        "flag": "https://flagsapi.com/AM/flat/64.png"
+    },
+    {
+        "id": "12",
+        "name": "ARUBA",
+        "niceName": "Aruba",
+        "iso": "AW",
+        "iso3": "ABW",
+        "numCode": 533,
+        "phoneCode": 297,
+        "flag": "https://flagsapi.com/AW/flat/64.png"
+    },
+    {
+        "id": "13",
+        "name": "AUSTRALIA",
+        "niceName": "Australia",
+        "iso": "AU",
+        "iso3": "AUS",
+        "numCode": 36,
+        "phoneCode": 61,
+        "flag": "https://flagsapi.com/AU/flat/64.png"
+    },
+    {
+        "id": "14",
+        "name": "AUSTRIA",
+        "niceName": "Austria",
+        "iso": "AT",
+        "iso3": "AUT",
+        "numCode": 40,
+        "phoneCode": 43,
+        "flag": "https://flagsapi.com/AT/flat/64.png"
+    },
+    {
+        "id": "15",
+        "name": "AZERBAIJAN",
+        "niceName": "Azerbaijan",
+        "iso": "AZ",
+        "iso3": "AZE",
+        "numCode": 31,
+        "phoneCode": 994,
+        "flag": "https://flagsapi.com/AZ/flat/64.png"
+    },
+    {
+        "id": "16",
+        "name": "BAHAMAS",
+        "niceName": "Bahamas",
+        "iso": "BS",
+        "iso3": "BHS",
+        "numCode": 44,
+        "phoneCode": 1242,
+        "flag": "https://flagsapi.com/BS/flat/64.png"
+    },
+    {
+        "id": "17",
+        "name": "BAHRAIN",
+        "niceName": "Bahrain",
+        "iso": "BH",
+        "iso3": "BHR",
+        "numCode": 48,
+        "phoneCode": 973,
+        "flag": "https://flagsapi.com/BH/flat/64.png"
+    },
+    {
+        "id": "18",
+        "name": "BANGLADESH",
+        "niceName": "Bangladesh",
+        "iso": "BD",
+        "iso3": "BGD",
+        "numCode": 50,
+        "phoneCode": 880,
+        "flag": "https://flagsapi.com/BD/flat/64.png"
+    },
+    {
+        "id": "19",
+        "name": "BARBADOS",
+        "niceName": "Barbados",
+        "iso": "BB",
+        "iso3": "BRB",
+        "numCode": 52,
+        "phoneCode": 1246,
+        "flag": "https://flagsapi.com/BB/flat/64.png"
+    },
+    {
+        "id": "20",
+        "name": "BELARUS",
+        "niceName": "Belarus",
+        "iso": "BY",
+        "iso3": "BLR",
+        "numCode": 112,
+        "phoneCode": 375,
+        "flag": "https://flagsapi.com/BY/flat/64.png"
+    },
+    {
+        "id": "21",
+        "name": "BELGIUM",
+        "niceName": "Belgium",
+        "iso": "BE",
+        "iso3": "BEL",
+        "numCode": 56,
+        "phoneCode": 32,
+        "flag": "https://flagsapi.com/BE/flat/64.png"
+    },
+    {
+        "id": "22",
+        "name": "BELIZE",
+        "niceName": "Belize",
+        "iso": "BZ",
+        "iso3": "BLZ",
+        "numCode": 84,
+        "phoneCode": 501,
+        "flag": "https://flagsapi.com/BZ/flat/64.png"
+    },
+    {
+        "id": "23",
+        "name": "BENIN",
+        "niceName": "Benin",
+        "iso": "BJ",
+        "iso3": "BEN",
+        "numCode": 204,
+        "phoneCode": 229,
+        "flag": "https://flagsapi.com/BJ/flat/64.png"
+    },
+    {
+        "id": "24",
+        "name": "BERMUDA",
+        "niceName": "Bermuda",
+        "iso": "BM",
+        "iso3": "BMU",
+        "numCode": 60,
+        "phoneCode": 1441,
+        "flag": "https://flagsapi.com/BM/flat/64.png"
+    },
+    {
+        "id": "25",
+        "name": "BHUTAN",
+        "niceName": "Bhutan",
+        "iso": "BT",
+        "iso3": "BTN",
+        "numCode": 64,
+        "phoneCode": 975,
+        "flag": "https://flagsapi.com/BT/flat/64.png"
+    },
+    {
+        "id": "26",
+        "name": "BOLIVIA",
+        "niceName": "Bolivia",
+        "iso": "BO",
+        "iso3": "BOL",
+        "numCode": 68,
+        "phoneCode": 591,
+        "flag": "https://flagsapi.com/BO/flat/64.png"
+    },
+    {
+        "id": "27",
+        "name": "BOSNIA AND HERZEGOVINA",
+        "niceName": "Bosnia and Herzegovina",
+        "iso": "BA",
+        "iso3": "BIH",
+        "numCode": 70,
+        "phoneCode": 387,
+        "flag": "https://flagsapi.com/BA/flat/64.png"
+    },
+    {
+        "id": "28",
+        "name": "BOTSWANA",
+        "niceName": "Botswana",
+        "iso": "BW",
+        "iso3": "BWA",
+        "numCode": 72,
+        "phoneCode": 267,
+        "flag": "https://flagsapi.com/BW/flat/64.png"
+    },
+    {
+        "id": "29",
+        "name": "BOUVET ISLAND",
+        "niceName": "Bouvet Island",
+        "iso": "BV",
+        "iso3": null,
+        "numCode": null,
+        "phoneCode": 0,
+        "flag": "https://flagsapi.com/BV/flat/64.png"
+    },
+    {
+        "id": "30",
+        "name": "BRAZIL",
+        "niceName": "Brazil",
+        "iso": "BR",
+        "iso3": "BRA",
+        "numCode": 76,
+        "phoneCode": 55,
+        "flag": "https://flagsapi.com/BR/flat/64.png"
+    },
+    {
+        "id": "31",
+        "name": "BRITISH INDIAN OCEAN TERRITORY",
+        "niceName": "British Indian Ocean Territory",
+        "iso": "IO",
+        "iso3": null,
+        "numCode": null,
+        "phoneCode": 246,
+        "flag": "https://flagsapi.com/IO/flat/64.png"
+    },
+    {
+        "id": "32",
+        "name": "BRUNEI DARUSSALAM",
+        "niceName": "Brunei Darussalam",
+        "iso": "BN",
+        "iso3": "BRN",
+        "numCode": 96,
+        "phoneCode": 673,
+        "flag": "https://flagsapi.com/BN/flat/64.png"
+    },
+    {
+        "id": "33",
+        "name": "BULGARIA",
+        "niceName": "Bulgaria",
+        "iso": "BG",
+        "iso3": "BGR",
+        "numCode": 100,
+        "phoneCode": 359,
+        "flag": "https://flagsapi.com/BG/flat/64.png"
+    },
+    {
+        "id": "34",
+        "name": "BURKINA FASO",
+        "niceName": "Burkina Faso",
+        "iso": "BF",
+        "iso3": "BFA",
+        "numCode": 854,
+        "phoneCode": 226,
+        "flag": "https://flagsapi.com/BF/flat/64.png"
+    },
+    {
+        "id": "35",
+        "name": "BURUNDI",
+        "niceName": "Burundi",
+        "iso": "BI",
+        "iso3": "BDI",
+        "numCode": 108,
+        "phoneCode": 257,
+        "flag": "https://flagsapi.com/BI/flat/64.png"
+    },
+    {
+        "id": "36",
+        "name": "CAMBODIA",
+        "niceName": "Cambodia",
+        "iso": "KH",
+        "iso3": "KHM",
+        "numCode": 116,
+        "phoneCode": 855,
+        "flag": "https://flagsapi.com/KH/flat/64.png"
+    },
+    {
+        "id": "37",
+        "name": "CAMEROON",
+        "niceName": "Cameroon",
+        "iso": "CM",
+        "iso3": "CMR",
+        "numCode": 120,
+        "phoneCode": 237,
+        "flag": "https://flagsapi.com/CM/flat/64.png"
+    },
+    {
+        "id": "38",
+        "name": "CANADA",
+        "niceName": "Canada",
+        "iso": "CA",
+        "iso3": "CAN",
+        "numCode": 124,
+        "phoneCode": 1,
+        "flag": "https://flagsapi.com/CA/flat/64.png"
+    },
+    {
+        "id": "39",
+        "name": "CAPE VERDE",
+        "niceName": "Cape Verde",
+        "iso": "CV",
+        "iso3": "CPV",
+        "numCode": 132,
+        "phoneCode": 238,
+        "flag": "https://flagsapi.com/CV/flat/64.png"
+    },
+    {
+        "id": "40",
+        "name": "CAYMAN ISLANDS",
+        "niceName": "Cayman Islands",
+        "iso": "KY",
+        "iso3": "CYM",
+        "numCode": 136,
+        "phoneCode": 1345,
+        "flag": "https://flagsapi.com/KY/flat/64.png"
+    },
+    {
+        "id": "41",
+        "name": "CENTRAL AFRICAN REPUBLIC",
+        "niceName": "Central African Republic",
+        "iso": "CF",
+        "iso3": "CAF",
+        "numCode": 140,
+        "phoneCode": 236,
+        "flag": "https://flagsapi.com/CF/flat/64.png"
+    },
+    {
+        "id": "42",
+        "name": "CHAD",
+        "niceName": "Chad",
+        "iso": "TD",
+        "iso3": "TCD",
+        "numCode": 148,
+        "phoneCode": 235,
+        "flag": "https://flagsapi.com/TD/flat/64.png"
+    },
+    {
+        "id": "43",
+        "name": "CHILE",
+        "niceName": "Chile",
+        "iso": "CL",
+        "iso3": "CHL",
+        "numCode": 152,
+        "phoneCode": 56,
+        "flag": "https://flagsapi.com/CL/flat/64.png"
+    },
+    {
+        "id": "44",
+        "name": "CHINA",
+        "niceName": "China",
+        "iso": "CN",
+        "iso3": "CHN",
+        "numCode": 156,
+        "phoneCode": 86,
+        "flag": "https://flagsapi.com/CN/flat/64.png"
+    },
+    {
+        "id": "45",
+        "name": "CHRISTMAS ISLAND",
+        "niceName": "Christmas Island",
+        "iso": "CX",
+        "iso3": null,
+        "numCode": null,
+        "phoneCode": 61,
+        "flag": "https://flagsapi.com/CX/flat/64.png"
+    },
+    {
+        "id": "46",
+        "name": "COCOS (KEELING) ISLANDS",
+        "niceName": "Cocos (Keeling) Islands",
+        "iso": "CC",
+        "iso3": null,
+        "numCode": null,
+        "phoneCode": 672,
+        "flag": "https://flagsapi.com/CC/flat/64.png"
+    },
+    {
+        "id": "47",
+        "name": "COLOMBIA",
+        "niceName": "Colombia",
+        "iso": "CO",
+        "iso3": "COL",
+        "numCode": 170,
+        "phoneCode": 57,
+        "flag": "https://flagsapi.com/CO/flat/64.png"
+    },
+    {
+        "id": "48",
+        "name": "COMOROS",
+        "niceName": "Comoros",
+        "iso": "KM",
+        "iso3": "COM",
+        "numCode": 174,
+        "phoneCode": 269,
+        "flag": "https://flagsapi.com/KM/flat/64.png"
+    },
+    {
+        "id": "49",
+        "name": "CONGO",
+        "niceName": "Congo",
+        "iso": "CG",
+        "iso3": "COG",
+        "numCode": 178,
+        "phoneCode": 242,
+        "flag": "https://flagsapi.com/CG/flat/64.png"
+    },
+    {
+        "id": "50",
+        "name": "CONGO, THE DEMOCRATIC REPUBLIC OF THE",
+        "niceName": "Congo, the Democratic Republic of the",
+        "iso": "CD",
+        "iso3": "COD",
+        "numCode": 180,
+        "phoneCode": 242,
+        "flag": "https://flagsapi.com/CD/flat/64.png"
+    },
+    {
+        "id": "51",
+        "name": "COOK ISLANDS",
+        "niceName": "Cook Islands",
+        "iso": "CK",
+        "iso3": "COK",
+        "numCode": 184,
+        "phoneCode": 682,
+        "flag": "https://flagsapi.com/CK/flat/64.png"
+    },
+    {
+        "id": "52",
+        "name": "COSTA RICA",
+        "niceName": "Costa Rica",
+        "iso": "CR",
+        "iso3": "CRI",
+        "numCode": 188,
+        "phoneCode": 506,
+        "flag": "https://flagsapi.com/CR/flat/64.png"
+    },
+    {
+        "id": "53",
+        "name": "COTE D'IVOIRE",
+        "niceName": "Cote D'Ivoire",
+        "iso": "CI",
+        "iso3": "CIV",
+        "numCode": 384,
+        "phoneCode": 225,
+        "flag": "https://flagsapi.com/CI/flat/64.png"
+    },
+    {
+        "id": "54",
+        "name": "CROATIA",
+        "niceName": "Croatia",
+        "iso": "HR",
+        "iso3": "HRV",
+        "numCode": 191,
+        "phoneCode": 385,
+        "flag": "https://flagsapi.com/HR/flat/64.png"
+    },
+    {
+        "id": "55",
+        "name": "CUBA",
+        "niceName": "Cuba",
+        "iso": "CU",
+        "iso3": "CUB",
+        "numCode": 192,
+        "phoneCode": 53,
+        "flag": "https://flagsapi.com/CU/flat/64.png"
+    },
+    {
+        "id": "56",
+        "name": "CYPRUS",
+        "niceName": "Cyprus",
+        "iso": "CY",
+        "iso3": "CYP",
+        "numCode": 196,
+        "phoneCode": 357,
+        "flag": "https://flagsapi.com/CY/flat/64.png"
+    },
+    {
+        "id": "57",
+        "name": "CZECH REPUBLIC",
+        "niceName": "Czech Republic",
+        "iso": "CZ",
+        "iso3": "CZE",
+        "numCode": 203,
+        "phoneCode": 420,
+        "flag": "https://flagsapi.com/CZ/flat/64.png"
+    },
+    {
+        "id": "58",
+        "name": "DENMARK",
+        "niceName": "Denmark",
+        "iso": "DK",
+        "iso3": "DNK",
+        "numCode": 208,
+        "phoneCode": 45,
+        "flag": "https://flagsapi.com/DK/flat/64.png"
+    },
+    {
+        "id": "59",
+        "name": "DJIBOUTI",
+        "niceName": "Djibouti",
+        "iso": "DJ",
+        "iso3": "DJI",
+        "numCode": 262,
+        "phoneCode": 253,
+        "flag": "https://flagsapi.com/DJ/flat/64.png"
+    },
+    {
+        "id": "60",
+        "name": "DOMINICA",
+        "niceName": "Dominica",
+        "iso": "DM",
+        "iso3": "DMA",
+        "numCode": 212,
+        "phoneCode": 1767,
+        "flag": "https://flagsapi.com/DM/flat/64.png"
+    },
+    {
+        "id": "61",
+        "name": "DOMINICAN REPUBLIC",
+        "niceName": "Dominican Republic",
+        "iso": "DO",
+        "iso3": "DOM",
+        "numCode": 214,
+        "phoneCode": 1809,
+        "flag": "https://flagsapi.com/DO/flat/64.png"
+    },
+    {
+        "id": "62",
+        "name": "ECUADOR",
+        "niceName": "Ecuador",
+        "iso": "EC",
+        "iso3": "ECU",
+        "numCode": 218,
+        "phoneCode": 593,
+        "flag": "https://flagsapi.com/EC/flat/64.png"
+    },
+    {
+        "id": "63",
+        "name": "EGYPT",
+        "niceName": "Egypt",
+        "iso": "EG",
+        "iso3": "EGY",
+        "numCode": 818,
+        "phoneCode": 20,
+        "flag": "https://flagsapi.com/EG/flat/64.png"
+    },
+    {
+        "id": "64",
+        "name": "EL SALVADOR",
+        "niceName": "El Salvador",
+        "iso": "SV",
+        "iso3": "SLV",
+        "numCode": 222,
+        "phoneCode": 503,
+        "flag": "https://flagsapi.com/SV/flat/64.png"
+    },
+    {
+        "id": "65",
+        "name": "EQUATORIAL GUINEA",
+        "niceName": "Equatorial Guinea",
+        "iso": "GQ",
+        "iso3": "GNQ",
+        "numCode": 226,
+        "phoneCode": 240,
+        "flag": "https://flagsapi.com/GQ/flat/64.png"
+    },
+    {
+        "id": "66",
+        "name": "ERITREA",
+        "niceName": "Eritrea",
+        "iso": "ER",
+        "iso3": "ERI",
+        "numCode": 232,
+        "phoneCode": 291,
+        "flag": "https://flagsapi.com/ER/flat/64.png"
+    },
+    {
+        "id": "67",
+        "name": "ESTONIA",
+        "niceName": "Estonia",
+        "iso": "EE",
+        "iso3": "EST",
+        "numCode": 233,
+        "phoneCode": 372,
+        "flag": "https://flagsapi.com/EE/flat/64.png"
+    },
+    {
+        "id": "68",
+        "name": "ETHIOPIA",
+        "niceName": "Ethiopia",
+        "iso": "ET",
+        "iso3": "ETH",
+        "numCode": 231,
+        "phoneCode": 251,
+        "flag": "https://flagsapi.com/ET/flat/64.png"
+    },
+    {
+        "id": "69",
+        "name": "FALKLAND ISLANDS (MALVINAS)",
+        "niceName": "Falkland Islands (Malvinas)",
+        "iso": "FK",
+        "iso3": "FLK",
+        "numCode": 238,
+        "phoneCode": 500,
+        "flag": "https://flagsapi.com/FK/flat/64.png"
+    },
+    {
+        "id": "70",
+        "name": "FAROE ISLANDS",
+        "niceName": "Faroe Islands",
+        "iso": "FO",
+        "iso3": "FRO",
+        "numCode": 234,
+        "phoneCode": 298,
+        "flag": "https://flagsapi.com/FO/flat/64.png"
+    },
+    {
+        "id": "71",
+        "name": "FIJI",
+        "niceName": "Fiji",
+        "iso": "FJ",
+        "iso3": "FJI",
+        "numCode": 242,
+        "phoneCode": 679,
+        "flag": "https://flagsapi.com/FJ/flat/64.png"
+    },
+    {
+        "id": "72",
+        "name": "FINLAND",
+        "niceName": "Finland",
+        "iso": "FI",
+        "iso3": "FIN",
+        "numCode": 246,
+        "phoneCode": 358,
+        "flag": "https://flagsapi.com/FI/flat/64.png"
+    },
+    {
+        "id": "73",
+        "name": "FRANCE",
+        "niceName": "France",
+        "iso": "FR",
+        "iso3": "FRA",
+        "numCode": 250,
+        "phoneCode": 33,
+        "flag": "https://flagsapi.com/FR/flat/64.png"
+    },
+    {
+        "id": "74",
+        "name": "FRENCH GUIANA",
+        "niceName": "French Guiana",
+        "iso": "GF",
+        "iso3": "GUF",
+        "numCode": 254,
+        "phoneCode": 594,
+        "flag": "https://flagsapi.com/GF/flat/64.png"
+    },
+    {
+        "id": "75",
+        "name": "FRENCH POLYNESIA",
+        "niceName": "French Polynesia",
+        "iso": "PF",
+        "iso3": "PYF",
+        "numCode": 258,
+        "phoneCode": 689,
+        "flag": "https://flagsapi.com/PF/flat/64.png"
+    },
+    {
+        "id": "76",
+        "name": "FRENCH SOUTHERN TERRITORIES",
+        "niceName": "French Southern Territories",
+        "iso": "TF",
+        "iso3": null,
+        "numCode": null,
+        "phoneCode": 0,
+        "flag": "https://flagsapi.com/TF/flat/64.png"
+    },
+    {
+        "id": "77",
+        "name": "GABON",
+        "niceName": "Gabon",
+        "iso": "GA",
+        "iso3": "GAB",
+        "numCode": 266,
+        "phoneCode": 241,
+        "flag": "https://flagsapi.com/GA/flat/64.png"
+    },
+    {
+        "id": "78",
+        "name": "GAMBIA",
+        "niceName": "Gambia",
+        "iso": "GM",
+        "iso3": "GMB",
+        "numCode": 270,
+        "phoneCode": 220,
+        "flag": "https://flagsapi.com/GM/flat/64.png"
+    },
+    {
+        "id": "79",
+        "name": "GEORGIA",
+        "niceName": "Georgia",
+        "iso": "GE",
+        "iso3": "GEO",
+        "numCode": 268,
+        "phoneCode": 995,
+        "flag": "https://flagsapi.com/GE/flat/64.png"
+    },
+    {
+        "id": "80",
+        "name": "GERMANY",
+        "niceName": "Germany",
+        "iso": "DE",
+        "iso3": "DEU",
+        "numCode": 276,
+        "phoneCode": 49,
+        "flag": "https://flagsapi.com/DE/flat/64.png"
+    },
+    {
+        "id": "81",
+        "name": "GHANA",
+        "niceName": "Ghana",
+        "iso": "GH",
+        "iso3": "GHA",
+        "numCode": 288,
+        "phoneCode": 233,
+        "flag": "https://flagsapi.com/GH/flat/64.png"
+    },
+    {
+        "id": "82",
+        "name": "GIBRALTAR",
+        "niceName": "Gibraltar",
+        "iso": "GI",
+        "iso3": "GIB",
+        "numCode": 292,
+        "phoneCode": 350,
+        "flag": "https://flagsapi.com/GI/flat/64.png"
+    },
+    {
+        "id": "83",
+        "name": "GREECE",
+        "niceName": "Greece",
+        "iso": "GR",
+        "iso3": "GRC",
+        "numCode": 300,
+        "phoneCode": 30,
+        "flag": "https://flagsapi.com/GR/flat/64.png"
+    },
+    {
+        "id": "84",
+        "name": "GREENLAND",
+        "niceName": "Greenland",
+        "iso": "GL",
+        "iso3": "GRL",
+        "numCode": 304,
+        "phoneCode": 299,
+        "flag": "https://flagsapi.com/GL/flat/64.png"
+    },
+    {
+        "id": "85",
+        "name": "GRENADA",
+        "niceName": "Grenada",
+        "iso": "GD",
+        "iso3": "GRD",
+        "numCode": 308,
+        "phoneCode": 1473,
+        "flag": "https://flagsapi.com/GD/flat/64.png"
+    },
+    {
+        "id": "86",
+        "name": "GUADELOUPE",
+        "niceName": "Guadeloupe",
+        "iso": "GP",
+        "iso3": "GLP",
+        "numCode": 312,
+        "phoneCode": 590,
+        "flag": "https://flagsapi.com/GP/flat/64.png"
+    },
+    {
+        "id": "87",
+        "name": "GUAM",
+        "niceName": "Guam",
+        "iso": "GU",
+        "iso3": "GUM",
+        "numCode": 316,
+        "phoneCode": 1671,
+        "flag": "https://flagsapi.com/GU/flat/64.png"
+    },
+    {
+        "id": "88",
+        "name": "GUATEMALA",
+        "niceName": "Guatemala",
+        "iso": "GT",
+        "iso3": "GTM",
+        "numCode": 320,
+        "phoneCode": 502,
+        "flag": "https://flagsapi.com/GT/flat/64.png"
+    },
+    {
+        "id": "89",
+        "name": "GUINEA",
+        "niceName": "Guinea",
+        "iso": "GN",
+        "iso3": "GIN",
+        "numCode": 324,
+        "phoneCode": 224,
+        "flag": "https://flagsapi.com/GN/flat/64.png"
+    },
+    {
+        "id": "90",
+        "name": "GUINEA-BISSAU",
+        "niceName": "Guinea-Bissau",
+        "iso": "GW",
+        "iso3": "GNB",
+        "numCode": 624,
+        "phoneCode": 245,
+        "flag": "https://flagsapi.com/GW/flat/64.png"
+    },
+    {
+        "id": "91",
+        "name": "GUYANA",
+        "niceName": "Guyana",
+        "iso": "GY",
+        "iso3": "GUY",
+        "numCode": 328,
+        "phoneCode": 592,
+        "flag": "https://flagsapi.com/GY/flat/64.png"
+    },
+    {
+        "id": "92",
+        "name": "HAITI",
+        "niceName": "Haiti",
+        "iso": "HT",
+        "iso3": "HTI",
+        "numCode": 332,
+        "phoneCode": 509,
+        "flag": "https://flagsapi.com/HT/flat/64.png"
+    },
+    {
+        "id": "93",
+        "name": "HEARD ISLAND AND MCDONALD ISLANDS",
+        "niceName": "Heard Island and Mcdonald Islands",
+        "iso": "HM",
+        "iso3": null,
+        "numCode": null,
+        "phoneCode": 0,
+        "flag": "https://flagsapi.com/HM/flat/64.png"
+    },
+    {
+        "id": "94",
+        "name": "HOLY SEE (VATICAN CITY STATE)",
+        "niceName": "Holy See (Vatican City State)",
+        "iso": "VA",
+        "iso3": "VAT",
+        "numCode": 336,
+        "phoneCode": 39,
+        "flag": "https://flagsapi.com/VA/flat/64.png"
+    },
+    {
+        "id": "95",
+        "name": "HONDURAS",
+        "niceName": "Honduras",
+        "iso": "HN",
+        "iso3": "HND",
+        "numCode": 340,
+        "phoneCode": 504,
+        "flag": "https://flagsapi.com/HN/flat/64.png"
+    },
+    {
+        "id": "96",
+        "name": "HONG KONG",
+        "niceName": "Hong Kong",
+        "iso": "HK",
+        "iso3": "HKG",
+        "numCode": 344,
+        "phoneCode": 852,
+        "flag": "https://flagsapi.com/HK/flat/64.png"
+    },
+    {
+        "id": "97",
+        "name": "HUNGARY",
+        "niceName": "Hungary",
+        "iso": "HU",
+        "iso3": "HUN",
+        "numCode": 348,
+        "phoneCode": 36,
+        "flag": "https://flagsapi.com/HU/flat/64.png"
+    },
+    {
+        "id": "98",
+        "name": "ICELAND",
+        "niceName": "Iceland",
+        "iso": "IS",
+        "iso3": "ISL",
+        "numCode": 352,
+        "phoneCode": 354,
+        "flag": "https://flagsapi.com/IS/flat/64.png"
+    },
+    {
+        "id": "99",
+        "name": "INDIA",
+        "niceName": "India",
+        "iso": "IN",
+        "iso3": "IND",
+        "numCode": 356,
+        "phoneCode": 91,
+        "flag": "https://flagsapi.com/IN/flat/64.png"
+    },
+    {
+        "id": "100",
+        "name": "INDONESIA",
+        "niceName": "Indonesia",
+        "iso": "ID",
+        "iso3": "IDN",
+        "numCode": 360,
+        "phoneCode": 62,
+        "flag": "https://flagsapi.com/ID/flat/64.png"
+    },
+    {
+        "id": "101",
+        "name": "IRAN, ISLAMIC REPUBLIC OF",
+        "niceName": "Iran, Islamic Republic of",
+        "iso": "IR",
+        "iso3": "IRN",
+        "numCode": 364,
+        "phoneCode": 98,
+        "flag": "https://flagsapi.com/IR/flat/64.png"
+    },
+    {
+        "id": "102",
+        "name": "IRAQ",
+        "niceName": "Iraq",
+        "iso": "IQ",
+        "iso3": "IRQ",
+        "numCode": 368,
+        "phoneCode": 964,
+        "flag": "https://flagsapi.com/IQ/flat/64.png"
+    },
+    {
+        "id": "103",
+        "name": "IRELAND",
+        "niceName": "Ireland",
+        "iso": "IE",
+        "iso3": "IRL",
+        "numCode": 372,
+        "phoneCode": 353,
+        "flag": "https://flagsapi.com/IE/flat/64.png"
+    },
+    {
+        "id": "104",
+        "name": "ISRAEL",
+        "niceName": "Israel",
+        "iso": "IL",
+        "iso3": "ISR",
+        "numCode": 376,
+        "phoneCode": 972,
+        "flag": "https://flagsapi.com/IL/flat/64.png"
+    },
+    {
+        "id": "105",
+        "name": "ITALY",
+        "niceName": "Italy",
+        "iso": "IT",
+        "iso3": "ITA",
+        "numCode": 380,
+        "phoneCode": 39,
+        "flag": "https://flagsapi.com/IT/flat/64.png"
+    },
+    {
+        "id": "106",
+        "name": "JAMAICA",
+        "niceName": "Jamaica",
+        "iso": "JM",
+        "iso3": "JAM",
+        "numCode": 388,
+        "phoneCode": 1876,
+        "flag": "https://flagsapi.com/JM/flat/64.png"
+    },
+    {
+        "id": "107",
+        "name": "JAPAN",
+        "niceName": "Japan",
+        "iso": "JP",
+        "iso3": "JPN",
+        "numCode": 392,
+        "phoneCode": 81,
+        "flag": "https://flagsapi.com/JP/flat/64.png"
+    },
+    {
+        "id": "108",
+        "name": "JORDAN",
+        "niceName": "Jordan",
+        "iso": "JO",
+        "iso3": "JOR",
+        "numCode": 400,
+        "phoneCode": 962,
+        "flag": "https://flagsapi.com/JO/flat/64.png"
+    },
+    {
+        "id": "109",
+        "name": "KAZAKHSTAN",
+        "niceName": "Kazakhstan",
+        "iso": "KZ",
+        "iso3": "KAZ",
+        "numCode": 398,
+        "phoneCode": 7,
+        "flag": "https://flagsapi.com/KZ/flat/64.png"
+    },
+    {
+        "id": "110",
+        "name": "KENYA",
+        "niceName": "Kenya",
+        "iso": "KE",
+        "iso3": "KEN",
+        "numCode": 404,
+        "phoneCode": 254,
+        "flag": "https://flagsapi.com/KE/flat/64.png"
+    },
+    {
+        "id": "111",
+        "name": "KIRIBATI",
+        "niceName": "Kiribati",
+        "iso": "KI",
+        "iso3": "KIR",
+        "numCode": 296,
+        "phoneCode": 686,
+        "flag": "https://flagsapi.com/KI/flat/64.png"
+    },
+    {
+        "id": "112",
+        "name": "KOREA, DEMOCRATIC PEOPLE'S REPUBLIC OF",
+        "niceName": "Korea, Democratic People's Republic of",
+        "iso": "KP",
+        "iso3": "PRK",
+        "numCode": 408,
+        "phoneCode": 850,
+        "flag": "https://flagsapi.com/KP/flat/64.png"
+    },
+    {
+        "id": "113",
+        "name": "KOREA, REPUBLIC OF",
+        "niceName": "Korea, Republic of",
+        "iso": "KR",
+        "iso3": "KOR",
+        "numCode": 410,
+        "phoneCode": 82,
+        "flag": "https://flagsapi.com/KR/flat/64.png"
+    },
+    {
+        "id": "114",
+        "name": "KUWAIT",
+        "niceName": "Kuwait",
+        "iso": "KW",
+        "iso3": "KWT",
+        "numCode": 414,
+        "phoneCode": 965,
+        "flag": "https://flagsapi.com/KW/flat/64.png"
+    },
+    {
+        "id": "115",
+        "name": "KYRGYZSTAN",
+        "niceName": "Kyrgyzstan",
+        "iso": "KG",
+        "iso3": "KGZ",
+        "numCode": 417,
+        "phoneCode": 996,
+        "flag": "https://flagsapi.com/KG/flat/64.png"
+    },
+    {
+        "id": "116",
+        "name": "LAO PEOPLE'S DEMOCRATIC REPUBLIC",
+        "niceName": "Lao People's Democratic Republic",
+        "iso": "LA",
+        "iso3": "LAO",
+        "numCode": 418,
+        "phoneCode": 856,
+        "flag": "https://flagsapi.com/LA/flat/64.png"
+    },
+    {
+        "id": "117",
+        "name": "LATVIA",
+        "niceName": "Latvia",
+        "iso": "LV",
+        "iso3": "LVA",
+        "numCode": 428,
+        "phoneCode": 371,
+        "flag": "https://flagsapi.com/LV/flat/64.png"
+    },
+    {
+        "id": "118",
+        "name": "LEBANON",
+        "niceName": "Lebanon",
+        "iso": "LB",
+        "iso3": "LBN",
+        "numCode": 422,
+        "phoneCode": 961,
+        "flag": "https://flagsapi.com/LB/flat/64.png"
+    },
+    {
+        "id": "119",
+        "name": "LESOTHO",
+        "niceName": "Lesotho",
+        "iso": "LS",
+        "iso3": "LSO",
+        "numCode": 426,
+        "phoneCode": 266,
+        "flag": "https://flagsapi.com/LS/flat/64.png"
+    },
+    {
+        "id": "120",
+        "name": "LIBERIA",
+        "niceName": "Liberia",
+        "iso": "LR",
+        "iso3": "LBR",
+        "numCode": 430,
+        "phoneCode": 231,
+        "flag": "https://flagsapi.com/LR/flat/64.png"
+    },
+    {
+        "id": "121",
+        "name": "LIBYAN ARAB JAMAHIRIYA",
+        "niceName": "Libyan Arab Jamahiriya",
+        "iso": "LY",
+        "iso3": "LBY",
+        "numCode": 434,
+        "phoneCode": 218,
+        "flag": "https://flagsapi.com/LY/flat/64.png"
+    },
+    {
+        "id": "122",
+        "name": "LIECHTENSTEIN",
+        "niceName": "Liechtenstein",
+        "iso": "LI",
+        "iso3": "LIE",
+        "numCode": 438,
+        "phoneCode": 423,
+        "flag": "https://flagsapi.com/LI/flat/64.png"
+    },
+    {
+        "id": "123",
+        "name": "LITHUANIA",
+        "niceName": "Lithuania",
+        "iso": "LT",
+        "iso3": "LTU",
+        "numCode": 440,
+        "phoneCode": 370,
+        "flag": "https://flagsapi.com/LT/flat/64.png"
+    },
+    {
+        "id": "124",
+        "name": "LUXEMBOURG",
+        "niceName": "Luxembourg",
+        "iso": "LU",
+        "iso3": "LUX",
+        "numCode": 442,
+        "phoneCode": 352,
+        "flag": "https://flagsapi.com/LU/flat/64.png"
+    },
+    {
+        "id": "125",
+        "name": "MACAO",
+        "niceName": "Macao",
+        "iso": "MO",
+        "iso3": "MAC",
+        "numCode": 446,
+        "phoneCode": 853,
+        "flag": "https://flagsapi.com/MO/flat/64.png"
+    },
+    {
+        "id": "126",
+        "name": "MACEDONIA, THE FORMER YUGOSLAV REPUBLIC OF",
+        "niceName": "Macedonia, the Former Yugoslav Republic of",
+        "iso": "MK",
+        "iso3": "MKD",
+        "numCode": 807,
+        "phoneCode": 389,
+        "flag": "https://flagsapi.com/MK/flat/64.png"
+    },
+    {
+        "id": "127",
+        "name": "MADAGASCAR",
+        "niceName": "Madagascar",
+        "iso": "MG",
+        "iso3": "MDG",
+        "numCode": 450,
+        "phoneCode": 261,
+        "flag": "https://flagsapi.com/MG/flat/64.png"
+    },
+    {
+        "id": "128",
+        "name": "MALAWI",
+        "niceName": "Malawi",
+        "iso": "MW",
+        "iso3": "MWI",
+        "numCode": 454,
+        "phoneCode": 265,
+        "flag": "https://flagsapi.com/MW/flat/64.png"
+    },
+    {
+        "id": "129",
+        "name": "MALAYSIA",
+        "niceName": "Malaysia",
+        "iso": "MY",
+        "iso3": "MYS",
+        "numCode": 458,
+        "phoneCode": 60,
+        "flag": "https://flagsapi.com/MY/flat/64.png"
+    },
+    {
+        "id": "130",
+        "name": "MALDIVES",
+        "niceName": "Maldives",
+        "iso": "MV",
+        "iso3": "MDV",
+        "numCode": 462,
+        "phoneCode": 960,
+        "flag": "https://flagsapi.com/MV/flat/64.png"
+    },
+    {
+        "id": "131",
+        "name": "MALI",
+        "niceName": "Mali",
+        "iso": "ML",
+        "iso3": "MLI",
+        "numCode": 466,
+        "phoneCode": 223,
+        "flag": "https://flagsapi.com/ML/flat/64.png"
+    },
+    {
+        "id": "132",
+        "name": "MALTA",
+        "niceName": "Malta",
+        "iso": "MT",
+        "iso3": "MLT",
+        "numCode": 470,
+        "phoneCode": 356,
+        "flag": "https://flagsapi.com/MT/flat/64.png"
+    },
+    {
+        "id": "133",
+        "name": "MARSHALL ISLANDS",
+        "niceName": "Marshall Islands",
+        "iso": "MH",
+        "iso3": "MHL",
+        "numCode": 584,
+        "phoneCode": 692,
+        "flag": "https://flagsapi.com/MH/flat/64.png"
+    },
+    {
+        "id": "134",
+        "name": "MARTINIQUE",
+        "niceName": "Martinique",
+        "iso": "MQ",
+        "iso3": "MTQ",
+        "numCode": 474,
+        "phoneCode": 596,
+        "flag": "https://flagsapi.com/MQ/flat/64.png"
+    },
+    {
+        "id": "135",
+        "name": "MAURITANIA",
+        "niceName": "Mauritania",
+        "iso": "MR",
+        "iso3": "MRT",
+        "numCode": 478,
+        "phoneCode": 222,
+        "flag": "https://flagsapi.com/MR/flat/64.png"
+    },
+    {
+        "id": "136",
+        "name": "MAURITIUS",
+        "niceName": "Mauritius",
+        "iso": "MU",
+        "iso3": "MUS",
+        "numCode": 480,
+        "phoneCode": 230,
+        "flag": "https://flagsapi.com/MU/flat/64.png"
+    },
+    {
+        "id": "137",
+        "name": "MAYOTTE",
+        "niceName": "Mayotte",
+        "iso": "YT",
+        "iso3": null,
+        "numCode": null,
+        "phoneCode": 269,
+        "flag": "https://flagsapi.com/YT/flat/64.png"
+    },
+    {
+        "id": "138",
+        "name": "MEXICO",
+        "niceName": "Mexico",
+        "iso": "MX",
+        "iso3": "MEX",
+        "numCode": 484,
+        "phoneCode": 52,
+        "flag": "https://flagsapi.com/MX/flat/64.png"
+    },
+    {
+        "id": "139",
+        "name": "MICRONESIA, FEDERATED STATES OF",
+        "niceName": "Micronesia, Federated States of",
+        "iso": "FM",
+        "iso3": "FSM",
+        "numCode": 583,
+        "phoneCode": 691,
+        "flag": "https://flagsapi.com/FM/flat/64.png"
+    },
+    {
+        "id": "140",
+        "name": "MOLDOVA, REPUBLIC OF",
+        "niceName": "Moldova, Republic of",
+        "iso": "MD",
+        "iso3": "MDA",
+        "numCode": 498,
+        "phoneCode": 373,
+        "flag": "https://flagsapi.com/MD/flat/64.png"
+    },
+    {
+        "id": "141",
+        "name": "MONACO",
+        "niceName": "Monaco",
+        "iso": "MC",
+        "iso3": "MCO",
+        "numCode": 492,
+        "phoneCode": 377,
+        "flag": "https://flagsapi.com/MC/flat/64.png"
+    },
+    {
+        "id": "142",
+        "name": "MONGOLIA",
+        "niceName": "Mongolia",
+        "iso": "MN",
+        "iso3": "MNG",
+        "numCode": 496,
+        "phoneCode": 976,
+        "flag": "https://flagsapi.com/MN/flat/64.png"
+    },
+    {
+        "id": "143",
+        "name": "MONTSERRAT",
+        "niceName": "Montserrat",
+        "iso": "MS",
+        "iso3": "MSR",
+        "numCode": 500,
+        "phoneCode": 1664,
+        "flag": "https://flagsapi.com/MS/flat/64.png"
+    },
+    {
+        "id": "144",
+        "name": "MOROCCO",
+        "niceName": "Morocco",
+        "iso": "MA",
+        "iso3": "MAR",
+        "numCode": 504,
+        "phoneCode": 212,
+        "flag": "https://flagsapi.com/MA/flat/64.png"
+    },
+    {
+        "id": "145",
+        "name": "MOZAMBIQUE",
+        "niceName": "Mozambique",
+        "iso": "MZ",
+        "iso3": "MOZ",
+        "numCode": 508,
+        "phoneCode": 258,
+        "flag": "https://flagsapi.com/MZ/flat/64.png"
+    },
+    {
+        "id": "146",
+        "name": "MYANMAR",
+        "niceName": "Myanmar",
+        "iso": "MM",
+        "iso3": "MMR",
+        "numCode": 104,
+        "phoneCode": 95,
+        "flag": "https://flagsapi.com/MM/flat/64.png"
+    },
+    {
+        "id": "147",
+        "name": "NAMIBIA",
+        "niceName": "Namibia",
+        "iso": "NA",
+        "iso3": "NAM",
+        "numCode": 516,
+        "phoneCode": 264,
+        "flag": "https://flagsapi.com/NA/flat/64.png"
+    },
+    {
+        "id": "148",
+        "name": "NAURU",
+        "niceName": "Nauru",
+        "iso": "NR",
+        "iso3": "NRU",
+        "numCode": 520,
+        "phoneCode": 674,
+        "flag": "https://flagsapi.com/NR/flat/64.png"
+    },
+    {
+        "id": "149",
+        "name": "NEPAL",
+        "niceName": "Nepal",
+        "iso": "NP",
+        "iso3": "NPL",
+        "numCode": 524,
+        "phoneCode": 977,
+        "flag": "https://flagsapi.com/NP/flat/64.png"
+    },
+    {
+        "id": "150",
+        "name": "NETHERLANDS",
+        "niceName": "Netherlands",
+        "iso": "NL",
+        "iso3": "NLD",
+        "numCode": 528,
+        "phoneCode": 31,
+        "flag": "https://flagsapi.com/NL/flat/64.png"
+    },
+    {
+        "id": "151",
+        "name": "NETHERLANDS ANTILLES",
+        "niceName": "Netherlands Antilles",
+        "iso": "AN",
+        "iso3": "ANT",
+        "numCode": 530,
+        "phoneCode": 599,
+        "flag": "https://flagsapi.com/AN/flat/64.png"
+    },
+    {
+        "id": "152",
+        "name": "NEW CALEDONIA",
+        "niceName": "New Caledonia",
+        "iso": "NC",
+        "iso3": "NCL",
+        "numCode": 540,
+        "phoneCode": 687,
+        "flag": "https://flagsapi.com/NC/flat/64.png"
+    },
+    {
+        "id": "153",
+        "name": "NEW ZEALAND",
+        "niceName": "New Zealand",
+        "iso": "NZ",
+        "iso3": "NZL",
+        "numCode": 554,
+        "phoneCode": 64,
+        "flag": "https://flagsapi.com/NZ/flat/64.png"
+    },
+    {
+        "id": "154",
+        "name": "NICARAGUA",
+        "niceName": "Nicaragua",
+        "iso": "NI",
+        "iso3": "NIC",
+        "numCode": 558,
+        "phoneCode": 505,
+        "flag": "https://flagsapi.com/NI/flat/64.png"
+    },
+    {
+        "id": "155",
+        "name": "NIGER",
+        "niceName": "Niger",
+        "iso": "NE",
+        "iso3": "NER",
+        "numCode": 562,
+        "phoneCode": 227,
+        "flag": "https://flagsapi.com/NE/flat/64.png"
+    },
+    {
+        "id": "156",
+        "name": "NIGERIA",
+        "niceName": "Nigeria",
+        "iso": "NG",
+        "iso3": "NGA",
+        "numCode": 566,
+        "phoneCode": 234,
+        "flag": "https://flagsapi.com/NG/flat/64.png"
+    },
+    {
+        "id": "157",
+        "name": "NIUE",
+        "niceName": "Niue",
+        "iso": "NU",
+        "iso3": "NIU",
+        "numCode": 570,
+        "phoneCode": 683,
+        "flag": "https://flagsapi.com/NU/flat/64.png"
+    },
+    {
+        "id": "158",
+        "name": "NORFOLK ISLAND",
+        "niceName": "Norfolk Island",
+        "iso": "NF",
+        "iso3": "NFK",
+        "numCode": 574,
+        "phoneCode": 672,
+        "flag": "https://flagsapi.com/NF/flat/64.png"
+    },
+    {
+        "id": "159",
+        "name": "NORTHERN MARIANA ISLANDS",
+        "niceName": "Northern Mariana Islands",
+        "iso": "MP",
+        "iso3": "MNP",
+        "numCode": 580,
+        "phoneCode": 1670,
+        "flag": "https://flagsapi.com/MP/flat/64.png"
+    },
+    {
+        "id": "160",
+        "name": "NORWAY",
+        "niceName": "Norway",
+        "iso": "NO",
+        "iso3": "NOR",
+        "numCode": 578,
+        "phoneCode": 47,
+        "flag": "https://flagsapi.com/NO/flat/64.png"
+    },
+    {
+        "id": "161",
+        "name": "OMAN",
+        "niceName": "Oman",
+        "iso": "OM",
+        "iso3": "OMN",
+        "numCode": 512,
+        "phoneCode": 968,
+        "flag": "https://flagsapi.com/OM/flat/64.png"
+    },
+    {
+        "id": "162",
+        "name": "PAKISTAN",
+        "niceName": "Pakistan",
+        "iso": "PK",
+        "iso3": "PAK",
+        "numCode": 586,
+        "phoneCode": 92,
+        "flag": "https://flagsapi.com/PK/flat/64.png"
+    },
+    {
+        "id": "163",
+        "name": "PALAU",
+        "niceName": "Palau",
+        "iso": "PW",
+        "iso3": "PLW",
+        "numCode": 585,
+        "phoneCode": 680,
+        "flag": "https://flagsapi.com/PW/flat/64.png"
+    },
+    {
+        "id": "164",
+        "name": "PALESTINIAN TERRITORY, OCCUPIED",
+        "niceName": "Palestinian Territory, Occupied",
+        "iso": "PS",
+        "iso3": null,
+        "numCode": null,
+        "phoneCode": 970,
+        "flag": "https://flagsapi.com/PS/flat/64.png"
+    },
+    {
+        "id": "165",
+        "name": "PANAMA",
+        "niceName": "Panama",
+        "iso": "PA",
+        "iso3": "PAN",
+        "numCode": 591,
+        "phoneCode": 507,
+        "flag": "https://flagsapi.com/PA/flat/64.png"
+    },
+    {
+        "id": "166",
+        "name": "PAPUA NEW GUINEA",
+        "niceName": "Papua New Guinea",
+        "iso": "PG",
+        "iso3": "PNG",
+        "numCode": 598,
+        "phoneCode": 675,
+        "flag": "https://flagsapi.com/PG/flat/64.png"
+    },
+    {
+        "id": "167",
+        "name": "PARAGUAY",
+        "niceName": "Paraguay",
+        "iso": "PY",
+        "iso3": "PRY",
+        "numCode": 600,
+        "phoneCode": 595,
+        "flag": "https://flagsapi.com/PY/flat/64.png"
+    },
+    {
+        "id": "168",
+        "name": "PERU",
+        "niceName": "Peru",
+        "iso": "PE",
+        "iso3": "PER",
+        "numCode": 604,
+        "phoneCode": 51,
+        "flag": "https://flagsapi.com/PE/flat/64.png"
+    },
+    {
+        "id": "169",
+        "name": "PHILIPPINES",
+        "niceName": "Philippines",
+        "iso": "PH",
+        "iso3": "PHL",
+        "numCode": 608,
+        "phoneCode": 63,
+        "flag": "https://flagsapi.com/PH/flat/64.png"
+    },
+    {
+        "id": "170",
+        "name": "PITCAIRN",
+        "niceName": "Pitcairn",
+        "iso": "PN",
+        "iso3": "PCN",
+        "numCode": 612,
+        "phoneCode": 0,
+        "flag": "https://flagsapi.com/PN/flat/64.png"
+    },
+    {
+        "id": "171",
+        "name": "POLAND",
+        "niceName": "Poland",
+        "iso": "PL",
+        "iso3": "POL",
+        "numCode": 616,
+        "phoneCode": 48,
+        "flag": "https://flagsapi.com/PL/flat/64.png"
+    },
+    {
+        "id": "172",
+        "name": "PORTUGAL",
+        "niceName": "Portugal",
+        "iso": "PT",
+        "iso3": "PRT",
+        "numCode": 620,
+        "phoneCode": 351,
+        "flag": "https://flagsapi.com/PT/flat/64.png"
+    },
+    {
+        "id": "173",
+        "name": "PUERTO RICO",
+        "niceName": "Puerto Rico",
+        "iso": "PR",
+        "iso3": "PRI",
+        "numCode": 630,
+        "phoneCode": 1787,
+        "flag": "https://flagsapi.com/PR/flat/64.png"
+    },
+    {
+        "id": "174",
+        "name": "QATAR",
+        "niceName": "Qatar",
+        "iso": "QA",
+        "iso3": "QAT",
+        "numCode": 634,
+        "phoneCode": 974,
+        "flag": "https://flagsapi.com/QA/flat/64.png"
+    },
+    {
+        "id": "175",
+        "name": "REUNION",
+        "niceName": "Reunion",
+        "iso": "RE",
+        "iso3": "REU",
+        "numCode": 638,
+        "phoneCode": 262,
+        "flag": "https://flagsapi.com/RE/flat/64.png"
+    },
+    {
+        "id": "176",
+        "name": "ROMANIA",
+        "niceName": "Romania",
+        "iso": "RO",
+        "iso3": "ROM",
+        "numCode": 642,
+        "phoneCode": 40,
+        "flag": "https://flagsapi.com/RO/flat/64.png"
+    },
+    {
+        "id": "177",
+        "name": "RUSSIAN FEDERATION",
+        "niceName": "Russian Federation",
+        "iso": "RU",
+        "iso3": "RUS",
+        "numCode": 643,
+        "phoneCode": 70,
+        "flag": "https://flagsapi.com/RU/flat/64.png"
+    },
+    {
+        "id": "178",
+        "name": "RWANDA",
+        "niceName": "Rwanda",
+        "iso": "RW",
+        "iso3": "RWA",
+        "numCode": 646,
+        "phoneCode": 250,
+        "flag": "https://flagsapi.com/RW/flat/64.png"
+    },
+    {
+        "id": "179",
+        "name": "SAINT HELENA",
+        "niceName": "Saint Helena",
+        "iso": "SH",
+        "iso3": "SHN",
+        "numCode": 654,
+        "phoneCode": 290,
+        "flag": "https://flagsapi.com/SH/flat/64.png"
+    },
+    {
+        "id": "180",
+        "name": "SAINT KITTS AND NEVIS",
+        "niceName": "Saint Kitts and Nevis",
+        "iso": "KN",
+        "iso3": "KNA",
+        "numCode": 659,
+        "phoneCode": 1869,
+        "flag": "https://flagsapi.com/KN/flat/64.png"
+    },
+    {
+        "id": "181",
+        "name": "SAINT LUCIA",
+        "niceName": "Saint Lucia",
+        "iso": "LC",
+        "iso3": "LCA",
+        "numCode": 662,
+        "phoneCode": 1758,
+        "flag": "https://flagsapi.com/LC/flat/64.png"
+    },
+    {
+        "id": "182",
+        "name": "SAINT PIERRE AND MIQUELON",
+        "niceName": "Saint Pierre and Miquelon",
+        "iso": "PM",
+        "iso3": "SPM",
+        "numCode": 666,
+        "phoneCode": 508,
+        "flag": "https://flagsapi.com/PM/flat/64.png"
+    },
+    {
+        "id": "183",
+        "name": "SAINT VINCENT AND THE GRENADINES",
+        "niceName": "Saint Vincent and the Grenadines",
+        "iso": "VC",
+        "iso3": "VCT",
+        "numCode": 670,
+        "phoneCode": 1784,
+        "flag": "https://flagsapi.com/VC/flat/64.png"
+    },
+    {
+        "id": "184",
+        "name": "SAMOA",
+        "niceName": "Samoa",
+        "iso": "WS",
+        "iso3": "WSM",
+        "numCode": 882,
+        "phoneCode": 684,
+        "flag": "https://flagsapi.com/WS/flat/64.png"
+    },
+    {
+        "id": "185",
+        "name": "SAN MARINO",
+        "niceName": "San Marino",
+        "iso": "SM",
+        "iso3": "SMR",
+        "numCode": 674,
+        "phoneCode": 378,
+        "flag": "https://flagsapi.com/SM/flat/64.png"
+    },
+    {
+        "id": "186",
+        "name": "SAO TOME AND PRINCIPE",
+        "niceName": "Sao Tome and Principe",
+        "iso": "ST",
+        "iso3": "STP",
+        "numCode": 678,
+        "phoneCode": 239,
+        "flag": "https://flagsapi.com/ST/flat/64.png"
+    },
+    {
+        "id": "187",
+        "name": "SAUDI ARABIA",
+        "niceName": "Saudi Arabia",
+        "iso": "SA",
+        "iso3": "SAU",
+        "numCode": 682,
+        "phoneCode": 966,
+        "flag": "https://flagsapi.com/SA/flat/64.png"
+    },
+    {
+        "id": "188",
+        "name": "SENEGAL",
+        "niceName": "Senegal",
+        "iso": "SN",
+        "iso3": "SEN",
+        "numCode": 686,
+        "phoneCode": 221,
+        "flag": "https://flagsapi.com/SN/flat/64.png"
+    },
+    {
+        "id": "189",
+        "name": "SERBIA AND MONTENEGRO",
+        "niceName": "Serbia and Montenegro",
+        "iso": "CS",
+        "iso3": null,
+        "numCode": null,
+        "phoneCode": 381,
+        "flag": "https://flagsapi.com/CS/flat/64.png"
+    },
+    {
+        "id": "190",
+        "name": "SEYCHELLES",
+        "niceName": "Seychelles",
+        "iso": "SC",
+        "iso3": "SYC",
+        "numCode": 690,
+        "phoneCode": 248,
+        "flag": "https://flagsapi.com/SC/flat/64.png"
+    },
+    {
+        "id": "191",
+        "name": "SIERRA LEONE",
+        "niceName": "Sierra Leone",
+        "iso": "SL",
+        "iso3": "SLE",
+        "numCode": 694,
+        "phoneCode": 232,
+        "flag": "https://flagsapi.com/SL/flat/64.png"
+    },
+    {
+        "id": "192",
+        "name": "SINGAPORE",
+        "niceName": "Singapore",
+        "iso": "SG",
+        "iso3": "SGP",
+        "numCode": 702,
+        "phoneCode": 65,
+        "flag": "https://flagsapi.com/SG/flat/64.png"
+    },
+    {
+        "id": "193",
+        "name": "SLOVAKIA",
+        "niceName": "Slovakia",
+        "iso": "SK",
+        "iso3": "SVK",
+        "numCode": 703,
+        "phoneCode": 421,
+        "flag": "https://flagsapi.com/SK/flat/64.png"
+    },
+    {
+        "id": "194",
+        "name": "SLOVENIA",
+        "niceName": "Slovenia",
+        "iso": "SI",
+        "iso3": "SVN",
+        "numCode": 705,
+        "phoneCode": 386,
+        "flag": "https://flagsapi.com/SI/flat/64.png"
+    },
+    {
+        "id": "195",
+        "name": "SOLOMON ISLANDS",
+        "niceName": "Solomon Islands",
+        "iso": "SB",
+        "iso3": "SLB",
+        "numCode": 90,
+        "phoneCode": 677,
+        "flag": "https://flagsapi.com/SB/flat/64.png"
+    },
+    {
+        "id": "196",
+        "name": "SOMALIA",
+        "niceName": "Somalia",
+        "iso": "SO",
+        "iso3": "SOM",
+        "numCode": 706,
+        "phoneCode": 252,
+        "flag": "https://flagsapi.com/SO/flat/64.png"
+    },
+    {
+        "id": "197",
+        "name": "SOUTH AFRICA",
+        "niceName": "South Africa",
+        "iso": "ZA",
+        "iso3": "ZAF",
+        "numCode": 710,
+        "phoneCode": 27,
+        "flag": "https://flagsapi.com/ZA/flat/64.png"
+    },
+    {
+        "id": "198",
+        "name": "SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS",
+        "niceName": "South Georgia and the South Sandwich Islands",
+        "iso": "GS",
+        "iso3": null,
+        "numCode": null,
+        "phoneCode": 0,
+        "flag": "https://flagsapi.com/GS/flat/64.png"
+    },
+    {
+        "id": "199",
+        "name": "SPAIN",
+        "niceName": "Spain",
+        "iso": "ES",
+        "iso3": "ESP",
+        "numCode": 724,
+        "phoneCode": 34,
+        "flag": "https://flagsapi.com/ES/flat/64.png"
+    },
+    {
+        "id": "200",
+        "name": "SRI LANKA",
+        "niceName": "Sri Lanka",
+        "iso": "LK",
+        "iso3": "LKA",
+        "numCode": 144,
+        "phoneCode": 94,
+        "flag": "https://flagsapi.com/LK/flat/64.png"
+    },
+    {
+        "id": "201",
+        "name": "SUDAN",
+        "niceName": "Sudan",
+        "iso": "SD",
+        "iso3": "SDN",
+        "numCode": 736,
+        "phoneCode": 249,
+        "flag": "https://flagsapi.com/SD/flat/64.png"
+    },
+    {
+        "id": "202",
+        "name": "SURINAME",
+        "niceName": "Suriname",
+        "iso": "SR",
+        "iso3": "SUR",
+        "numCode": 740,
+        "phoneCode": 597,
+        "flag": "https://flagsapi.com/SR/flat/64.png"
+    },
+    {
+        "id": "203",
+        "name": "SVALBARD AND JAN MAYEN",
+        "niceName": "Svalbard and Jan Mayen",
+        "iso": "SJ",
+        "iso3": "SJM",
+        "numCode": 744,
+        "phoneCode": 47,
+        "flag": "https://flagsapi.com/SJ/flat/64.png"
+    },
+    {
+        "id": "204",
+        "name": "SWAZILAND",
+        "niceName": "Swaziland",
+        "iso": "SZ",
+        "iso3": "SWZ",
+        "numCode": 748,
+        "phoneCode": 268,
+        "flag": "https://flagsapi.com/SZ/flat/64.png"
+    },
+    {
+        "id": "205",
+        "name": "SWEDEN",
+        "niceName": "Sweden",
+        "iso": "SE",
+        "iso3": "SWE",
+        "numCode": 752,
+        "phoneCode": 46,
+        "flag": "https://flagsapi.com/SE/flat/64.png"
+    },
+    {
+        "id": "206",
+        "name": "SWITZERLAND",
+        "niceName": "Switzerland",
+        "iso": "CH",
+        "iso3": "CHE",
+        "numCode": 756,
+        "phoneCode": 41,
+        "flag": "https://flagsapi.com/CH/flat/64.png"
+    },
+    {
+        "id": "207",
+        "name": "SYRIAN ARAB REPUBLIC",
+        "niceName": "Syrian Arab Republic",
+        "iso": "SY",
+        "iso3": "SYR",
+        "numCode": 760,
+        "phoneCode": 963,
+        "flag": "https://flagsapi.com/SY/flat/64.png"
+    },
+    {
+        "id": "208",
+        "name": "TAIWAN, PROVINCE OF CHINA",
+        "niceName": "Taiwan, Province of China",
+        "iso": "TW",
+        "iso3": "TWN",
+        "numCode": 158,
+        "phoneCode": 886,
+        "flag": "https://flagsapi.com/TW/flat/64.png"
+    },
+    {
+        "id": "209",
+        "name": "TAJIKISTAN",
+        "niceName": "Tajikistan",
+        "iso": "TJ",
+        "iso3": "TJK",
+        "numCode": 762,
+        "phoneCode": 992,
+        "flag": "https://flagsapi.com/TJ/flat/64.png"
+    },
+    {
+        "id": "210",
+        "name": "TANZANIA, UNITED REPUBLIC OF",
+        "niceName": "Tanzania, United Republic of",
+        "iso": "TZ",
+        "iso3": "TZA",
+        "numCode": 834,
+        "phoneCode": 255,
+        "flag": "https://flagsapi.com/TZ/flat/64.png"
+    },
+    {
+        "id": "211",
+        "name": "THAILAND",
+        "niceName": "Thailand",
+        "iso": "TH",
+        "iso3": "THA",
+        "numCode": 764,
+        "phoneCode": 66,
+        "flag": "https://flagsapi.com/TH/flat/64.png"
+    },
+    {
+        "id": "212",
+        "name": "TIMOR-LESTE",
+        "niceName": "Timor-Leste",
+        "iso": "TL",
+        "iso3": null,
+        "numCode": null,
+        "phoneCode": 670,
+        "flag": "https://flagsapi.com/TL/flat/64.png"
+    },
+    {
+        "id": "213",
+        "name": "TOGO",
+        "niceName": "Togo",
+        "iso": "TG",
+        "iso3": "TGO",
+        "numCode": 768,
+        "phoneCode": 228,
+        "flag": "https://flagsapi.com/TG/flat/64.png"
+    },
+    {
+        "id": "214",
+        "name": "TOKELAU",
+        "niceName": "Tokelau",
+        "iso": "TK",
+        "iso3": "TKL",
+        "numCode": 772,
+        "phoneCode": 690,
+        "flag": "https://flagsapi.com/TK/flat/64.png"
+    },
+    {
+        "id": "215",
+        "name": "TONGA",
+        "niceName": "Tonga",
+        "iso": "TO",
+        "iso3": "TON",
+        "numCode": 776,
+        "phoneCode": 676,
+        "flag": "https://flagsapi.com/TO/flat/64.png"
+    },
+    {
+        "id": "216",
+        "name": "TRINIDAD AND TOBAGO",
+        "niceName": "Trinidad and Tobago",
+        "iso": "TT",
+        "iso3": "TTO",
+        "numCode": 780,
+        "phoneCode": 1868,
+        "flag": "https://flagsapi.com/TT/flat/64.png"
+    },
+    {
+        "id": "217",
+        "name": "TUNISIA",
+        "niceName": "Tunisia",
+        "iso": "TN",
+        "iso3": "TUN",
+        "numCode": 788,
+        "phoneCode": 216,
+        "flag": "https://flagsapi.com/TN/flat/64.png"
+    },
+    {
+        "id": "218",
+        "name": "TURKEY",
+        "niceName": "Turkey",
+        "iso": "TR",
+        "iso3": "TUR",
+        "numCode": 792,
+        "phoneCode": 90,
+        "flag": "https://flagsapi.com/TR/flat/64.png"
+    },
+    {
+        "id": "219",
+        "name": "TURKMENISTAN",
+        "niceName": "Turkmenistan",
+        "iso": "TM",
+        "iso3": "TKM",
+        "numCode": 795,
+        "phoneCode": 7370,
+        "flag": "https://flagsapi.com/TM/flat/64.png"
+    },
+    {
+        "id": "220",
+        "name": "TURKS AND CAICOS ISLANDS",
+        "niceName": "Turks and Caicos Islands",
+        "iso": "TC",
+        "iso3": "TCA",
+        "numCode": 796,
+        "phoneCode": 1649,
+        "flag": "https://flagsapi.com/TC/flat/64.png"
+    },
+    {
+        "id": "221",
+        "name": "TUVALU",
+        "niceName": "Tuvalu",
+        "iso": "TV",
+        "iso3": "TUV",
+        "numCode": 798,
+        "phoneCode": 688,
+        "flag": "https://flagsapi.com/TV/flat/64.png"
+    },
+    {
+        "id": "222",
+        "name": "UGANDA",
+        "niceName": "Uganda",
+        "iso": "UG",
+        "iso3": "UGA",
+        "numCode": 800,
+        "phoneCode": 256,
+        "flag": "https://flagsapi.com/UG/flat/64.png"
+    },
+    {
+        "id": "223",
+        "name": "UKRAINE",
+        "niceName": "Ukraine",
+        "iso": "UA",
+        "iso3": "UKR",
+        "numCode": 804,
+        "phoneCode": 380,
+        "flag": "https://flagsapi.com/UA/flat/64.png"
+    },
+    {
+        "id": "224",
+        "name": "UNITED ARAB EMIRATES",
+        "niceName": "United Arab Emirates",
+        "iso": "AE",
+        "iso3": "ARE",
+        "numCode": 784,
+        "phoneCode": 971,
+        "flag": "https://flagsapi.com/AE/flat/64.png"
+    },
+    {
+        "id": "225",
+        "name": "UNITED KINGDOM",
+        "niceName": "United Kingdom",
+        "iso": "GB",
+        "iso3": "GBR",
+        "numCode": 826,
+        "phoneCode": 44,
+        "flag": "https://flagsapi.com/GB/flat/64.png"
+    },
+    {
+        "id": "226",
+        "name": "UNITED STATES",
+        "niceName": "United States",
+        "iso": "US",
+        "iso3": "USA",
+        "numCode": 840,
+        "phoneCode": 1,
+        "flag": "https://flagsapi.com/US/flat/64.png"
+    },
+    {
+        "id": "227",
+        "name": "UNITED STATES MINOR OUTLYING ISLANDS",
+        "niceName": "United States Minor Outlying Islands",
+        "iso": "UM",
+        "iso3": null,
+        "numCode": null,
+        "phoneCode": 1,
+        "flag": "https://flagsapi.com/UM/flat/64.png"
+    },
+    {
+        "id": "228",
+        "name": "URUGUAY",
+        "niceName": "Uruguay",
+        "iso": "UY",
+        "iso3": "URY",
+        "numCode": 858,
+        "phoneCode": 598,
+        "flag": "https://flagsapi.com/UY/flat/64.png"
+    },
+    {
+        "id": "229",
+        "name": "UZBEKISTAN",
+        "niceName": "Uzbekistan",
+        "iso": "UZ",
+        "iso3": "UZB",
+        "numCode": 860,
+        "phoneCode": 998,
+        "flag": "https://flagsapi.com/UZ/flat/64.png"
+    },
+    {
+        "id": "230",
+        "name": "VANUATU",
+        "niceName": "Vanuatu",
+        "iso": "VU",
+        "iso3": "VUT",
+        "numCode": 548,
+        "phoneCode": 678,
+        "flag": "https://flagsapi.com/VU/flat/64.png"
+    },
+    {
+        "id": "231",
+        "name": "VENEZUELA",
+        "niceName": "Venezuela",
+        "iso": "VE",
+        "iso3": "VEN",
+        "numCode": 862,
+        "phoneCode": 58,
+        "flag": "https://flagsapi.com/VE/flat/64.png"
+    },
+    {
+        "id": "232",
+        "name": "VIET NAM",
+        "niceName": "Viet Nam",
+        "iso": "VN",
+        "iso3": "VNM",
+        "numCode": 704,
+        "phoneCode": 84,
+        "flag": "https://flagsapi.com/VN/flat/64.png"
+    },
+    {
+        "id": "233",
+        "name": "VIRGIN ISLANDS, BRITISH",
+        "niceName": "Virgin Islands, British",
+        "iso": "VG",
+        "iso3": "VGB",
+        "numCode": 92,
+        "phoneCode": 1284,
+        "flag": "https://flagsapi.com/VG/flat/64.png"
+    },
+    {
+        "id": "234",
+        "name": "VIRGIN ISLANDS, U.S.",
+        "niceName": "Virgin Islands, U.s.",
+        "iso": "VI",
+        "iso3": "VIR",
+        "numCode": 850,
+        "phoneCode": 1340,
+        "flag": "https://flagsapi.com/VI/flat/64.png"
+    },
+    {
+        "id": "235",
+        "name": "WALLIS AND FUTUNA",
+        "niceName": "Wallis and Futuna",
+        "iso": "WF",
+        "iso3": "WLF",
+        "numCode": 876,
+        "phoneCode": 681,
+        "flag": "https://flagsapi.com/WF/flat/64.png"
+    },
+    {
+        "id": "236",
+        "name": "WESTERN SAHARA",
+        "niceName": "Western Sahara",
+        "iso": "EH",
+        "iso3": "ESH",
+        "numCode": 732,
+        "phoneCode": 212,
+        "flag": "https://flagsapi.com/EH/flat/64.png"
+    },
+    {
+        "id": "237",
+        "name": "YEMEN",
+        "niceName": "Yemen",
+        "iso": "YE",
+        "iso3": "YEM",
+        "numCode": 887,
+        "phoneCode": 967,
+        "flag": "https://flagsapi.com/YE/flat/64.png"
+    },
+    {
+        "id": "238",
+        "name": "ZAMBIA",
+        "niceName": "Zambia",
+        "iso": "ZM",
+        "iso3": "ZMB",
+        "numCode": 894,
+        "phoneCode": 260,
+        "flag": "https://flagsapi.com/ZM/flat/64.png"
+    },
+    {
+        "id": "239",
+        "name": "ZIMBABWE",
+        "niceName": "Zimbabwe",
+        "iso": "ZW",
+        "iso3": "ZWE",
+        "numCode": 716,
+        "phoneCode": 263,
+        "flag": "https://flagsapi.com/ZW/flat/64.png"
+    }
+]

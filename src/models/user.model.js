@@ -1,4 +1,5 @@
 const { model, Schema, Types } = require("mongoose");
+const { ROLE } = require("../utils/enum");
 
 const DOCUMENT_NAME = "Account";
 const COLLECTION_NAME = "Accounts";
@@ -32,9 +33,17 @@ const accountSchema = new Schema(
       type: String,
       trim: true,
     },
-    address: {
+    addressLine: {
       type: String,
     },
+    role: {
+      type: String,
+      enum: [ROLE.ADMIN, ROLE.CLIENT],
+      default: ROLE.CLIENT,
+    },
+    ward: String,
+    district: String,
+    province: String,
   },
   {
     timestamps: true,

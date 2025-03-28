@@ -31,23 +31,41 @@ const { AsyncHandle } = require("../helpers/AsyncHandle");
 
 /**
  * @swagger
- *  /products:
- *      get:
- *          tags: [Product]
- *          parameters:
- *              - $ref: '#/components/parameters/Skip'
- *              - $ref: '#/components/parameters/Limit'
- *              - $ref: '#/components/parameters/filter'
- *              - $ref: '#/components/parameters/Search'
- *          responses:
- *              200:
- *                  description: List of all products
- *                  content:
- *                      application/json:
- *                          schema:
- *                              type: array
- *                              items:
- *                                  $ref: '#/components/schemas/Product'
+ * /products:
+ *   get:
+ *     tags: [Product]
+ *     summary: Lấy danh sách sản phẩm có filter
+ *     parameters:
+ *       - $ref: '#/components/parameters/Skip'
+ *       - $ref: '#/components/parameters/Limit'
+ *       - $ref: '#/components/parameters/filter'
+ *       - $ref: '#/components/parameters/Search'
+ *       - in: query
+ *         name: price
+ *         schema:
+ *           type: string
+ *           example: 100000:300000,500000:1000000
+ *         description: Khoảng giá, cách nhau bằng dấu phẩy. Dạng `min:max`
+ *       - in: query
+ *         name: genre
+ *         schema:
+ *           type: string
+ *           example: 6603f2bc0b867fce2d4fa5b2,6603f2bc0b867fce2d4fa5b3
+ *         description: Danh sách ID thể loại (genre), cách nhau bằng dấu phẩy
+ *       - in: query
+ *         name: sex
+ *         schema:
+ *           type: string
+ *           example: M,F
+ *       - in: query
+ *         name: age
+ *         schema:
+ *           type: string
+ *           example: 3:5,6:8
+ *         description: Khoảng tuổi (dạng `min:max`), nhiều khoảng cách nhau bởi dấu phẩy
+ *     responses:
+ *       200:
+ *         description: Danh sách sản phẩm
  */
 router.get("/products", AsyncHandle(productController.GetAll));
 
