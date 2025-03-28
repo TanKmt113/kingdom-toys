@@ -103,7 +103,7 @@ class CouponService {
     if (search) {
       const regex = { $regex: search.toString(), $options: "i" };
       filter = {
-        $or: [{ CouponName: regex }, { CouponValue: search }],
+        $or: [{ CouponName: regex }],
       };
     }
     console.log(filter);
