@@ -3,11 +3,11 @@ const { SuccessResponse } = require("../response/success.response");
 
 class BrandController {
   GetAll = async (req, res) => {
-    const { skip, limit } = req.query;
+    const { skip, limit, search } = req.query;
 
     new SuccessResponse({
       message: "Get all success",
-      metadata: await brandServices.GetAll(skip, limit),
+      metadata: await brandServices.GetAll(search,skip, limit),
     }).send(res);
   };
   GetById = async (req, res) => {

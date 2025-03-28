@@ -5,7 +5,7 @@ class CouponController {
   AddCoupon = async (req, res) => {
     new SuccessResponse({
       message: "Create Success",
-      metadata: await couponService.AddCoupon(req.body),
+      metadata: await couponService.AddCoupon(req.body, query),
     }).send(res);
   };
 
@@ -26,9 +26,10 @@ class CouponController {
   };
 
   GetCoupon = async (req, res) => {
+    const { query, skip, limit } = req.query;
     new SuccessResponse({
       message: "Get all success",
-      metadata: await couponService.GetCoupon(),
+      metadata: await couponService.GetCoupon(query, skip, limit),
     }).send(res);
   };
 
@@ -49,13 +50,13 @@ class CouponController {
     }).send(res);
   };
 
-  GetById = async(req, res) => {
-    const couponId = req.params.id
+  GetById = async (req, res) => {
+    const couponId = req.params.id;
     new SuccessResponse({
       message: "Get by id success",
       metadata: await couponService.GetCouponById(couponId),
-    }).send(res)
-  }
+    }).send(res);
+  };
 }
 
 module.exports = new CouponController();

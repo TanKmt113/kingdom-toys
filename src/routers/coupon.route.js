@@ -86,6 +86,10 @@ const { authentication } = require("../helpers/auth");
  *      get:
  *          summary: get Coupon
  *          tags: [Coupon]
+ *          parameters: 
+ *            - $ref: '#/components/parameters/Search'
+ *            - $ref: '#/components/parameters/Skip'
+ *            - $ref: '#/components/parameters/Limit'
  *          responses:
  *              200:
  *                  description: success

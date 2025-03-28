@@ -83,11 +83,11 @@ class CouponService {
     return coupon;
   };
 
-  GetCouponById = async(couponId) => {
-    const coupon = await couponModel.findOne({_id: couponId});
-    if(!coupon) throw new BadRequestError("Không tìm thấy coupon!");
-    return coupon
-  }
+  GetCouponById = async (couponId) => {
+    const coupon = await couponModel.findOne({ _id: couponId });
+    if (!coupon) throw new BadRequestError("Không tìm thấy coupon!");
+    return coupon;
+  };
 
   DeleteCoupon = async (couponId) => {
     const coupon = await couponModel.findOne({ _id: couponId });
@@ -98,8 +98,14 @@ class CouponService {
     return "success";
   };
 
-  GetCoupon = async (skip = 0, limit = 30, filter = null, search = null) => {
-    filter = parseFilterString(filter, search, ["CouponName", "CouponValue"]);
+  GetCoupon = async (search = null, skip = 0, limit = 30) => {
+    let filter = {};
+    if (search) {
+      const regex = { $regex: search, $options: "i" };
+      filter = {
+        $or: [{ CouponName: regex }, { CouponValue: regex }],
+      };
+    }
     const total = await couponModel.countDocuments(filter);
     let coupon = await couponModel.find(filter).skip(skip).limit(limit);
     if (!coupon) throw new BadRequestError("Không tìm thấy coupon");

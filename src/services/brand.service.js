@@ -21,8 +21,15 @@ class BrandServices {
     await brandModel.deleteOne({ _id: id });
     return true;
   };
-  GetAll = async (skip = 0, limit = 30) => {
-    const reslt = await brandModel.find().skip(skip).limit(limit);
+  GetAll = async (search = null, skip = 0, limit = 30) => {
+    let filter = {};
+    if (search) {
+      const regex = { $regex: search, $options: "i" };
+      filter = {
+        $or: [{ brandName: regex }],
+      };
+    }
+    const reslt = await brandModel.find(filter).skip(skip).limit(limit);
     return reslt;
   };
 
