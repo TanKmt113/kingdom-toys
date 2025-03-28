@@ -115,7 +115,13 @@ class OrderService {
     return order;
   };
 
-  GetOrder = async (skip = 0, limit = 30, filter = null, search = null) => {
+  GetOrder = async (
+    skip = 0,
+    limit = 30,
+    filter = null,
+    search = null,
+    status = null
+  ) => {
     filter = parseFilterString(filter, search, ["status"]);
 
     const total = await orderModel.countDocuments(filter);

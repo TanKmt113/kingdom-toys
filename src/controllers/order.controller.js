@@ -19,9 +19,16 @@ class OrderController {
   };
 
   GetOrder = async (req, res) => {
+    const { skip, limit, status, search, filter } = req.query;
     new SuccessResponse({
       message: "Get order success",
-      metadata: await orderService.GetOrder(),
+      metadata: await orderService.GetOrder(
+        skip,
+        limit,
+        filter,
+        search,
+        status
+      ),
     }).send(res);
   };
 
@@ -35,9 +42,8 @@ class OrderController {
         limit,
         null,
         search,
-        status, 
+        status,
         user.userId
-
       ),
     }).send(res);
   };
