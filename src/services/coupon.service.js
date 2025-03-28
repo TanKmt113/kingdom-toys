@@ -101,11 +101,12 @@ class CouponService {
   GetCoupon = async (search = null, skip = 0, limit = 30) => {
     let filter = {};
     if (search) {
-      const regex = { $regex: search, $options: "i" };
+      const regex = { $regex: search.toString(), $options: "i" };
       filter = {
-        $or: [{ CouponName: regex }, { CouponValue: regex }],
+        $or: [{ CouponName: regex }, { CouponValue: search }],
       };
     }
+    console.log(filter);
     const total = await couponModel.countDocuments(filter);
     let coupon = await couponModel.find(filter).skip(skip).limit(limit);
     if (!coupon) throw new BadRequestError("Không tìm thấy coupon");

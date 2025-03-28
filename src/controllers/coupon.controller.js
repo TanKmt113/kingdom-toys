@@ -26,10 +26,10 @@ class CouponController {
   };
 
   GetCoupon = async (req, res) => {
-    const { query, skip, limit } = req.query;
+    const { search, skip, limit } = req.query;
     new SuccessResponse({
       message: "Get all success",
-      metadata: await couponService.GetCoupon(query, skip, limit),
+      metadata: await couponService.GetCoupon(search, skip, limit),
     }).send(res);
   };
 

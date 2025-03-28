@@ -4,13 +4,14 @@ const { NotFoundError } = require("../response/error.response");
 class GenreService {
   GetAll = async (search = null, skip = 0, limit = 30) => {
     let filter = {};
+    console.log(search)
     if (search) {
-      const regex = { $regex: null, options: "i" };
       filter = {
-        $or: [{ genreName: regex }],
+        $or: [{ genreName: { $regex: search, $options: "i" } }],
       };
     }
-    const response = await genreModel.find(regex).skip(skip).limit(limit);
+    console.log(filter);
+    const response = await genreModel.find(filter).skip(skip).limit(limit);
     return response;
   };
 

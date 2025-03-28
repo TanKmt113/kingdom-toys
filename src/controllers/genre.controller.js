@@ -3,10 +3,10 @@ const { SuccessResponse } = require("../response/success.response");
 
 class GenreController {
   GetAll = async (req, res) => {
-    const { search, skip, limit } = req.query;
+    let { search, skip, limit } = req.query;
     new SuccessResponse({
       message: "get all genre",
-      metadata: await genreService.GetAll(search = null, skip = 0, limit = 30),
+      metadata: await genreService.GetAll(search, (skip = 0), (limit = 30)),
     }).send(res);
   };
 
