@@ -264,14 +264,20 @@ class OrderService {
     limit = 30,
     filter = null,
     search = null,
+    status = null,
     userId
   ) => {
-    // let filterX = {};
-    // if (search) {
-    // }
-    const total = await orderModel.countDocuments();
+    let filterX = { user: userId };
+    if (search) {
+      let regex = { $regex: search, $options: "i" };
+    }
+
+    if (status) {
+      filterX.status = status;
+    }
+    const total = await orderModel.countDocuments(filterX);
     const rawOrders = await orderModel
-      .find({ user: userId })
+      .find(filterX)
       .populate("coupon")
       .populate("items.product")
       .populate({

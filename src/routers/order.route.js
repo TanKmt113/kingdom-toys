@@ -149,6 +149,7 @@ router.get("/order", authentication, AsyncHandle(orderController.GetOrder));
  *        - $ref: '#/components/parameters/Limit'
  *        - $ref: '#/components/parameters/filter'
  *        - $ref: '#/components/parameters/Search'
+ *        - $ref: '#/components/parameters/Status'
  *      security:
  *        - bearerAuth: []
  *      responses:

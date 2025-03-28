@@ -27,7 +27,7 @@ class OrderController {
 
   GetOrderDetail = async (req, res) => {
     const user = req.user;
-    const { search, skip, limit } = req.query;
+    const { search, skip, limit, status } = req.query;
     new SuccessResponse({
       message: "Get order detail success",
       metadata: await orderService.GetOrderByMe(
@@ -35,7 +35,9 @@ class OrderController {
         limit,
         null,
         search,
+        status, 
         user.userId
+
       ),
     }).send(res);
   };
