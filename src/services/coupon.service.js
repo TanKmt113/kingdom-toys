@@ -43,7 +43,6 @@ class CouponService {
 
     const products = await productModel.find({
       _id: { $in: productIds },
-      isActive: true,
     });
     if (products.length !== productIds.length)
       throw new BadRequestError(
@@ -59,7 +58,10 @@ class CouponService {
       if (!item || item.quantity <= 0) return acc;
 
       const discount = product.discount || 0;
+
       const priceAfterDiscount = product.price * (1 - discount / 100);
+
+
       const subtotal = priceAfterDiscount * item.quantity;
       return acc + subtotal;
     }, 0);
