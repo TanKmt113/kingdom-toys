@@ -5,7 +5,7 @@ class CouponController {
   AddCoupon = async (req, res) => {
     new SuccessResponse({
       message: "Create Success",
-      metadata: await couponService.AddCoupon(req.body, query),
+      metadata: await couponService.AddCoupon(req.body),
     }).send(res);
   };
 

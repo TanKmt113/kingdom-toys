@@ -106,7 +106,6 @@ class CouponService {
         $or: [{ CouponName: regex }],
       };
     }
-    console.log(filter);
     const total = await couponModel.countDocuments(filter);
     let coupon = await couponModel.find(filter).skip(skip).limit(limit);
     if (!coupon) throw new BadRequestError("Không tìm thấy coupon");
