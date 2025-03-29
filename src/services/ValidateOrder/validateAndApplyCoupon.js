@@ -30,6 +30,7 @@ const validateAndApplyCoupon = async (couponId, userId, totalPrice) => {
     discountValue = coupon.CouponValue;
   }
 
+  // Ensure discount không vượt quá totalPrice
   if (discountValue > totalPrice) discountValue = totalPrice;
 
   const finalPrice = totalPrice - discountValue;
