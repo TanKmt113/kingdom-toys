@@ -5,11 +5,11 @@ const {
   MinOrderValueHandler,
   UsageLimitHandler,
 } = require("../discountHandler/discount.handler");
+const validateAndApplyCoupon = async (couponId, userId, totalPrice) => {
+  if (!couponId)
+    return { discountValue: 0, finalPrice: totalPrice, couponId: null };
 
-const validateAndApplyCoupon = async (couponId, userId, finalPrice) => {
-  if (!couponId) return { discountValue: 0, finalPrice, couponId: null };
   const coupon = await couponModel.findById(couponId);
-
   if (!coupon) throw new BadRequestError("Mã giảm giá không tồn tại");
 
   const expiryHandler = new ExpiryDateHandler();
@@ -18,14 +18,27 @@ const validateAndApplyCoupon = async (couponId, userId, finalPrice) => {
 
   expiryHandler.setNext(minOrderHandler).setNext(usageHandler);
 
-  const context = { userId, totalPrice: finalPrice, coupon };
+  const context = { userId, totalPrice, coupon };
   await expiryHandler.handle(context);
 
-  let discountValue = coupon.CouponValue || 0;
-  finalPrice -= discountValue;
-  if (finalPrice < 0) finalPrice = 0;
+  let discountValue = 0;
 
-  return { discountValue, finalPrice, couponId: coupon._id };
+  if (coupon.CouponType === "percent") {
+    console.log("percent");
+    discountValue = (totalPrice * coupon.CouponValue) / 100;
+  } else if (coupon.CouponType === "fixed") {
+    discountValue = coupon.CouponValue;
+  }
+
+  if (discountValue > totalPrice) discountValue = totalPrice;
+
+  const finalPrice = totalPrice - discountValue;
+
+  return {
+    discountValue,
+    finalPrice,
+    couponId: coupon._id,
+  };
 };
 
 module.exports = { validateAndApplyCoupon };
