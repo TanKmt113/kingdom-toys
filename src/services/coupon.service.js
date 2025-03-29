@@ -37,29 +37,36 @@ class CouponService {
     return validCoupons;
   };
 
-  ApplyCoupon = async (payload, userId) => {
-    let { items } = payload;
-    let totalPrice = 0;
-
+  ApplyCoupon = async (payload) => {
+    const { items } = payload;
     const productIds = items.map((item) => item.productId);
-    const products = await productModel.find({ _id: { $in: productIds } });
 
+    const products = await productModel.find({
+      _id: { $in: productIds },
+      isActive: true,
+    });
     if (products.length !== productIds.length)
-      throw new BadRequestError("Sản phẩm không tồn tại");
+      throw new BadRequestError(
+        "Sản phẩm không tồn tại hoặc đã bị vô hiệu hóa"
+      );
 
-    totalPrice = products.reduce((acc, product) => {
-      const item = items.find((item) => item.productId == product._id);
-      if (!item) return acc;
+    const itemMap = new Map(
+      items.map((item) => [item.productId.toString(), item])
+    );
 
-      const quantity = item.quantity;
+    const totalPrice = products.reduce((acc, product) => {
+      const item = itemMap.get(product._id.toString());
+      if (!item || item.quantity <= 0) return acc;
+
       const discount = product.discount || 0;
       const priceAfterDiscount = product.price * (1 - discount / 100);
-      const subtotal = priceAfterDiscount * quantity;
-
+      const subtotal = priceAfterDiscount * item.quantity;
       return acc + subtotal;
     }, 0);
+
     const { couponId, discountValue, finalPrice } =
       await validateAndApplyCoupon(payload.coupon, null, totalPrice);
+
     return { couponId, discountValue, finalPrice, totalPrice };
   };
 
