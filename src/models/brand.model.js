@@ -13,7 +13,7 @@ const BrandSchema = new Schema(
       type: String,
       default: "",
     },
-    iamgeLink: String,
+    imageLink: String,
   },
   { timestamps: true, collection: COLLECTION_NAME }
 );
