@@ -173,6 +173,10 @@ router.patch(
  *               newPassword:
  *                  type: string
  */
-router.patch("/update-password", AsyncHandle(userController.UpdatePassword));
+router.patch(
+  "/update-password",
+  authentication,
+  AsyncHandle(userController.UpdatePassword)
+);
 
 module.exports = router;
