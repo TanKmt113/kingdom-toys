@@ -17,10 +17,13 @@ class UserService {
   };
 
   UpdatePassword = async (payload, user) => {
-    const { password } = payload;
+    const { password, newPassword } = payload;
     const holderAccount = await AccountModel.findOne({ _id: user });
     if (!holderAccount) throw new BadRequestError(" Có lỗi khi tạo tài khoản");
-    holderAccount.password = password;
+    const isMatch = await bcrypt.compare(password, holderAccount.password);
+    if(!isMatch) throw new BadRequestError("Đổi mật khẩu lỗi")
+
+    holderAccount.password = newPassword;
     await holderAccount.save();
 
     return "Đổi mật khẩu thành công";

@@ -23,6 +23,8 @@ const { AsyncHandle } = require("../helpers/AsyncHandle");
  *                  brandDescription:
  *                      type: string
  *                      default: "brand description"
+ *                  imageLink:
+ *                      type: string
  */
 
 /**
@@ -109,8 +111,5 @@ router.patch("/brand/:id", AsyncHandle(brandController.Update));
  *                  description: success
  */
 router.delete("/brand/:id", AsyncHandle(brandController.Delete));
-
-
-
 
 module.exports = router;

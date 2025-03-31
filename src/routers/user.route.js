@@ -169,8 +169,9 @@ router.patch(
  *             properties:
  *               password:
  *                 type: string
- *                 example: "newStrongPassword123"
  *                 description: New password for the account
+ *               newPassword:
+ *                  type: string
  */
 router.patch("/update-password", AsyncHandle(userController.UpdatePassword));
 
