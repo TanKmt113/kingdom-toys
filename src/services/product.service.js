@@ -31,7 +31,7 @@ class ProductService {
       }
     }
 
-    console.log(baseFilter)
+    console.log(baseFilter);
 
     const total = await productModel.countDocuments(baseFilter);
     const products = await productModel
@@ -50,7 +50,10 @@ class ProductService {
   };
 
   GetById = async (id) => {
-    const product = await productModel.findOne({ _id: id });
+    const product = await productModel
+      .findOne({ _id: id })
+      .populate("genre")
+      .populate("brand");
     return product;
   };
 

@@ -19,7 +19,7 @@ class UserService {
   UpdatePassword = async (payload, user) => {
     const { password, newPassword } = payload;
     const holderAccount = await AccountModel.findOne({ _id: user });
-    if (!holderAccount) throw new BadRequestError(" Có lỗi khi tạo tài khoản");
+    if (!holderAccount) throw new BadRequestError("Có lỗi khi tạo tài khoản");
     const isMatch = await bcrypt.compare(password, holderAccount.password);
     if(!isMatch) throw new BadRequestError("Đổi mật khẩu lỗi")
 
