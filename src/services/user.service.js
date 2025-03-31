@@ -16,6 +16,16 @@ class UserService {
     return response;
   };
 
+  UpdatePassword = async (payload, user) => {
+    const { password } = payload;
+    const holderAccount = await AccountModel.findOne({ _id: user });
+    if (!holderAccount) throw new BadRequestError(" Có lỗi khi tạo tài khoản");
+    holderAccount.password = password;
+    await holderAccount.save();
+
+    return "Đổi mật khẩu thành công";
+  };
+
   Login = async ({ username, password }) => {
     const foundAccount = await AccountModel.findOne({ email: username });
     if (!foundAccount) throw new AuthFailureError("account not found");

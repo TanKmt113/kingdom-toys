@@ -147,9 +147,31 @@ router.get("/get-me", authentication, AsyncHandle(userController.GetMe));
  */
 router.patch(
   "/update-me",
-    authentication,
+  authentication,
   uploadDisk.fields([{ name: "images", maxCount: 1 }]),
   AsyncHandle(userController.Update)
 );
+
+/**
+ * @swagger
+ * /update-password:
+ *   patch:
+ *     summary: Update user password
+ *     tags: [Account]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               password:
+ *                 type: string
+ *                 example: "newStrongPassword123"
+ *                 description: New password for the account
+ */
+router.patch("/update-password", AsyncHandle(userController.UpdatePassword));
 
 module.exports = router;
