@@ -31,6 +31,20 @@ const { AsyncHandle } = require("../helpers/AsyncHandle");
 
 /**
  * @swagger
+ *  components:
+ *    schemas:
+ *      CommentModel:
+ *        type: object
+ *        properties:
+ *          content:
+ *            type: string
+ *          rating:
+ *            type: number
+ *
+ */
+
+/**
+ * @swagger
  * /products:
  *   get:
  *     tags: [Product]
@@ -148,5 +162,45 @@ router.patch(
  *                  description: Product deleted successfully
  */
 router.delete("/product/:id", AsyncHandle(productController.Delete));
+
+/**
+ * @swagger
+ *  /product/{id}/comment:
+ *    post:
+ *      tags: [Product]
+ *      parameters:
+ *        - $ref: '#/components/parameters/Id'
+ *      requestBody:
+ *        required: true
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/CommentModel'
+ *      responses:
+ *        200:
+ *          description: success
+ */
+router.post("/product/:id/comment", AsyncHandle(productController.AddComment));
+
+/**
+ * @swagger
+ *  /product/{id}/comment/{commentId}:
+ *    delete:
+ *      tags: [Product]
+ *      parameters:
+ *        - $ref: '#/components/parameters/Id'
+ *        - $ref: '#/components/parameters/CommentId'
+ *      responses:
+ *        200:
+ *          description: Successfully removed comment from the product
+ *        400:
+ *          description: Bad request (comment not found or unauthorized)
+ *        404:
+ *          description: Product not found
+ */
+router.delete(
+  "/product/:id/comment/:commentId",
+  AsyncHandle(productController.RemoveComment)
+);
 
 module.exports = router;

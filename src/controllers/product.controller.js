@@ -59,6 +59,33 @@ class ProductController {
       metadata: await productService.Delete(id),
     }).send(res);
   };
+
+  AddComment = async (req, res) => {
+    const productId = req.params.id;
+    const user = req.user;
+    new SuccessResponse({
+      message: "Add comment success",
+      metadata: await productService.AddComment(
+        productId,
+        req.body,
+        user.userId
+      ),
+    }).send(res);
+  };
+
+  RemoveComment = async (req, res) => {
+    const productId = req.params.id;
+    const commentId = req.params.commentId;
+    const user = req.user;
+    new SuccessResponse({
+      message: "RemoveComment",
+      metadata: await productService.RemoveComment(
+        productId,
+        commentId,
+        user.userId
+      ),
+    }).send(res);
+  };
 }
 
 module.exports = new ProductController();

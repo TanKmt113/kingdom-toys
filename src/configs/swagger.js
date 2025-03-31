@@ -53,15 +53,31 @@ const swaggerOptions = {
             type: "string",
           },
         },
+
+        CommentId: {
+          in: "path",
+          name: "commentId",
+          required: true,
+          schema: {
+            type: "string",
+          },
+        },
         Status: {
           in: "path",
           name: "status",
           required: false,
           schema: {
             type: "string",
-            enum: ["pending", "paid", "cancelled", "shipped", "delivered", "draft"]
+            enum: [
+              "pending",
+              "paid",
+              "cancelled",
+              "shipped",
+              "delivered",
+              "draft",
+            ],
           },
-          description: "Trạng thái của đơn hàng"
+          description: "Trạng thái của đơn hàng",
         },
         Skip: {
           in: "query",
