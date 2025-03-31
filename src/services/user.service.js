@@ -23,7 +23,9 @@ class UserService {
     const isMatch = await bcrypt.compare(password, holderAccount.password);
     if(!isMatch) throw new BadRequestError("Đổi mật khẩu lỗi")
 
-    holderAccount.password = newPassword;
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+    holderAccount.password = hashedPassword;
     await holderAccount.save();
 
     return "Đổi mật khẩu thành công";
