@@ -63,6 +63,10 @@ const { AsyncHandle } = require("../helpers/AsyncHandle");
  *           type: string
  *           example: 3:5,6:8
  *         description: Khoảng tuổi (dạng `min:max`), nhiều khoảng cách nhau bởi dấu phẩy
+ *       - in: query
+ *         name: type
+ *         schema:
+ *           type: string
  *     responses:
  *       200:
  *         description: Danh sách sản phẩm

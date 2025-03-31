@@ -34,6 +34,9 @@ const ProductSchema = new Schema(
       type: Number,
       default: 0,
     },
+    type: {
+      type: String,
+    },
     madeIn: {
       type: String,
       default: "",

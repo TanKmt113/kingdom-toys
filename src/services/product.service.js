@@ -11,7 +11,8 @@ class ProductService {
     price = null,
     genre = null,
     sex = null,
-    age = null
+    age = null,
+    type = null
   ) => {
     let baseFilter = parseFilterString(filter, search, ["productName"]);
 
@@ -31,7 +32,8 @@ class ProductService {
       }
     }
 
-    console.log(baseFilter);
+    if (type) baseFilter.type = type;
+    console.log(baseFilter)
 
     const total = await productModel.countDocuments(baseFilter);
     const products = await productModel
