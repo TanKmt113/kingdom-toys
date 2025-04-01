@@ -169,6 +169,8 @@ router.delete("/product/:id", AsyncHandle(productController.Delete));
  *  /product/{id}/comment:
  *    post:
  *      tags: [Product]
+ *      security:
+ *        - bearerAuth: []
  *      parameters:
  *        - $ref: '#/components/parameters/Id'
  *      requestBody:
@@ -192,6 +194,8 @@ router.post(
  *  /product/{id}/comment/{commentId}:
  *    delete:
  *      tags: [Product]
+ *      security:
+ *        - bearerAuth: []
  *      parameters:
  *        - $ref: '#/components/parameters/Id'
  *        - $ref: '#/components/parameters/CommentId'

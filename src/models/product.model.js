@@ -6,7 +6,7 @@ const CommentSchema = new Schema(
   {
     user: {
       type: Schema.Types.ObjectId,
-      ref: "User", // Liên kết đến người dùng (User)
+      ref: "Account", // Liên kết đến người dùng (User)
       required: true,
     },
     content: {

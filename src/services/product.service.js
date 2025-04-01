@@ -56,7 +56,10 @@ class ProductService {
       .findOne({ _id: id })
       .populate("genre")
       .populate("brand")
-      .populate("comments.user");
+      .populate({
+        path: "comments.user",
+        select: "name thumbnail email ",
+      });
     return product;
   };
 
