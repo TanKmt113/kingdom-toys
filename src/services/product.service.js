@@ -56,6 +56,7 @@ class ProductService {
       .findOne({ _id: id })
       .populate("genre")
       .populate("brand")
+      .populate("author")
       .populate({
         path: "comments.user",
         select: "name thumbnail email ",

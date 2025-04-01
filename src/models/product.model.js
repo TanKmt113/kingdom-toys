@@ -74,6 +74,13 @@ const ProductSchema = new Schema(
       type: String,
       enum: ["M", "F", "O"],
     },
+    dimensions: String,
+    pageTotal: Number,
+    weight: Number,
+    author: {
+      type: Schema.Types.ObjectId,
+      ref: "Author",
+    },
   },
   { timestamps: true, collection: COLLECTION_NAME }
 );
