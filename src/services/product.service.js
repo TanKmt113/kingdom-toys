@@ -55,7 +55,8 @@ class ProductService {
     const product = await productModel
       .findOne({ _id: id })
       .populate("genre")
-      .populate("brand");
+      .populate("brand")
+      .populate("comments.user");
     return product;
   };
 
