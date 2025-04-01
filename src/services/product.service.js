@@ -55,7 +55,7 @@ class ProductService {
     const product = await productModel
       .findOne({ _id: id })
       .populate("genre")
-      .populate("brand")
+      .populate("brand");
     return product;
   };
 
@@ -83,7 +83,6 @@ class ProductService {
     product.comments.push({
       user: user,
       content: content,
-      updatedAt: Date.now,
       rating: rating,
     });
 
