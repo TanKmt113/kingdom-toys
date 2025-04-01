@@ -57,18 +57,18 @@ router.get("/author/:id", AsyncHandle(authorController.GetById));
 
 /**
  * @swagger
- *  /author:
- *      post:
- *          tags: [Author]
- *          requestBody:
- *              required: true
- *              content:
- *                  multipart/form-data:
- *                      schema:
- *                          - $ref: '#/components/schemas/AuthorModel'
- *          responses:
- *              200:
- *                  description: success
+ * /author:
+ *   post:
+ *     tags: [Author]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             $ref: '#/components/schemas/AuthorModel'
+ *     responses:
+ *       200:
+ *         description: success
  */
 router.post(
   "/author",
