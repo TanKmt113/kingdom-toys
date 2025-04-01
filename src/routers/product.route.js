@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { uploadDisk } = require("../configs/multer.config");
 const productController = require("../controllers/product.controller");
 const { AsyncHandle } = require("../helpers/AsyncHandle");
+const { authentication } = require("../helpers/auth");
 
 /**
  * @swagger
@@ -180,7 +181,11 @@ router.delete("/product/:id", AsyncHandle(productController.Delete));
  *        200:
  *          description: success
  */
-router.post("/product/:id/comment", AsyncHandle(productController.AddComment));
+router.post(
+  "/product/:id/comment",
+  authentication,
+  AsyncHandle(productController.AddComment)
+);
 
 /**
  * @swagger
@@ -200,6 +205,7 @@ router.post("/product/:id/comment", AsyncHandle(productController.AddComment));
  */
 router.delete(
   "/product/:id/comment/:commentId",
+  authentication,
   AsyncHandle(productController.RemoveComment)
 );
 
