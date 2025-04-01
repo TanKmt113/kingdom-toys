@@ -6,7 +6,7 @@ class AuthorController {
   Create = async (req, res) => {
     const { images } = req.files;
     const items = JSON.parse(req.body.items);
-    if (images) items.images = convertURL(images);
+    if (images) items.images = convertURL(images)[0];
     new SuccessResponse({
       message: "Tạo tác giả thành công",
       metadata: await authorService.CreateAuthor(items),
