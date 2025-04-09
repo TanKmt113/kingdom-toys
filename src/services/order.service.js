@@ -24,7 +24,7 @@ const ORDER_ITEM_GENERATORS = {
 
 class OrderService {
   UpdateStatusOrder = async (orderId, status) => {
-    const holderOrder = await orderModel.findOne({ _id: id });
+    const holderOrder = await orderModel.findOne({ _id: orderId });
     if (!holderOrder) throw new BadRequestError("Không tìm thấy đơn hàng");
 
     holderOrder.status = status;
