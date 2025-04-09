@@ -79,6 +79,9 @@ class ProductService {
     return newProduct;
   };
 
+
+  
+
   AddComment = async (id, payload, user) => {
     const { content, rating } = payload;
 
