@@ -111,17 +111,13 @@ router.post("/export-data", async (req, res) => {
  */
 router.post("/import-data", async (req, res) => {
   try {
-    // Đọc dữ liệu từ tệp JSON
     const rawData = JSON.parse(fs.readFileSync("data.json", "utf8"));
 
-    // Lặp qua từng collection trong rawData
     for (const collectionName in rawData) {
       if (rawData.hasOwnProperty(collectionName)) {
         const collectionData = rawData[collectionName];
 
-        // Kiểm tra nếu collectionData không phải là mảng hoặc là mảng rỗng
         if (Array.isArray(collectionData) && collectionData.length > 0) {
-          // Chèn dữ liệu vào collection trong MongoDB
           const collection = mongoose.connection.collection(collectionName);
           await collection.insertMany(collectionData);
           console.log(`Imported data to ${collectionName}`);
