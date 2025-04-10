@@ -8,7 +8,7 @@ class ProductService {
     skip = 0,
     limit = 30,
     filter = null,
-    search = null,
+    search = " ",
     price = null,
     genre = null,
     sex = null,
