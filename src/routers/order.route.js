@@ -92,6 +92,9 @@ const { authentication } = require("../helpers/auth");
  *         notes:
  *           type: string
  *           description: Ghi chú thêm (nếu có)
+ *         orderType:
+ *           type: string
+ *           description: Cart | Now
  */
 
 /**

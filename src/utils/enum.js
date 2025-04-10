@@ -12,6 +12,7 @@ const DISCOUNTTYPE = {
 const ORDERSTATUS = {
   PENDING: "pending",
   PAID: "paid",
+  CONFIRMED: "confirmed",
   CANCELLED: "cancelled",
   SHIPPED: "shipped",
   DELIVERED: "delivered",

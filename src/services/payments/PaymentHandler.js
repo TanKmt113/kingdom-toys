@@ -6,15 +6,47 @@ const { BadRequestError } = require("../../response/error.response");
 const configs = require("../../configs/index").configs;
 const orderModel = require("../../models/order.model");
 const { ORDERSTATUS } = require("../../utils/enum");
+const productModel = require("../../models/product.model");
 
 class PaymentHandler {
   async handler(order, payload) {
     throw new error("This method must be implemented");
   }
+
+  async processOrder(orderInput, userId) {
+    const { orderType } = orderInput;
+
+    if (orderType == "Cart") {
+      console.log(userId);
+      const cart = await cartModel.findOne({ user: userId });
+      if (cart) await cart.deleteOne();
+    }
+
+    const productPromises = orderInput.items.map(async (item) => {
+      const product = await productModel.findOne({ _id: item.product });
+      if (!product) {
+        throw new BadRequestError(
+          "Không thể cập nhật sản phẩm: ",
+          item.product
+        );
+      }
+
+      if (product.quantity < item.quantity) {
+        throw new BadRequestError("Sản phẩm không đủ số lượng: ", item.product);
+      }
+
+      product.quantity -= item.quantity;
+
+      await product.save();
+    });
+
+    await Promise.all(productPromises);
+  }
 }
 
 class CODPayment extends PaymentHandler {
   async handler(orderInput, userId) {
+    this.processOrder(orderInput, userId);
     const order = await orderModel.findOne({ _id: orderInput._id });
     if (!order) throw new BadRequestError("Order not found");
     order.status = ORDERSTATUS.PENDING;
@@ -26,6 +58,7 @@ class CODPayment extends PaymentHandler {
 
 class ZaloPayment extends PaymentHandler {
   async handler(orderInput, userId) {
+    this.processOrder(orderInput, userId);
     const items = orderInput.items;
     const orderId = orderInput._id;
     const transID = Math.floor(Math.random() * 1000000);
@@ -50,7 +83,6 @@ class ZaloPayment extends PaymentHandler {
       bank_code: "",
     };
 
-
     const data =
       configs.ZALO_PAY.app_id +
       "|" +
@@ -72,7 +104,6 @@ class ZaloPayment extends PaymentHandler {
         params: order,
       });
 
-      await cartModel.deleteOne({ _id: userId });
       return result.data;
     } catch (error) {
       throw new BadRequestError("Payment failed: ", error);
