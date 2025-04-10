@@ -8,7 +8,7 @@ class ProductService {
     skip = 0,
     limit = 30,
     filter = null,
-    search = null,
+    search = " ",
     price = null,
     genre = null,
     sex = null,
@@ -17,9 +17,12 @@ class ProductService {
   ) => {
     let baseFilter = {};
     const searchStr = String(search).trim();
-    baseFilter = {
-      $or: [{ productName: { $regex: searchStr, $options: "i" } }],
-    };
+
+    if (searchStr) {
+      baseFilter = {
+        $or: [{ productName: { $regex: searchStr, $options: "i" } }],
+      };
+    }
 
     let priceFilter = parsePriceToFilter(price);
     if (priceFilter) baseFilter = { ...baseFilter, ...priceFilter };
