@@ -92,6 +92,9 @@ const { authentication } = require("../helpers/auth");
  *         notes:
  *           type: string
  *           description: Ghi chú thêm (nếu có)
+ *         orderType:
+ *           type: string
+ *           description: Cart | Now
  */
 
 /**
@@ -218,17 +221,6 @@ router.post(
  *        - $ref: '#/components/parameters/Id'
  *      security:
  *        - bearerAuth: []
- *      requestBody:
- *        required: true
- *        content:
- *          application/json:
- *            schema:
- *              type: object
- *              properties:
- *                status:
- *                  type: string
- *                  enum: [pending, paid, cancelled, shipped, delivered, draft]  # Các giá trị hợp lệ cho status
- *                  example: "pending"
  *      responses:
  *        200:
  *          description: success

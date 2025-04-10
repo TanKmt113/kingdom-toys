@@ -12,11 +12,11 @@ class OrderController {
 
   UpdateStatusOrder = async (req, res) => {
     const orderId = req.params.id;
-    const { status } = req.body;
+  
 
     new SuccessResponse({
       message: "Update success",
-      metadata: await orderService.UpdateStatusOrder(orderId, status),
+      metadata: await orderService.UpdateStatusOrder(orderId),
     }).send(res);
   };
 

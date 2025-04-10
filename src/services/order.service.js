@@ -23,13 +23,13 @@ const ORDER_ITEM_GENERATORS = {
 };
 
 class OrderService {
-  UpdateStatusOrder = async (orderId, status) => {
+  UpdateStatusOrder = async (orderId) => {
     const holderOrder = await orderModel.findOne({ _id: orderId });
     if (!holderOrder) throw new BadRequestError("Không tìm thấy đơn hàng");
 
-    holderOrder.status = status;
+    holderOrder.status = ORDERSTATUS.CONFIRMED;
     await holderOrder.save();
-    return "Success"
+    return "Success";
   };
 
   Checkout = async (payload, userId) => {
@@ -184,6 +184,7 @@ class OrderService {
       district,
       province,
       fullname,
+      orderType,
     } = payload;
 
     if (!paymentMethod)
@@ -213,7 +214,7 @@ class OrderService {
     }, 0);
 
     let couponId = null;
-    let discountValue = 0;
+
     let finalPrice = totalPrice;
 
     if (coupon) {
@@ -230,7 +231,6 @@ class OrderService {
       products.map((product) => [product._id.toString(), product])
     );
 
-    // Cập nhật price và discount cho từng item
     items = items.map((item) => {
       const product = productMap[item.productId];
       if (!product) {
@@ -245,7 +245,6 @@ class OrderService {
       };
     });
 
-    // Tạo order và lưu vào database
     const order = new orderModel({
       items,
       totalPrice,
@@ -268,6 +267,7 @@ class OrderService {
 
     await order.save();
 
+    order.orderType = orderType;
     const paymentHandler = PaymentHandler.getHandler(payload.paymentMethod);
     const res = await paymentHandler.handler(order, userId);
 
@@ -277,7 +277,7 @@ class OrderService {
   GetOrderByMe = async (
     skip = 0,
     limit = 30,
-    filter = null,
+
     search = null,
     status = null,
     userId
