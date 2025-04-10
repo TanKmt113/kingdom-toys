@@ -15,7 +15,11 @@ class ProductService {
     age = null,
     type = null
   ) => {
-    let baseFilter = parseFilterString(filter, search, ["productName"]);
+    let baseFilter = {};
+    const searchStr = String(search).trim();
+    baseFilter = {
+      $or: [{ productName: { $regex: searchStr, $options: "i" } }],
+    };
 
     let priceFilter = parsePriceToFilter(price);
     if (priceFilter) baseFilter = { ...baseFilter, ...priceFilter };
@@ -33,6 +37,7 @@ class ProductService {
       }
     }
 
+    console.log(baseFilter);
     if (type) baseFilter.type = type;
 
     const total = await productModel.countDocuments(baseFilter);
@@ -78,9 +83,6 @@ class ProductService {
     const newProduct = await productModel.create(data);
     return newProduct;
   };
-
-
-  
 
   AddComment = async (id, payload, user) => {
     const { content, rating } = payload;
