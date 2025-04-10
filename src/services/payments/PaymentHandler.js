@@ -50,7 +50,7 @@ class ZaloPayment extends PaymentHandler {
       bank_code: "",
     };
 
-    // appid|app_trans_id|appuser|amount|apptime|embeddata|item
+
     const data =
       configs.ZALO_PAY.app_id +
       "|" +

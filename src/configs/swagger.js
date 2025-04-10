@@ -13,10 +13,10 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: "http://localhost:3001", // Địa chỉ server của API
+        url: "http://localhost:3005", // Địa chỉ server của API
       },
       {
-        url: "http://localhost:3005",
+        url: "http://localhost:3000",
       },
     ],
     components: {
@@ -53,15 +53,31 @@ const swaggerOptions = {
             type: "string",
           },
         },
+
+        CommentId: {
+          in: "path",
+          name: "commentId",
+          required: true,
+          schema: {
+            type: "string",
+          },
+        },
         Status: {
           in: "path",
           name: "status",
           required: false,
           schema: {
             type: "string",
-            enum: ["pending", "paid", "cancelled", "shipped", "delivered", "draft"]
+            enum: [
+              "pending",
+              "paid",
+              "cancelled",
+              "shipped",
+              "delivered",
+              "draft",
+            ],
           },
-          description: "Trạng thái của đơn hàng"
+          description: "Trạng thái của đơn hàng",
         },
         Skip: {
           in: "query",
