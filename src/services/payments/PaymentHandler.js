@@ -17,7 +17,7 @@ class PaymentHandler {
     const { orderType } = orderInput;
 
     if (orderType == "Cart") {
-      console.log(userId);
+ 
       const cart = await cartModel.findOne({ user: userId });
       if (cart) await cart.deleteOne();
     }

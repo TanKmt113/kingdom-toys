@@ -23,11 +23,11 @@ const ORDER_ITEM_GENERATORS = {
 };
 
 class OrderService {
-  UpdateStatusOrder = async (orderId, status) => {
+  UpdateStatusOrder = async (orderId) => {
     const holderOrder = await orderModel.findOne({ _id: orderId });
     if (!holderOrder) throw new BadRequestError("Không tìm thấy đơn hàng");
 
-    holderOrder.status = status;
+    holderOrder.status = ORDERSTATUS.CONFIRMED;
     await holderOrder.save();
     return "Success";
   };
