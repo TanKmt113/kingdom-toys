@@ -12,7 +12,6 @@ class OrderController {
 
   UpdateStatusOrder = async (req, res) => {
     const orderId = req.params.id;
-  
 
     new SuccessResponse({
       message: "Update success",
@@ -50,7 +49,7 @@ class OrderController {
       metadata: await orderService.GetOrderByMe(
         skip,
         limit,
-        null,
+
         search,
         status,
         user.userId
