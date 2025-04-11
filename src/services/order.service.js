@@ -214,6 +214,7 @@ class OrderService {
     }, 0);
 
     let couponId = null;
+    let discountValue = 0;
 
     let finalPrice = totalPrice;
 
