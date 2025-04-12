@@ -86,6 +86,27 @@ class UserService {
     return holderAccount;
   };
 
+  seedData = async () => {
+    const hashedPasswordAdmin = await bcrypt.hash("123", 10);
+    const hashedPasswordClient = await bcrypt.hash("123", 10);
+    await AccountModel.insertMany([
+      {
+        name: "Admin",
+        email: "admin@gmail.com",
+        password: hashedPasswordAdmin,
+        role: "A",
+      },
+      {
+        name: "Client",
+        email: "client@gmail.com",
+        password: hashedPasswordClient,
+        role: "C",
+      },
+    ]);
+
+    return 1;
+  };
+
   HandleRefreshToken = async (user, refreshToken) => {
     const userId = user.userId;
     const email = user.email;
