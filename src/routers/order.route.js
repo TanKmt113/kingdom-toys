@@ -92,6 +92,9 @@ const { authentication } = require("../helpers/auth");
  *         notes:
  *           type: string
  *           description: Ghi chú thêm (nếu có)
+ *         orderType:
+ *           type: string
+ *           description: Cart | Now
  */
 
 /**
@@ -207,4 +210,31 @@ router.post(
   authentication,
   AsyncHandle(orderController.CheckOutOrderWithPayload)
 );
+
+/**
+ * @swagger
+ *  /order/{id}/status:
+ *    post:
+ *      summary: Update status
+ *      tags: [Order]
+ *      parameters:
+ *        - $ref: '#/components/parameters/Id'
+ *      security:
+ *        - bearerAuth: []
+ *      responses:
+ *        200:
+ *          description: success
+ *        400:
+ *          description: Invalid request, e.g., missing status field
+ *        404:
+ *          description: Order not found
+ *        500:
+ *          description: Server error
+ */
+router.post(
+  "/order/:id/status",
+  authentication,
+  AsyncHandle(orderController.UpdateStatusOrder)
+);
+
 module.exports = router;

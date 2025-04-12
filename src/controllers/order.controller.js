@@ -10,6 +10,15 @@ class OrderController {
     }).send(res);
   };
 
+  UpdateStatusOrder = async (req, res) => {
+    const orderId = req.params.id;
+
+    new SuccessResponse({
+      message: "Update success",
+      metadata: await orderService.UpdateStatusOrder(orderId),
+    }).send(res);
+  };
+
   GetOrderById = async (req, res) => {
     const { id } = req.params;
     new SuccessResponse({
@@ -40,7 +49,7 @@ class OrderController {
       metadata: await orderService.GetOrderByMe(
         skip,
         limit,
-        null,
+
         search,
         status,
         user.userId

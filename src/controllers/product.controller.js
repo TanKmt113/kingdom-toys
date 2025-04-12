@@ -4,7 +4,8 @@ const { convertURL } = require("../utils");
 
 class ProductController {
   GetAll = async (req, res) => {
-    const { skip, limit, filter, search, price, genre, sex, age } = req.query;
+    const { skip, limit, filter, search, price, genre, sex, age, type } =
+      req.query;
     new SuccessResponse({
       message: "Get all success",
       metadata: await productService.GetAll(
@@ -15,7 +16,8 @@ class ProductController {
         price,
         genre,
         sex,
-        age
+        age,
+        type
       ),
     }).send(res);
   };
@@ -55,6 +57,33 @@ class ProductController {
     const id = req.params.id;
     new SuccessResponse({
       metadata: await productService.Delete(id),
+    }).send(res);
+  };
+
+  AddComment = async (req, res) => {
+    const productId = req.params.id;
+    const user = req.user;
+    new SuccessResponse({
+      message: "Add comment success",
+      metadata: await productService.AddComment(
+        productId,
+        req.body,
+        user.userId
+      ),
+    }).send(res);
+  };
+
+  RemoveComment = async (req, res) => {
+    const productId = req.params.id;
+    const commentId = req.params.commentId;
+    const user = req.user;
+    new SuccessResponse({
+      message: "RemoveComment",
+      metadata: await productService.RemoveComment(
+        productId,
+        commentId,
+        user.userId
+      ),
     }).send(res);
   };
 }

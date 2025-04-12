@@ -12,6 +12,7 @@ const DISCOUNTTYPE = {
 const ORDERSTATUS = {
   PENDING: "pending",
   PAID: "paid",
+  CONFIRMED: "confirmed",
   CANCELLED: "cancelled",
   SHIPPED: "shipped",
   DELIVERED: "delivered",
@@ -24,7 +25,13 @@ const PAYMENT_METHOD = {
 };
 
 const ROLE = {
-  ADMIN: "A", 
-  CLIENT: "C"
-}
-module.exports = { ModelStatus, DISCOUNTTYPE, ORDERSTATUS, PAYMENT_METHOD, ROLE };
+  ADMIN: "A",
+  CLIENT: "C",
+};
+module.exports = {
+  ModelStatus,
+  DISCOUNTTYPE,
+  ORDERSTATUS,
+  PAYMENT_METHOD,
+  ROLE,
+};

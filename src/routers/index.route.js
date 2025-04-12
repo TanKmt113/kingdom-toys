@@ -14,6 +14,7 @@ router.use("/", require("./branner.route.js"));
 router.use("/", require("./nation.route.js"));
 router.use("/", require("./dashboard.route.js"));
 router.use("/", require("./payment.route.js"));
+router.use("/", require("./author.route.js"));
 
 router.use("/", require("./async.route.js"));
 module.exports = router;

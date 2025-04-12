@@ -4,6 +4,7 @@ const { seedData } = require("../services/user.service");
 
 const connectString = `mongodb://${configs.MONGOOSE.HOST}:${configs.MONGOOSE.PORT}/${configs.MONGOOSE.NAME}`;
 
+
 class Database {
   constructor() {
     this.connect();

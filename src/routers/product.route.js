@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { uploadDisk } = require("../configs/multer.config");
 const productController = require("../controllers/product.controller");
 const { AsyncHandle } = require("../helpers/AsyncHandle");
+const { authentication } = require("../helpers/auth");
 
 /**
  * @swagger
@@ -27,6 +28,20 @@ const { AsyncHandle } = require("../helpers/AsyncHandle");
  *                          type: string
  *                          format: binary
  *                      description: List of product images
+ */
+
+/**
+ * @swagger
+ *  components:
+ *    schemas:
+ *      CommentModel:
+ *        type: object
+ *        properties:
+ *          content:
+ *            type: string
+ *          rating:
+ *            type: number
+ *
  */
 
 /**
@@ -63,6 +78,10 @@ const { AsyncHandle } = require("../helpers/AsyncHandle");
  *           type: string
  *           example: 3:5,6:8
  *         description: Khoảng tuổi (dạng `min:max`), nhiều khoảng cách nhau bởi dấu phẩy
+ *       - in: query
+ *         name: type
+ *         schema:
+ *           type: string
  *     responses:
  *       200:
  *         description: Danh sách sản phẩm
@@ -144,5 +163,54 @@ router.patch(
  *                  description: Product deleted successfully
  */
 router.delete("/product/:id", AsyncHandle(productController.Delete));
+
+/**
+ * @swagger
+ *  /product/{id}/comment:
+ *    post:
+ *      tags: [Product]
+ *      security:
+ *        - bearerAuth: []
+ *      parameters:
+ *        - $ref: '#/components/parameters/Id'
+ *      requestBody:
+ *        required: true
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/CommentModel'
+ *      responses:
+ *        200:
+ *          description: success
+ */
+router.post(
+  "/product/:id/comment",
+  authentication,
+  AsyncHandle(productController.AddComment)
+);
+
+/**
+ * @swagger
+ *  /product/{id}/comment/{commentId}:
+ *    delete:
+ *      tags: [Product]
+ *      security:
+ *        - bearerAuth: []
+ *      parameters:
+ *        - $ref: '#/components/parameters/Id'
+ *        - $ref: '#/components/parameters/CommentId'
+ *      responses:
+ *        200:
+ *          description: Successfully removed comment from the product
+ *        400:
+ *          description: Bad request (comment not found or unauthorized)
+ *        404:
+ *          description: Product not found
+ */
+router.delete(
+  "/product/:id/comment/:commentId",
+  authentication,
+  AsyncHandle(productController.RemoveComment)
+);
 
 module.exports = router;
