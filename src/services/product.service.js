@@ -1,5 +1,9 @@
 const productModel = require("../models/product.model");
-const { parseFilterString, parsePriceToFilter } = require("../utils");
+const {
+  parseFilterString,
+  parsePriceToFilter,
+  convertToObjectIdMongose,
+} = require("../utils");
 const { Pagination } = require("../response/success.response");
 const { BadRequestError } = require("../response/error.response");
 
@@ -59,10 +63,10 @@ class ProductService {
   };
 
   GetById = async (id) => {
-    const product = await productModel
-      .findOne({ _id: id })
-      .populate("genre")
-      .populate("author");
+    const product = await productModel.findOne({
+      _id: convertToObjectIdMongose(id),
+    }).populate('brand').populate('genre');
+
     return product;
   };
 
