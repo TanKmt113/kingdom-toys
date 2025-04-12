@@ -21,7 +21,7 @@ class UserService {
     const holderAccount = await AccountModel.findOne({ _id: user });
     if (!holderAccount) throw new BadRequestError("Có lỗi khi tạo tài khoản");
     const isMatch = await bcrypt.compare(password, holderAccount.password);
-    if(!isMatch) throw new BadRequestError("Đổi mật khẩu lỗi")
+    if (!isMatch) throw new BadRequestError("Đổi mật khẩu lỗi");
 
     const hashedPassword = await bcrypt.hash(newPassword, 10);
 
@@ -102,6 +102,9 @@ class UserService {
   };
 
   seedData = async () => {
+    const data = AccountModel.findOne({ email: "admin@gmail.com" });
+    if (data) return;
+
     const hashedPasswordAdmin = await bcrypt.hash("123", 10);
     const hashedPasswordClient = await bcrypt.hash("123", 10);
     await AccountModel.insertMany([
