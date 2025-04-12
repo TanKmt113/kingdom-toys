@@ -38,6 +38,7 @@ const validateAndApplyCoupon = async (couponId, userId, totalPrice) => {
   return {
     discountValue,
     finalPrice,
+    couponValue: coupon.CouponValue,
     couponId: coupon._id,
   };
 };
