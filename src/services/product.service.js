@@ -63,7 +63,7 @@ class ProductService {
   };
 
   GetProductByName = async (name, skip, limit) => {
-    const brand = await brandModel.findOne({
+    const genre = await genreModel.findOne({
       brandName: { $regex: name, $options: "i" },
     });
 
