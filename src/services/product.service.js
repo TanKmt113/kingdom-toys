@@ -7,11 +7,13 @@ class ProductService {
   GetAll = async (
     skip = 0,
     limit = 30,
+    filter = null,
     search = " ",
     price = null,
     genre = null,
     sex = null,
-    age = null
+    age = null,
+    type = null
   ) => {
     let baseFilter = {};
     const searchStr = String(search).trim();
@@ -39,6 +41,8 @@ class ProductService {
         baseFilter.age = Number(age);
       }
     }
+
+    console.log(baseFilter);
 
     const total = await productModel.countDocuments(baseFilter);
     const products = await productModel
