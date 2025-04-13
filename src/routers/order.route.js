@@ -237,4 +237,29 @@ router.post(
   AsyncHandle(orderController.UpdateStatusOrder)
 );
 
+/**
+ * @swagger
+ *  /order/{id}/cancel:
+ *    post:
+ *      summary: cancel status
+ *      tags: [Order]
+ *      parameters:
+ *        - $ref: '#/components/parameters/Id'
+ *      security:
+ *        - bearerAuth: []
+ *      responses:
+ *        200:
+ *          description: success
+ *        400:
+ *          description: Invalid request, e.g., missing status field
+ *        404:
+ *          description: Order not found
+ *        500:
+ *          description: Server error
+ */
+router.post(
+  "/order/:id/cancel",
+  authentication,
+  AsyncHandle(orderController.CancelOrder)
+);
 module.exports = router;

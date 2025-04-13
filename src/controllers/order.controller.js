@@ -19,6 +19,15 @@ class OrderController {
     }).send(res);
   };
 
+  CancelOrder = async (req, res) => {
+    const orderId = req.params.id;
+
+    new SuccessResponse({
+      message: "Cancel success",
+      metadata: await orderService.CancelOrder(orderId),
+    }).send(res);
+  };
+
   GetOrderById = async (req, res) => {
     const { id } = req.params;
     new SuccessResponse({

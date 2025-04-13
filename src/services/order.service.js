@@ -32,6 +32,14 @@ class OrderService {
     return "Success";
   };
 
+  CancelOrder = async (orderId) => {
+    const holderOrder = await orderModel.findOne({ _id: orderId });
+    if (!holderOrder) throw new BadRequestError("Không tìm thấy giỏ hàng");
+    holderOrder.status = ORDERSTATUS.CANCELLED;
+    await holderOrder.save();
+    return "Suceess";
+  };
+
   Checkout = async (payload, userId) => {
     if (!payload.paymentMethod)
       throw new BadRequestError("Không có phương thức thanh toán");
@@ -306,8 +314,8 @@ class OrderService {
 
     const orders = rawOrders.map((order) => {
       const flatItems = order.items.map((item) => {
-        const product = item.product || {}; 
-        const discount = item.discount || 0; 
+        const product = item.product || {};
+        const discount = item.discount || 0;
 
         return {
           _id: item._id,
