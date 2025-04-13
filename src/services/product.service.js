@@ -64,7 +64,7 @@ class ProductService {
 
   GetProductByName = async (name, skip, limit) => {
     const brand = await brandModel.findOne({
-      brandName: { $regex: name.trim(), $options: "i" },
+      brandName: { $regex: name, $options: "i" },
     });
 
     if (!brand) throw new BadRequestError("Không tìm thấy thương hiệu phù hợp");
@@ -76,7 +76,6 @@ class ProductService {
       .populate("brand");
 
     return products;
-
   };
 
   GetById = async (id) => {
