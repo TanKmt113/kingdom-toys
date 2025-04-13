@@ -62,13 +62,16 @@ class ProductService {
     });
   };
 
-  GetProductByName = async (name) => {
+  GetProductByName = async (name, skip, limit) => {
     console.log(name);
     const holder = await brandModel.findOne({
       brandName: { $regex: name.toString(), $options: "i" },
     });
 
-    const products = await productModel.findOne({ brand: holder._id });
+    const products = await productModel
+      .findOne({ brand: holder._id })
+      .skip(skip)
+      .limit(limit);
     return products;
   };
 

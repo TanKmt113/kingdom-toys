@@ -220,6 +220,8 @@ router.delete(
  *      tags: [Product]
  *      parameters:
  *        - $ref: '#/components/parameters/Name'
+ *        - $ref: '#/components/parameters/Skip'
+ *        - $ref: '#/components/parameters/Limit'
  *      responses:
  *        200:
  *          description: Successfully removed comment from the product

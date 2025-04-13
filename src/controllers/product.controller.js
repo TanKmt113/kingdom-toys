@@ -23,11 +23,11 @@ class ProductController {
   };
 
   GetByBrand = async (req, res) => {
-    const { name } = req.params;
+    const { name, skip, limit } = req.params;
 
     new SuccessResponse({
       message: "Get by brand",
-      metadata: await productService.GetProductByName(name),
+      metadata: await productService.GetProductByName(name, skip, limit),
     }).send(res);
   };
 
