@@ -67,7 +67,7 @@ class ProductService {
       genreName: { $regex: name, $options: "i" },
     });
 
-    if (!brand) throw new BadRequestError("Không tìm thấy thương hiệu phù hợp");
+    if (!genre) throw new BadRequestError("Không tìm thấy thương hiệu phù hợp");
 
     const products = await productModel
       .find({ genre: genre._id })
