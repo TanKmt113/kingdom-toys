@@ -64,7 +64,7 @@ class ProductService {
 
   GetProductByName = async (name, skip, limit) => {
     const holder = await brandModel.findOne({
-      brandName: { $regex: name, $options: "i" },
+      brandName: { $regex: name.trim().toString(), $options: "i" },
     });
     if (!holder) throw new BadRequestError("Không tìm thấy ");
 
