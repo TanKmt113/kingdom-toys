@@ -63,16 +63,20 @@ class ProductService {
   };
 
   GetProductByName = async (name, skip, limit) => {
-    const holder = await brandModel.findOne({
-      brandName: { $regex: name.trim().toString(), $options: "i" },
+    const brand = await brandModel.findOne({
+      brandName: { $regex: name.trim(), $options: "i" },
     });
-    if (!holder) throw new BadRequestError("Không tìm thấy ");
+
+    if (!brand) throw new BadRequestError("Không tìm thấy thương hiệu phù hợp");
 
     const products = await productModel
-      .findOne({ brand: holder._id })
+      .find({ brand: brand._id })
       .skip(skip)
-      .limit(limit);
+      .limit(limit)
+      .populate("brand");
+
     return products;
+
   };
 
   GetById = async (id) => {
