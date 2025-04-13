@@ -70,7 +70,7 @@ class ProductService {
     if (!brand) throw new BadRequestError("Không tìm thấy thương hiệu phù hợp");
 
     const products = await productModel
-      .find({ brand: brand._id })
+      .find({ genre: genre._id })
       .skip(skip)
       .limit(limit)
       .populate("brand");
