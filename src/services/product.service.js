@@ -64,7 +64,7 @@ class ProductService {
 
   GetProductByName = async (name, skip, limit) => {
     const genre = await genreModel.findOne({
-      brandName: { $regex: name, $options: "i" },
+      genreName: { $regex: name, $options: "i" },
     });
 
     if (!brand) throw new BadRequestError("Không tìm thấy thương hiệu phù hợp");
