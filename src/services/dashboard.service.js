@@ -1,5 +1,6 @@
 const productModel = require("../models/product.model");
 const orderModel = require("../models/order.model");
+const accountModel = require("../models/user.model");
 
 class DashboardService {
   GetDashboasd = async () => {
@@ -44,11 +45,14 @@ class DashboardService {
 
     // Convert sang array để trả về
     const items = Object.values(mergedProducts);
+
+    const clientUser = await accountModel.countDocuments({ role: "C" });
     return {
       productCount,
       orderCount,
       totalPriceOfOrder,
-      top5LatestOrders: items,
+      top5LastestProducts: items,
+      clientUer: clientUser,
     };
   };
 }

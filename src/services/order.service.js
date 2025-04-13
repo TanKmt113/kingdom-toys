@@ -306,8 +306,8 @@ class OrderService {
 
     const orders = rawOrders.map((order) => {
       const flatItems = order.items.map((item) => {
-        const product = item.product || {}; // fallback nếu null
-        const discount = item.discount || 0; // fallback nếu discount là null/undefined
+        const product = item.product || {}; 
+        const discount = item.discount || 0; 
 
         return {
           _id: item._id,

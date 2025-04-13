@@ -1,9 +1,5 @@
 const productModel = require("../models/product.model");
-const {
-  parseFilterString,
-  parsePriceToFilter,
-  convertToObjectIdMongose,
-} = require("../utils");
+const { parsePriceToFilter, convertToObjectIdMongose } = require("../utils");
 const { Pagination } = require("../response/success.response");
 const { BadRequestError } = require("../response/error.response");
 
@@ -11,13 +7,11 @@ class ProductService {
   GetAll = async (
     skip = 0,
     limit = 30,
-    filter = null,
     search = " ",
     price = null,
     genre = null,
     sex = null,
-    age = null,
-    type = null
+    age = null
   ) => {
     let baseFilter = {};
     const searchStr = String(search).trim();
@@ -31,7 +25,9 @@ class ProductService {
     let priceFilter = parsePriceToFilter(price);
     if (priceFilter) baseFilter = { ...baseFilter, ...priceFilter };
 
-    if (genre) baseFilter.genre = genre;
+    if (genre) {
+      baseFilter.$or = [{ brand: genre }, { genre: genre }];
+    }
 
     if (sex) baseFilter.sex = sex;
 
@@ -66,7 +62,10 @@ class ProductService {
         _id: convertToObjectIdMongose(id),
       })
       .populate("brand")
-      .populate("genre");
+      .populate("genre")
+      .populate({
+        path: "comments.user",
+      });
 
     return product;
   };
