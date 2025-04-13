@@ -21,6 +21,16 @@ class ProductController {
       ),
     }).send(res);
   };
+
+  GetByBrand = async (req, res) => {
+    const { name } = req.params;
+
+    new SuccessResponse({
+      message: "Get by brand",
+      metadata: await productService.GetProductByName(name),
+    }).send(res);
+  };
+
   GetById = async (req, res) => {
     const id = req.params.id;
     new SuccessResponse({

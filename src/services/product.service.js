@@ -1,4 +1,6 @@
 const productModel = require("../models/product.model");
+const genreModel = require("../models/genre.model");
+const brandModel = require("../models/brand.model");
 const { parsePriceToFilter, convertToObjectIdMongose } = require("../utils");
 const { Pagination } = require("../response/success.response");
 const { BadRequestError } = require("../response/error.response");
@@ -58,6 +60,16 @@ class ProductService {
       result: products,
       total: total,
     });
+  };
+
+  GetProductByName = async (name) => {
+    console.log(name);
+    const holder = await brandModel.findOne({
+      brandName: { $regex: name.toString(), $options: "i" },
+    });
+
+    const products = await productModel.findOne({ brand: holder._id });
+    return products;
   };
 
   GetById = async (id) => {

@@ -53,7 +53,14 @@ const swaggerOptions = {
             type: "string",
           },
         },
-
+        Name: {
+          in: "path",
+          name: "name",
+          required: true,
+          schema: {
+            type: "string",
+          },
+        },
         CommentId: {
           in: "path",
           name: "commentId",
