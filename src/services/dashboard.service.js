@@ -1,5 +1,6 @@
 const productModel = require("../models/product.model");
 const orderModel = require("../models/order.model");
+const accountModel = require("../models/user.model");
 
 class DashboardService {
   GetDashboasd = async () => {
@@ -12,25 +13,28 @@ class DashboardService {
     totalPriceOfOrder = orderHolder.reduce((acc, item) => {
       return acc + item.finalPrice;
     }, 0);
-
-    let top5LatestOrders = await orderModel
+    const mergedProducts = {};
+    const orders = await orderModel
       .find()
       .sort({ createdAt: -1 })
-      .limit(5);
-
-    const mergedProducts = {};
-
-    top5LatestOrders.forEach((order) => {
+      .limit(5)
+      .populate("items.product", "productName price images")
+      .lean();
+    orders.forEach((order) => {
       order.items.forEach((item) => {
         const product = item.product;
+
+        // Bỏ qua nếu product bị null do populate fail
+        if (!product || !product._id) return;
+
         const productId = product._id.toString();
 
         if (!mergedProducts[productId]) {
           mergedProducts[productId] = {
             productId: productId,
-            name: product.name,
+            name: product.productName,
             price: product.price,
-            thumbnail: product.thumbnail,
+            thumbnail: product.images,
             quantity: item.quantity,
           };
         } else {
@@ -38,12 +42,17 @@ class DashboardService {
         }
       });
     });
-    const topProductsFromLatestOrders = Object.values(mergedProducts);
+
+    // Convert sang array để trả về
+    const items = Object.values(mergedProducts);
+
+    const clientUser = await accountModel.countDocuments({ role: "C" });
     return {
       productCount,
       orderCount,
       totalPriceOfOrder,
-      topProductsFromLatestOrders,
+      top5LastestProducts: items,
+      clientUer: clientUser,
     };
   };
 }

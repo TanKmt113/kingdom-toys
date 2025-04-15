@@ -1,5 +1,7 @@
 const productModel = require("../models/product.model");
-const { parseFilterString, parsePriceToFilter } = require("../utils");
+const genreModel = require("../models/genre.model");
+const brandModel = require("../models/brand.model");
+const { parsePriceToFilter, convertToObjectIdMongose } = require("../utils");
 const { Pagination } = require("../response/success.response");
 const { BadRequestError } = require("../response/error.response");
 
@@ -27,7 +29,9 @@ class ProductService {
     let priceFilter = parsePriceToFilter(price);
     if (priceFilter) baseFilter = { ...baseFilter, ...priceFilter };
 
-    if (genre) baseFilter.genre = genre;
+    if (genre) {
+      baseFilter.$or = [{ brand: genre }, { genre: genre }];
+    }
 
     if (sex) baseFilter.sex = sex;
 
@@ -41,7 +45,6 @@ class ProductService {
     }
 
     console.log(baseFilter);
-    if (type) baseFilter.type = type;
 
     const total = await productModel.countDocuments(baseFilter);
     const products = await productModel
@@ -59,16 +62,33 @@ class ProductService {
     });
   };
 
+  GetProductByName = async (name, skip, limit) => {
+    const genre = await genreModel.findOne({
+      genreName: { $regex: name, $options: "i" },
+    });
+
+    if (!genre) throw new BadRequestError("Không tìm thấy thương hiệu phù hợp");
+
+    const products = await productModel
+      .find({ genre: genre._id })
+      .skip(skip)
+      .limit(limit)
+      .populate("brand");
+
+    return products;
+  };
+
   GetById = async (id) => {
     const product = await productModel
-      .findOne({ _id: id })
-      .populate("genre")
+      .findOne({
+        _id: convertToObjectIdMongose(id),
+      })
       .populate("brand")
-      .populate("author")
+      .populate("genre")
       .populate({
         path: "comments.user",
-        select: "name thumbnail email ",
       });
+
     return product;
   };
 

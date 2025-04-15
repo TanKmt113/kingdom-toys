@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { configs } = require("./index");
+const { seedData } = require("../services/user.service");
 
 const connectString = `mongodb://${configs.MONGOOSE.HOST}:${configs.MONGOOSE.PORT}/${configs.MONGOOSE.NAME}`;
 
@@ -18,7 +19,8 @@ class Database {
       .connect(connectString, {
         maxPoolSize: 10,
       })
-      .then((_) => {
+      .then(async (_) => {
+        await seedData();
         console.log(
           `Connected mongodb success ::: ${configs.MONGOOSE.PORT} ::: ${configs.MONGOOSE.NAME} ::: ${configs.MONGOOSE.HOST}`
         );

@@ -61,15 +61,14 @@ class CouponService {
 
       const priceAfterDiscount = product.price * (1 - discount / 100);
 
-
       const subtotal = priceAfterDiscount * item.quantity;
       return acc + subtotal;
     }, 0);
 
-    const { couponId, discountValue, finalPrice } =
+    const { couponId, discountValue, couponValue, finalPrice } =
       await validateAndApplyCoupon(payload.coupon, null, totalPrice);
 
-    return { couponId, discountValue, finalPrice, totalPrice };
+    return { couponId, discountValue, finalPrice, totalPrice, couponValue };
   };
 
   AddCoupon = async (data) => {

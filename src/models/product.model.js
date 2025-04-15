@@ -15,7 +15,7 @@ const CommentSchema = new Schema(
     },
     rating: {
       type: Number,
-      min: 1,
+      min: 0,
       max: 5,
       default: 5, // Đánh giá bình luận từ 1-5 sao
     },

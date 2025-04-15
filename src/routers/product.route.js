@@ -213,4 +213,23 @@ router.delete(
   AsyncHandle(productController.RemoveComment)
 );
 
+/**
+ * @swagger
+ *  /product/name/{name}:
+ *    get:
+ *      tags: [Product]
+ *      parameters:
+ *        - $ref: '#/components/parameters/Name'
+ *        - $ref: '#/components/parameters/Skip'
+ *        - $ref: '#/components/parameters/Limit'
+ *      responses:
+ *        200:
+ *          description: Successfully removed comment from the product
+ *        400:
+ *          description: Bad request (comment not found or unauthorized)
+ *        404:
+ *          description: Product not found
+ */
+router.get("/product/name/:name", AsyncHandle(productController.GetByBrand));
+
 module.exports = router;
